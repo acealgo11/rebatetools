@@ -1,1 +1,877 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RebateTools — Affiliate Intelligence for Forex IBs</title>
+<meta name="description" content="RebateTools is the intelligence platform for forex IBs and affiliates. Every trader, sub-IB and rebate dollar, synced automatically and ranked in real time.">
+<meta name="theme-color" content="#070b16">
+<meta property="og:title" content="RebateTools — Know your clients. Maximise your rebates.">
+<meta property="og:description" content="Real-time client intelligence, automated rebate tracking and sub-IB analytics for forex affiliates.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314403a'/%3E%3Cstop offset='1' stop-color='%230b1f24'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-weight='800' font-size='13' fill='%23fff'%3ERT%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070b16;
+  --bg-1:#0b1020;
+  --bg-2:#0f1628;
+  --card:#0e1526;
+  --line:rgba(140,160,220,.10);
+  --line-2:rgba(140,160,220,.2);
+  --fg:#f4f6fb;
+  --fg-2:#b6bfd3;
+  --fg-3:#7e889e;
+  --blue:#5ba5ff;
+  --indigo:#636af2;
+  --grad:linear-gradient(92deg,#5ba5ff 0%,#636af2 100%);
+  --green:#00d190;
+  --orange:#f5a524;
+  --red:#ff6b6b;
+  --yellow:#e8c547;
+  --purple:#a78bfa;
+  --sans:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --max:1180px;
+  --gut:clamp(16px,4vw,32px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+::selection{background:var(--indigo);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.06}
+h1{font-size:clamp(40px,6.6vw,80px)}
+h2{font-size:clamp(30px,4.2vw,50px)}
+h3{font-size:19px;letter-spacing:-.015em;line-height:1.25;font-weight:700}
+p{margin:0;color:var(--fg-2)}
+.lede{font-size:clamp(16.5px,1.5vw,19px);line-height:1.6}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(91,165,255,.35);background:rgba(91,165,255,.08);color:#8cc1ff;font-size:12.5px;font-weight:600}
+.tag svg{width:14px;height:14px}
+.mono{font-family:var(--mono)}
 
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 40px -12px rgba(99,106,242,.75),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 50px -12px rgba(91,165,255,.85),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-ghost{background:rgba(255,255,255,.03);border-color:var(--line-2);color:var(--fg)}
+.btn-ghost:hover{border-color:var(--blue)}
+.btn svg{width:19px;height:19px}
+
+/* Card */
+.card{background:linear-gradient(180deg,rgba(20,29,52,.75),rgba(12,18,34,.85));border:1px solid var(--line-2);border-radius:18px;position:relative}
+.card.glow::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(91,165,255,.55),transparent 35%,transparent 65%,rgba(99,106,242,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+/* Top bar */
+.top{position:absolute;top:0;left:0;right:0;z-index:30}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:78px;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.brand .rt{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:-.02em;color:#fff;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.35);box-shadow:0 0 20px -6px rgba(0,209,144,.5)}
+.brand b{font-weight:800}
+.brand .t2{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.top-right{display:flex;align-items:center;gap:18px}
+.sync-chip{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--fg-3);text-transform:uppercase}
+.sync-chip b{color:var(--fg-2);font-weight:500}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(0,209,144,.6);animation:ping 1.8s infinite;flex:none;display:inline-block}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(0,209,144,.55)}70%{box-shadow:0 0 0 8px rgba(0,209,144,0)}100%{box-shadow:0 0 0 0 rgba(0,209,144,0)}}
+.login{height:40px;padding:0 18px;font-size:14px}
+
+/* Hero */
+.hero{position:relative;padding:150px 0 40px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+#globe{position:absolute;left:50%;top:40px;width:min(1100px,140vw);height:min(1100px,140vw);transform:translateX(-50%);opacity:.75}
+.hero-bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);opacity:.55}
+.hero-bg .halo{position:absolute;left:50%;top:-120px;width:1000px;height:640px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(99,106,242,.28),rgba(91,165,255,.08) 55%,transparent);filter:blur(10px)}
+.hero-head{text-align:center;max-width:900px;margin:0 auto}
+.hero-head .tag{margin-bottom:24px}
+.hero-head h1 .grad{display:block;padding-bottom:.06em}
+.hero-head .lede{max-width:640px;margin:24px auto 0}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.hero-proof{display:flex;justify-content:center;gap:10px 26px;flex-wrap:wrap;margin-top:22px;font-size:13px;color:var(--fg-3)}
+.hero-proof span{display:inline-flex;align-items:center;gap:7px}
+.hero-proof svg{width:15px;height:15px;color:var(--green)}
+
+/* Dashboard mock */
+.stage{perspective:1600px;margin:64px auto 0;max-width:1120px}
+.dash{display:grid;grid-template-columns:56px 230px 1fr;border-radius:18px;overflow:hidden;background:#0a0f1d;border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02),0 0 120px -40px rgba(99,106,242,.6);transform-origin:50% 0;transform:rotateX(18deg) scale(.94);will-change:transform;font-size:13px}
+.d-rail{background:#0b1121;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0}
+.d-rail .rt{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.35);margin-bottom:10px}
+.d-rail i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--fg-3)}
+.d-rail i.on{background:rgba(0,209,144,.1);border:1px solid rgba(0,209,144,.35);color:#7ee8c6}
+.d-rail svg{width:17px;height:17px}
+.d-side{background:#0c1323;border-right:1px solid var(--line);padding:16px 14px;display:flex;flex-direction:column;gap:6px}
+.d-side .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--fg-3);text-transform:uppercase}
+.d-side .who{display:flex;justify-content:space-between;color:var(--fg-2);font-size:12px;margin:2px 0 6px}
+.d-side .who b{color:var(--fg)}
+.d-side .seg-h{font-weight:700;color:var(--fg);margin:8px 0 4px;font-size:13.5px}
+.seg{display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015);font-size:12px;font-weight:600;color:var(--fg);opacity:0;transform:translateX(-8px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.in .seg{opacity:1;transform:none}
+.seg .sd{width:7px;height:7px;border-radius:50%;flex:none}
+.seg .sn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.seg .sc{font-family:var(--mono);font-size:11px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:1px 8px;min-width:34px;text-align:center}
+.d-main{padding:16px;min-width:0}
+.d-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px}
+.d-bar b{font-size:15px}
+.d-bar .live{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px}
+.d-tabs{display:flex;gap:6px}
+.d-tabs span{font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:8px;border:1px solid var(--line);color:var(--fg-3)}
+.d-tabs span.on{color:#fff;background:rgba(0,209,144,.12);border-color:rgba(0,209,144,.35)}
+.tbl{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tr{display:grid;grid-template-columns:62px minmax(0,1.9fr) 1fr .7fr .9fr 1fr;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--line);position:relative}
+.tr.th{border-top:0;background:#0d1426;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--fg-3);text-transform:uppercase;padding:11px 14px}
+.tr .num{text-align:right}
+.tr:not(.th){opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease),background .6s}
+.in .tr:not(.th){opacity:1;transform:none}
+.tr.r1{background:linear-gradient(90deg,rgba(234,179,8,.08),transparent 60%)}
+.tr.r1::before,.tr.r2::before,.tr.r3::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
+.tr.r1::before{background:#eab308}.tr.r2::before{background:#94a3b8}.tr.r3::before{background:#f97316}
+.rank{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:12px;color:#fff}
+.rank svg{width:17px;height:17px}
+.rank.g{background:linear-gradient(140deg,#f6c445,#c98a0a)}
+.rank.s{background:linear-gradient(140deg,#8b95a8,#4b5567)}
+.rank.b{background:linear-gradient(140deg,#fb8a3c,#c2410c)}
+.rank.n{background:#0f7a55}
+.who2{min-width:0}
+.who2 .nm{font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.who2 .ph{display:flex;align-items:center;gap:6px;color:var(--fg-3);font-family:var(--mono);font-size:11px;margin-top:3px}
+.wa{width:14px;height:14px;border-radius:4px;background:#25d366;display:inline-grid;place-items:center}
+.wa svg{width:10px;height:10px;color:#fff}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.pill.hot{color:#34d399;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3)}
+.pill.risk{color:#fbbf24;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3)}
+.pill.dead{color:#fca5a5;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3)}
+.pill.low{color:#facc15;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.3)}
+.cell .k{font-size:9.5px;font-weight:700;letter-spacing:.08em;color:var(--fg-3);text-transform:uppercase}
+.cell .v{font-weight:800;font-size:13.5px;font-variant-numeric:tabular-nums;transition:color .4s,text-shadow .4s}
+.v.g{color:var(--green)}.v.r{color:var(--red)}
+.v.flash{text-shadow:0 0 14px rgba(0,209,144,.9);color:#7dffd0}
+
+/* Logos / sync strip */
+.sync{padding:70px 0 30px;text-align:center}
+.sync .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
+.sync-svg{max-width:880px;margin:22px auto 0}
+.sync-svg svg{width:100%;height:auto;overflow:visible}
+.sync-m{display:none;max-width:420px;margin:22px auto 0}
+.sync-m .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sync-m .chips span{padding:12px;border:1px solid var(--line-2);border-radius:12px;background:#0e1526;font-weight:700;font-size:14px}
+.sync-m .pipe{height:44px;width:2px;margin:0 auto;background:linear-gradient(180deg,#5ba5ff,#636af2);position:relative;overflow:hidden;opacity:.8}
+.sync-m .pipe::after{content:"";position:absolute;left:0;width:2px;height:14px;top:-14px;background:#fff;animation:drip 1.2s linear infinite}
+@keyframes drip{to{top:100%}}
+.sync-m .hub{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;background:#101a35;border:1px solid #5ba5ff;box-shadow:0 0 30px -6px rgba(99,106,242,.7);font-weight:800}
+.flow{stroke-dasharray:6 10;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+
+/* Sections */
+section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
+.sec-head{max-width:720px;margin-bottom:52px}
+.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.sec-head .tag{margin-bottom:20px}
+.sec-head p{margin-top:18px}
+.split{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center}
+.split.flip > :first-child{order:2}
+.ticks{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--fg-2);font-size:15.5px}
+.ticks li::before{content:"";width:18px;height:18px;margin-top:3px;border-radius:50%;background:rgba(91,165,255,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235ba5ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat;border:1px solid rgba(91,165,255,.4)}
+
+/* Problem cards */
+.pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain{padding:24px 22px}
+.pain .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.25);color:#ff9b9b;margin-bottom:18px}
+.pain .ic svg{width:19px;height:19px}
+.pain h3{font-size:17px;margin-bottom:8px}
+.pain p{font-size:14.5px}
+
+/* Client cards (segment modal look) */
+.modal{padding:16px}
+.modal-h{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px}
+.modal-h b{display:flex;align-items:center;gap:10px;font-size:16px}
+.modal-h .x{width:30px;height:30px;border:1px solid var(--line-2);border-radius:9px;display:grid;place-items:center;color:var(--fg-3)}
+.ccard{display:grid;grid-template-columns:auto auto 1fr;gap:12px 12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.015);margin-top:10px;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease),border-color .3s}
+.in .ccard{opacity:1;transform:none}
+.ccard:hover{border-color:rgba(91,165,255,.45)}
+.ccard .n{width:28px;height:28px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--fg-2)}
+.ccard .av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#173040;color:#bfe3ff;font-weight:800;font-size:13px}
+.ccard .nm{font-weight:700;font-size:14px}
+.ccard .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+.ccard .meta .id{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);border:1px solid var(--line-2);border-radius:999px;padding:1px 8px}
+.ccard .stats{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ccard .stats>div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-align:right}
+.ccard .stats .t{display:none}
+.ccard .stats .k{font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--fg-3);text-transform:uppercase}
+.ccard .stats .v{font-weight:800;font-size:13px}
+.ccard .stats .t{font-size:10px;color:var(--fg-3)}
+
+/* Rebate engine */
+.engine{padding:20px}
+.eng-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.eng-top .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
+.eng-top .big{font-size:clamp(30px,3.6vw,40px);font-weight:800;letter-spacing:-.03em;color:var(--green);font-variant-numeric:tabular-nums;line-height:1.1;margin-top:4px}
+.feed{height:252px;overflow:hidden;position:relative;margin-top:6px;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
+.feed-row{display:grid;grid-template-columns:86px 1fr auto auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--line);font-size:13px;animation:feedin .5s var(--ease)}
+@keyframes feedin{from{opacity:0;transform:translateY(-10px);background:rgba(0,209,144,.08)}to{opacity:1;transform:none;background:transparent}}
+.feed-row .br{white-space:nowrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:#8cc1ff;border:1px solid rgba(91,165,255,.3);border-radius:6px;padding:2px 6px;text-align:center}
+.feed-row .tn{color:var(--fg);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed-row .lots{font-family:var(--mono);color:var(--fg-3);font-size:12px}
+.feed-row .rb{font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+
+/* Leaderboard */
+.lb{padding:18px}
+.lb-h{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lb-h b{font-size:16px}
+.lb-h small{display:block;color:var(--fg-3);font-size:12px;font-weight:500}
+.lb-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+.lb-tabs button{appearance:none;font:inherit;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:9px;border:1px solid var(--line-2);background:transparent;color:var(--fg-2);cursor:pointer;transition:all .2s}
+.lb-tabs button[aria-selected="true"]{background:rgba(0,209,144,.12);border-color:rgba(0,209,144,.4);color:#fff}
+.lb-note{font-size:11.5px;color:var(--fg-3);margin-bottom:6px}
+.lb-list{position:relative}
+.lb-row{display:grid;grid-template-columns:30px 1fr repeat(3,minmax(0,92px));gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:12px;margin-top:8px;background:rgba(255,255,255,.015);transition:transform .6s var(--ease),opacity .4s}
+.lb-row .n{width:26px;height:26px;border-radius:7px;border:1px solid var(--line-2);display:grid;place-items:center;font-weight:700;font-size:12px}
+.lb-row .nm{font-weight:700;font-size:14px;min-width:0}
+.lb-row .nm .pill{margin-top:4px}
+.lb-row .c{text-align:right}
+.lb-row .c .k{font-size:9.5px;color:var(--fg-3);font-weight:600}
+.lb-row .c .v{font-weight:800;font-size:13.5px;font-variant-numeric:tabular-nums}
+
+.depo{padding:16px;max-width:340px}
+.depo-h{display:flex;gap:10px;align-items:center}
+.depo-h i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(0,209,144,.12);border:1px solid rgba(0,209,144,.35);color:var(--green)}
+.depo-h i svg{width:17px;height:17px}
+.depo-h b{font-size:14.5px;display:block}
+.depo-h small{color:var(--fg-3);font-size:11.5px}
+.depo-total{margin:12px 0 4px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(0,209,144,.12),rgba(0,209,144,.04));border:1px solid rgba(0,209,144,.3)}
+.depo-total .k{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--fg-3);text-transform:uppercase}
+.depo-total .v{font-size:22px;font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+.drow{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:11px;margin-top:7px;opacity:0;transform:translateX(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.in .drow{opacity:1;transform:none}
+.drow .n{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-weight:800;font-size:12px;border:1px solid var(--line-2)}
+.drow .n.g{background:linear-gradient(140deg,#f6c445,#c98a0a);border:0;color:#2a1b00}
+.drow .n.s{background:linear-gradient(140deg,#cbd5e1,#7c8799);border:0;color:#111}
+.drow .n.b{background:linear-gradient(140deg,#fb8a3c,#c2410c);border:0;color:#fff}
+.drow b{font-size:13.5px;display:block}
+.drow small{font-family:var(--mono);font-size:10.5px;color:var(--fg-3)}
+.drow .v{font-weight:800;color:var(--green);font-variant-numeric:tabular-nums}
+.lb-pair{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+
+/* Sub-IB tree */
+.tree{padding:28px 20px 30px;position:relative}
+.tree svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.tree .lvl{display:flex;justify-content:center;gap:clamp(10px,2.4vw,26px);position:relative;z-index:1}
+.tree .lvl+.lvl{margin-top:54px}
+.node{min-width:108px;text-align:center;padding:12px 14px;border-radius:14px;border:1px solid var(--line-2);background:#0d1426;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .5s var(--ease),transform .5s var(--ease),border-color .3s,box-shadow .3s}
+.in .node{opacity:1;transform:none}
+.node .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--fg-3);text-transform:uppercase}
+.node b{display:block;font-size:13.5px;margin:3px 0 2px}
+.node .v{font-weight:800;color:#8cc1ff;font-variant-numeric:tabular-nums}
+.tree .lvl:first-child .node{flex:0 0 auto;min-width:140px}
+.node.master{border-color:rgba(91,165,255,.6);box-shadow:0 0 40px -10px rgba(91,165,255,.6);background:linear-gradient(180deg,#14244a,#0d1426)}
+.node.master .v{color:var(--green)}
+.node.hl{border-color:rgba(0,209,144,.6);box-shadow:0 0 26px -8px rgba(0,209,144,.7)}
+.link{fill:none;stroke:rgba(140,160,220,.25);stroke-width:1.4}
+.link.lit{stroke:url(#lg);stroke-width:1.8}
+.tree-cap{display:flex;justify-content:space-between;gap:12px;margin-top:22px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--fg-3);letter-spacing:.06em;text-transform:uppercase}
+.tree-cap b{color:var(--green);font-weight:500}
+
+/* Comparison */
+.cmp{padding:22px;overflow:hidden;background:linear-gradient(160deg,rgba(23,37,72,.9),rgba(11,17,33,.95));position:relative}
+.cmp::before{content:"";position:absolute;right:-20%;top:-40%;width:70%;height:180%;background:radial-gradient(closest-side,rgba(91,165,255,.25),transparent);transform:rotate(25deg);pointer-events:none}
+.cmp-h{text-align:center;margin-bottom:18px;position:relative}
+.cmp-h h3{font-size:clamp(20px,2.4vw,28px);font-weight:800}
+.cmp-h p{font-size:14px;margin-top:4px}
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative}
+.cmp-t{min-width:760px}
+.ct{display:grid;grid-template-columns:1.3fr repeat(7,1fr);align-items:center;gap:6px;padding:12px 14px;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.025);margin-top:8px}
+.ct.hd{background:none;border:0;font-size:12px;font-weight:700;color:var(--fg);text-align:center;line-height:1.3;padding-top:0;padding-bottom:0}
+.ct.hd span:first-child{text-align:left}
+.ct span{text-align:center}
+.ct span:first-child{text-align:left;font-weight:600;font-size:14px;color:var(--fg)}
+.ck,.xx{display:inline-grid;place-items:center;width:26px;height:26px;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.in .ck,.in .xx{transform:scale(1)}
+.ck svg,.xx svg{width:20px;height:20px}
+.ck{color:#4cc3ff}.xx{color:#5c667c}
+.ct.us{border-color:rgba(91,195,255,.8);background:linear-gradient(90deg,rgba(40,80,190,.45),rgba(24,60,140,.35));box-shadow:0 0 40px -6px rgba(76,195,255,.55),inset 0 0 30px rgba(76,195,255,.12);position:relative;overflow:hidden}
+.ct.us span:first-child{color:#7cc8ff;font-weight:800}
+.ct.us .ck{color:#5ee0ff;filter:drop-shadow(0 0 6px rgba(94,224,255,.9))}
+.ct.us::after{content:"";position:absolute;top:0;bottom:0;width:30%;left:-30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);animation:sweep 3.6s ease-in-out infinite 1s}
+@keyframes sweep{to{left:130%}}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.stat{padding:28px 18px}
+.stat .ic{width:42px;height:42px;margin:0 auto 14px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--fg-2)}
+.stat .ic svg{width:19px;height:19px}
+.stat .n{font-size:clamp(38px,4.6vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(180deg,#fff,#9aa6c2);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat p{font-size:14px;margin-top:10px}
+
+/* Steps */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{padding:26px 24px 28px}
+.step .no{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--blue)}
+.step h3{margin:14px 0 8px}
+.step p{font-size:15px}
+.step .bar{height:3px;border-radius:3px;background:var(--line);margin-top:20px;overflow:hidden}
+.step .bar i{display:block;height:100%;width:0;background:var(--grad);transition:width 1.2s var(--ease)}
+.step.in .bar i{width:100%}
+.steps3 .step:nth-child(2) .bar i{transition-delay:.3s}.steps3 .step:nth-child(3) .bar i{transition-delay:.6s}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.015);margin-top:10px;transition:border-color .3s}
+.faq details[open]{border-color:rgba(91,165,255,.45)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{color:var(--blue);transition:transform .25s var(--ease);flex:none;font-weight:500;font-size:20px;line-height:1}
+.faq details[open] summary .pm{transform:rotate(45deg)}
+.faq .ans{padding:0 20px 20px;color:var(--fg-2)}
+
+/* Final CTA */
+.final{text-align:center;padding:clamp(100px,13vw,160px) 0;position:relative;overflow:hidden}
+.final .halo{position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(99,106,242,.25),transparent);pointer-events:none}
+.final h2{font-size:clamp(36px,5.6vw,68px);position:relative}
+.final p{max-width:520px;margin:20px auto 34px;position:relative}
+.final .hero-cta{position:relative}
+
+footer{border-top:1px solid var(--line);padding:30px 0 100px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--fg-3)}
+footer nav{display:flex;gap:20px}
+footer nav a:hover{color:var(--fg)}
+
+/* Sticky mobile CTA */
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;transform:translateY(150%);transition:transform .35s var(--ease)}
+.sticky.show{transform:none}
+.sticky a{display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 8px 0 22px;border-radius:999px;background:var(--grad);color:#fff;font-weight:700;box-shadow:0 14px 40px -10px rgba(99,106,242,.8)}
+.sticky a span:last-child{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center}
+.sticky svg{width:20px;height:20px}
+
+/* Progress */
+#progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--grad);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.w>i{display:inline-block;font-style:normal;transform:translateY(110%);transition:transform .9s var(--ease);transition-delay:calc(var(--i)*45ms)}
+.wsplit{opacity:1!important;transform:none!important}
+.wsplit.in .w>i{transform:none}
+.grad .w>i,.grad.w>i{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Responsive */
+@media (max-width:1000px){
+  .dash{grid-template-columns:56px 1fr}
+  .d-side{display:none}
+  .split,.lb-pair{grid-template-columns:1fr}
+  .split.flip > :first-child{order:0}
+  .pains{grid-template-columns:1fr 1fr}
+  .depo{max-width:none}
+}
+@media (max-width:700px){
+  .sync-chip{display:none}
+  .sync-svg{display:none}
+  .sync-m{display:block}
+  .hero{padding-top:118px}
+  .hero-cta .btn{flex:1 1 100%}
+  .dash{grid-template-columns:1fr;transform:none!important;font-size:12px}
+  .d-rail{display:none}
+  .d-main{padding:10px}
+  .d-tabs{display:none}
+  .tr{grid-template-columns:40px minmax(0,1fr) 92px;padding:10px}
+  .tr .hide-s{display:none}
+  .rank{width:30px;height:30px}
+  .pains,.stats-row,.steps3{grid-template-columns:1fr}
+  .ccard{grid-template-columns:auto 1fr}
+  .ccard .n{display:none}
+  .ccard .stats>div{display:block;text-align:right}
+  .lb-row{grid-template-columns:26px 1fr 84px}
+  .lb-row .c.hide-s{display:none}
+  .tree .lvl{gap:8px}
+  .node{min-width:0;flex:1;padding:10px 6px}
+  .node b{font-size:12px}
+  .node .v{font-size:12px}
+  .tree .lvl+.lvl{margin-top:40px}
+  .sticky{display:block}
+  .tree-cap{flex-direction:column;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow,.ct.us::after{animation:none!important}
+  .w>i{transform:none!important;transition:none!important}
+  .rv{transform:none!important}
+  .dash{transform:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="top">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="RebateTools"><span class="rt">RT</span><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
+    <div class="top-right">
+      <div class="sync-chip"><i class="dot"></i><b>Auto-sync live</b>· Vantage · PU Prime · VT Markets · StarTrader</div>
+      <!-- EDIT: confirm the app login URL -->
+      <a class="btn btn-primary login" href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"><div class="halo"></div><canvas id="globe"></canvas><div class="grid"></div></div>
+  <div class="wrap">
+    <div class="hero-head">
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg>Affiliate intelligence for forex IBs</div>
+      <h1 class="rv d1">Know your clients. <span class="grad">Maximise your rebates.</span></h1>
+      <p class="lede rv d2">The intelligence platform for professional forex affiliates. Every trader, every sub-IB and every rebate dollar, synced automatically and ranked in real time.</p>
+      <div class="hero-cta rv d3">
+        <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Enquire on WhatsApp</a>
+        <a class="btn btn-ghost" href="#features">See what it does</a>
+      </div>
+      <div class="hero-proof rv d3">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>No spreadsheets</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Auto-synced broker data</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Sub-IB analytics built in</span>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="dash" id="dash" aria-label="RebateTools dashboard preview">
+        <nav class="d-rail" aria-hidden="true">
+          <span class="rt">RT</span>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8v10H3z"/></svg></i>
+          <i class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></i>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 15c3 0 6 1.5 6 4"/></svg></i>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 9v6l-4 2v-8z"/></svg></i>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="7"/><path d="M9 21h6M10 10h.01M14 10h.01"/></svg></i>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>
+          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></i>
+        </nav>
+        <aside class="d-side">
+          <div class="k">Main affiliate</div>
+          <div class="who"><span>Network overview</span><b id="trCount">0</b></div>
+          <div class="seg-h">Segments</div>
+          <div id="segs"></div>
+        </aside>
+        <div class="d-main">
+          <div class="d-bar"><b>Trader leaderboard</b><div class="d-tabs"><span class="on">All time</span><span>This month</span><span>Active now</span><span>Low equity</span></div><span class="live"><i class="dot"></i>Live</span></div>
+          <div class="tbl" id="tbl">
+            <div class="tr th"><span>Rank</span><span>Trader</span><span class="num">Total rebates ↓</span><span class="num hide-s">Lots</span><span class="num hide-s">Commodities</span><span class="num hide-s">Equity</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="mono rv" style="text-align:center;font-size:11px;letter-spacing:.08em;color:var(--fg-3);margin-top:16px;text-transform:uppercase">Product preview · sample data</p>
+  </div>
+</section>
+
+<!-- ===================== BROKER SYNC ===================== -->
+<section class="sync" id="sync">
+  <div class="wrap">
+    <div class="k rv">Auto-syncs with the brokers you already work with</div>
+    <div class="sync-svg rv d1">
+      <svg viewBox="0 0 880 250" aria-label="Vantage, PU Prime, VT Markets and StarTrader syncing into RebateTools">
+        <defs>
+          <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#636af2"/></linearGradient>
+          <filter id="gl"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <g fill="none" stroke="rgba(140,160,220,.22)" stroke-width="1.5">
+          <path d="M110 70 C110 140 440 110 440 175"/><path d="M330 70 C330 140 440 120 440 175"/><path d="M550 70 C550 140 440 120 440 175"/><path d="M770 70 C770 140 440 110 440 175"/>
+        </g>
+        <g fill="none" stroke="url(#fl)" stroke-width="2" class="flow">
+          <path d="M110 70 C110 140 440 110 440 175"/><path d="M330 70 C330 140 440 120 440 175"/><path d="M550 70 C550 140 440 120 440 175"/><path d="M770 70 C770 140 440 110 440 175"/>
+        </g>
+        <g font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="17" text-anchor="middle" fill="#e8ecf6">
+          <rect x="30" y="18" width="160" height="52" rx="14" fill="#0e1526" stroke="rgba(140,160,220,.25)"/><text x="110" y="50">Vantage</text>
+          <rect x="250" y="18" width="160" height="52" rx="14" fill="#0e1526" stroke="rgba(140,160,220,.25)"/><text x="330" y="50">PU Prime</text>
+          <rect x="470" y="18" width="160" height="52" rx="14" fill="#0e1526" stroke="rgba(140,160,220,.25)"/><text x="550" y="50">VT Markets</text>
+          <rect x="690" y="18" width="160" height="52" rx="14" fill="#0e1526" stroke="rgba(140,160,220,.25)"/><text x="770" y="50">StarTrader</text>
+        </g>
+        <rect x="330" y="172" width="220" height="62" rx="18" fill="url(#fl)" opacity=".55" filter="url(#gl)"/>
+        <rect x="330" y="172" width="220" height="62" rx="18" fill="#101a35" stroke="url(#fl)" stroke-width="1.5"/>
+        <rect x="350" y="187" width="32" height="32" rx="9" fill="#16443d" stroke="rgba(0,209,144,.5)"/>
+        <text x="366" y="208" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="12" fill="#fff">RT</text>
+        <text x="460" y="209" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="18" fill="#fff">RebateTools</text>
+      </svg>
+    </div>
+    <div class="sync-m rv d1" aria-hidden="true"><div class="chips"><span>Vantage</span><span>PU Prime</span><span>VT Markets</span><span>StarTrader</span></div><div class="pipe"></div><div class="hub"><span class="rt" style="width:30px;height:30px;font-size:11px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.4)">RT</span>RebateTools</div></div>
+  </div>
+</section>
+
+<!-- ===================== PROBLEM ===================== -->
+<section class="block" id="features">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="tag rv">The problem</div>
+      <h2 class="rv d1">Your broker portal shows data. <span class="grad">It doesn't tell you anything.</span></h2>
+      <p class="lede rv d2">Running an IB network off broker back-offices and spreadsheets means you find out about problems weeks too late, and you never quite know where your money is coming from.</p>
+    </div>
+    <div class="pains">
+      <div class="card pain rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><h3>Hours in spreadsheets</h3><p>Exporting reports and working out rebates by hand, across every broker, every month.</p></div>
+      <div class="card pain rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Clients go quiet, unnoticed</h3><p>By the time you spot a trader has stopped, they've already moved on.</p></div>
+      <div class="card pain rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg></div><h3>Sub-IBs are a black box</h3><p>You can't see which partners are actually producing volume, and which are coasting.</p></div>
+      <div class="card pain rv d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Rebates you can't trace</h3><p>Totals with no breakdown, so you can't tell which clients and campaigns earn you the most.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== F1 CLIENT INTELLIGENCE ===================== -->
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg>Client intelligence</div>
+      <h2 class="rv d1" style="margin-top:18px">Know who's active, at risk <span class="grad">or gone, at a glance.</span></h2>
+      <p class="lede rv d2" style="margin-top:18px">Every trader connected to your IB account in one place, automatically segmented and tagged. See who's hot, who's slipping and who's stopped, so you can act before the volume disappears.</p>
+      <ul class="ticks rv d3">
+        <li>Live segments: active, inactive, high drawdown, new and never traded</li>
+        <li>Hot, At Risk and Dead tags on every trader</li>
+        <li>Rebate, equity and last trade side by side</li>
+        <li>One tap to WhatsApp a client straight from their row</li>
+      </ul>
+    </div>
+    <div class="card glow modal rv d1" id="ccards">
+      <div class="modal-h"><b><i class="dot" style="background:#5ba5ff;animation:none"></i>Active (7d)</b><span class="x">✕</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== F2 AUTOMATED REBATE TRACKING ===================== -->
+<section class="block">
+  <div class="wrap split flip">
+    <div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Automated rebate tracking</div>
+      <h2 class="rv d1" style="margin-top:18px">No more manual spreadsheets. <span class="grad">Ever.</span></h2>
+      <p class="lede rv d2" style="margin-top:18px">RebateTools syncs your broker data automatically and calculates lots, commodities and rebates as they happen, so you always know exactly what you're earning, and who it's coming from.</p>
+      <ul class="ticks rv d3">
+        <li>Synced from your broker accounts, no exports</li>
+        <li>Rebates broken down per trader, per lot</li>
+        <li>Time-based views: today, this month, all time</li>
+      </ul>
+    </div>
+    <div class="card glow engine rv d1" id="engine">
+      <div class="eng-top">
+        <div><div class="k">Rebates calculated · this month</div><div class="big">$<span id="engTotal">0.00</span></div></div>
+        <span class="live" style="display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px"><i class="dot"></i>Syncing</span>
+      </div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== F3 LEADERBOARDS ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>Leaderboards</div>
+      <h2 class="rv d1">See your most valuable traders. <span class="grad">Instantly.</span></h2>
+      <p class="lede rv d2">Rank every trader by lifetime rebate, this month, who's active right now or who's running low on equity. Spot your biggest depositors and focus your time where the money is.</p>
+    </div>
+    <div class="lb-pair">
+      <div class="card glow lb rv" id="lb">
+        <div class="lb-h"><div><b>Trader leaderboard</b><small id="lbCount">8 traders</small></div><span class="live" style="display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px"><i class="dot"></i>Live</span></div>
+        <div class="lb-tabs" role="tablist" id="lbTabs">
+          <button type="button" role="tab" aria-selected="true" data-k="all">All time</button>
+          <button type="button" role="tab" aria-selected="false" data-k="month">This month</button>
+          <button type="button" role="tab" aria-selected="false" data-k="active">Active now</button>
+          <button type="button" role="tab" aria-selected="false" data-k="low">Low equity</button>
+        </div>
+        <div class="lb-note" id="lbNote">Ranked by lifetime rebate · tap the tabs</div>
+        <div class="lb-list" id="lbList"></div>
+      </div>
+      <div class="card depo rv d1" id="depo">
+        <div class="depo-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></i><div><b>Top 10 depositors</b><small>All time · net funding</small></div></div>
+        <div class="depo-total"><div class="k">Total net funding (top 10) · all time</div><div class="v">$<span data-count="126329.21" data-dec="2" data-sep="1">0</span></div></div>
+        <div id="depoList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== F4 SUB-IB ===================== -->
+<section class="block">
+  <div class="wrap split">
+    <div class="card glow tree rv" id="tree">
+      <svg class="links" id="links"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#00d190"/></linearGradient></defs></svg>
+      <div class="lvl"><div class="node master" data-id="m"><div class="k">Tier 0</div><b>Master IB</b><div class="v">$<span data-count="12460" data-sep="1">0</span></div></div></div>
+      <div class="lvl">
+        <div class="node" data-id="a" data-p="m"><div class="k">Tier 1</div><b>Sub-IB Alpha</b><div class="v">$<span data-count="4320" data-sep="1">0</span></div></div>
+        <div class="node" data-id="b" data-p="m"><div class="k">Tier 1</div><b>Sub-IB Beta</b><div class="v">$<span data-count="3150" data-sep="1">0</span></div></div>
+        <div class="node" data-id="c" data-p="m"><div class="k">Tier 1</div><b>Sub-IB Gamma</b><div class="v">$<span data-count="2810" data-sep="1">0</span></div></div>
+      </div>
+      <div class="lvl">
+        <div class="node" data-id="a1" data-p="a"><div class="k">Tier 2</div><b>Affiliate A1</b><div class="v">$<span data-count="890" data-sep="1">0</span></div></div>
+        <div class="node" data-id="a2" data-p="a"><div class="k">Tier 2</div><b>Affiliate A2</b><div class="v">$<span data-count="1240" data-sep="1">0</span></div></div>
+        <div class="node" data-id="b1" data-p="b"><div class="k">Tier 2</div><b>Affiliate B1</b><div class="v">$<span data-count="670" data-sep="1">0</span></div></div>
+      </div>
+      <div class="tree-cap"><span>Network rebates · this month</span><span>Top producer: <b id="topProd">Sub-IB Alpha</b></span></div>
+    </div>
+    <div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg>Sub-IB management</div>
+      <h2 class="rv d1" style="margin-top:18px">Full control over your <span class="grad">sub-affiliate data.</span></h2>
+      <p class="lede rv d2" style="margin-top:18px">Track performance across every sub-IB in your network. See where your volume is really coming from, and which partners are actually growing your business.</p>
+      <ul class="ticks rv d3">
+        <li>Monitor sub-affiliate trading volume in real time</li>
+        <li>See which partners generate the most clients and lots</li>
+        <li>Spot inactive or underperforming sub-IBs early</li>
+        <li>Your entire affiliate structure in one clear view</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMPARISON ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="card cmp rv" id="cmp">
+      <div class="cmp-h"><h3>Broker dashboards vs <span class="grad">RebateTools</span></h3><p>Most broker dashboards show data. RebateTools shows intelligence.</p></div>
+      <div class="cmp-scroll"><div class="cmp-t" id="cmpT"></div></div>
+    </div>
+    <p class="rv" style="font-size:12px;color:var(--fg-3);margin-top:12px;text-align:center">Based on the standard IB dashboards each broker provides. Broker names are trademarks of their respective owners.</p>
+  </div>
+</section>
+
+<!-- ===================== STATS ===================== -->
+<section class="block" style="padding-top:20px">
+  <div class="wrap stats-row">
+    <div class="card stat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div><div class="n"><span data-count="30000" data-sep="1">0</span>+</div><p>Automated rebate calculations</p></div>
+    <div class="card stat rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div class="n"><span data-count="4">0</span></div><p>Broker integrations, auto-synced</p></div>
+    <div class="card stat rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="n">24/7</div><p>Real-time tracking, no manual updates</p></div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="block" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="tag rv">How it works</div>
+      <h2 class="rv d1">Set up once. <span class="grad">It runs itself.</span></h2>
+    </div>
+    <div class="steps3">
+      <div class="card step rv"><div class="no">01</div><h3>Connect your IB accounts</h3><p>Message us and we'll link RebateTools to the broker accounts you already use.</p><div class="bar"><i></i></div></div>
+      <div class="card step rv d1"><div class="no">02</div><h3>We sync and calculate</h3><p>Traders, lots and rebates pull in automatically and stay up to date on their own.</p><div class="bar"><i></i></div></div>
+      <div class="card step rv d2"><div class="no">03</div><h3>You see everything</h3><p>Log in to your dashboard and see every client, sub-IB and rebate dollar in one place.</p><div class="bar"><i></i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="block" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="tag rv">FAQ</div>
+      <h2 class="rv d1">Questions IBs <span class="grad">usually ask.</span></h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Which brokers does RebateTools work with?<span class="pm">+</span></summary><div class="ans">RebateTools currently syncs with Vantage, PU Prime, VT Markets and StarTrader. Working with a different broker? Message us and ask, as more integrations are on the way.</div></details>
+      <details><summary>Do I need to export or upload anything?<span class="pm">+</span></summary><div class="ans">No. Once your IB accounts are connected, your traders, lots and rebates sync automatically. No spreadsheets, no manual uploads.</div></details>
+      <details><summary>Can I track my sub-IBs?<span class="pm">+</span></summary><div class="ans">Yes. You can see every sub-affiliate in your network, the volume and rebates they generate, and which ones are growing or going quiet.</div></details>
+      <details><summary>Who can see my data?<span class="pm">+</span></summary><div class="ans">Your dashboard sits behind a secure login and only you, plus anyone you choose to give access, can see your network's data.</div></details>
+      <!-- EDIT: add pricing if you want it on the page -->
+      <details><summary>How much does it cost?<span class="pm">+</span></summary><div class="ans">Pricing depends on the size of your network. Message us on WhatsApp and we'll walk you through the options.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final">
+  <div class="halo" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="tag rv" style="margin-bottom:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg>Ready to start?</div>
+    <h2 class="rv d1">Stop guessing. <span class="grad">Start calculating.</span></h2>
+    <p class="lede rv d2">Join the professional affiliates using RebateTools for accurate, real-time rebate intelligence.</p>
+    <div class="hero-cta rv d3">
+      <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Get started on WhatsApp <span>→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand" style="font-size:16px"><span class="rt" style="width:28px;height:28px;font-size:11px">RT</span><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
+    <nav><a href="#features">Features</a><a href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a></nav>
+    <span>© 2026 RebateTools</span>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a data-wa><span>Enquire on WhatsApp</span><span><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg></span></a></div>
+
+<script>
+(()=>{
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s);
+
+/* ---- WhatsApp links ---- */
+// EDIT: WhatsApp number (international format, no +) and pre-filled message
+const WA_NUMBER='447446978735';
+const WA_MSG="Hi, I'm interested in RebateTools. Please can you tell me more and how to get set up?";
+const WA='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_MSG);
+document.querySelectorAll('[data-wa]').forEach(a=>{a.href=WA;a.target='_blank';a.rel='noopener';
+  a.addEventListener('click',()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}})});
+
+/* ---- helpers ---- */
+const money=(v,dp=2)=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:dp,maximumFractionDigits:dp});
+const fmt=(el,v)=>{const dec=+(el.dataset.dec||0),sep=!!el.dataset.sep;const r=v.toFixed(dec);return sep?Number(r).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}):r};
+const count=el=>{const to=+el.dataset.count;if(RM){el.textContent=fmt(el,to);return}const t0=performance.now(),dur=1500;
+  const st=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(el,to*e);if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)};
+const tween=(el,from,to,dur,f)=>{const t0=performance.now();const st=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=f(from+(to-from)*e);if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)};
+
+/* ---- split headings into words ---- */
+document.querySelectorAll('h1,h2').forEach(h=>{let n=0;const walk=node=>{[...node.childNodes].forEach(c=>{
+  if(c.nodeType===3){const frag=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t)){frag.appendChild(document.createTextNode(' '));return}
+    const w=document.createElement('span');w.className='w';const i=document.createElement('i');i.textContent=t;i.style.setProperty('--i',n++);w.appendChild(i);frag.appendChild(w)});c.replaceWith(frag)}
+  else if(c.nodeType===1)walk(c)})};walk(h);h.classList.add('wsplit');if(!h.classList.contains('rv'))h.classList.add('rv')});
+
+/* ---- reveal observer ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');
+  t.querySelectorAll('[data-count]').forEach(count);t.dispatchEvent(new Event('reveal'));io.unobserve(t)}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+
+/* ---- Hero dashboard ---- */
+const SEGS=[['Active (7d)','#5ba5ff',134],['Moderately active','#00d190',5],['Inactive (14d+)','#6b7280',34],['High drawdown','#e8c547',123],['New accounts','#a78bfa',1],['Inactive (30d+)','#6b7280',47],['Never traded','#e8c547',0]];
+$('#segs').innerHTML=SEGS.map((s,i)=>`<div class="seg" style="transition-delay:${.2+i*.06}s"><i class="sd" style="background:${s[1]}"></i><span class="sn">${s[0]}</span><span class="sc" data-count="${s[2]}">0</span></div>`).join('');
+const TR=[
+ ['Mrs. Olga Gutmann',[['hot','Hot']],5385.48,161.00,158.00,15428.10,'•••• 8729'],
+ ['Ernest Schuppe',[['dead','Dead'],['low','Low'],['risk','At risk']],3033.75,87.25,87.25,1.76,'•••• 4817'],
+ ['Terrance McCullough',[['dead','Dead'],['low','Low']],2429.15,105.47,72.52,1.30,'•••• 8483'],
+ ['Laurence Smith',[['dead','Dead'],['risk','At risk']],2423.44,72.70,58.80,8.49,'•••• 1680'],
+ ['Mr. Lulu Gerlach',[['risk','At risk']],2140.01,60.51,46.19,505.31,'•••• 6236'],
+ ['Hipolito Prosacco',[['hot','Hot']],1790.05,52.43,52.43,8334.06,'•••• 7348'],
+ ['Delilah Davis',[['risk','At risk']],1708.64,51.69,49.27,1307.11,'•••• 9851'],
+ ['Kris Streich PhD',[['hot','Hot']],1696.41,50.64,50.54,4620.80,'•••• 7023']];
+const ICON={hot:'🔥',dead:'',risk:'⚠',low:''};
+const WAIC='<span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span>';
+const trophy='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>';
+const medal='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="12" cy="15" r="5"/><path d="M8 3l4 7 4-7"/></svg>';
+const tbl=$('#tbl');
+TR.forEach((t,i)=>{const r=document.createElement('div');r.className='tr'+(i<3?' r'+(i+1):'');r.style.transitionDelay=(.25+i*.07)+'s';
+  const rk=i===0?`<span class="rank g">${trophy}</span>`:i===1?`<span class="rank s">${medal}</span>`:i===2?`<span class="rank b">${medal}</span>`:`<span class="rank n">#${i+1}</span>`;
+  r.innerHTML=`${rk}<div class="who2"><div class="nm">${t[0]} ${t[1].map(p=>`<span class="pill ${p[0]}">${ICON[p[0]]?ICON[p[0]]+' ':''}${p[1]}</span>`).join('')}</div><div class="ph">${WAIC}${t[6]}</div></div>
+   <div class="cell num"><div class="k">Rebates</div><div class="v g" data-reb="${t[2]}">${money(t[2])}</div></div>
+   <div class="cell num hide-s"><div class="k">Lots</div><div class="v">${t[3].toFixed(2)}</div></div>
+   <div class="cell num hide-s"><div class="k">Commodities</div><div class="v">${t[4].toFixed(2)}</div></div>
+   <div class="cell num hide-s"><div class="k">Equity</div><div class="v ${t[5]<10?'r':''}">${money(t[5])}</div></div>`;
+  tbl.appendChild(r)});
+const dash=$('#dash');
+dash.addEventListener('reveal',()=>{const tc=$('#trCount');tween(tc,0,344,1500,v=>Math.round(v))});
+io.observe(dash);
+// live rebate ticks
+if(!RM)setInterval(()=>{const cells=[...tbl.querySelectorAll('[data-reb]')];const c=cells[Math.floor(Math.random()*cells.length)];
+  const from=+c.dataset.reb,to=from+Math.random()*9+.5;c.dataset.reb=to;c.classList.add('flash');tween(c,from,to,700,v=>money(v));setTimeout(()=>c.classList.remove('flash'),900)},1800);
+
+/* ---- Globe ---- */
+const cv=$('#globe');
+if(cv){const ctx=cv.getContext('2d');let W,H,dpr=Math.min(2,devicePixelRatio||1),run=true,rot=0;const N=900,pts=[];
+  for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=Math.PI*(3-Math.sqrt(5))*i;pts.push([Math.cos(th)*r,y,Math.sin(th)*r])}
+  const size=()=>{W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};
+  const draw=()=>{if(!run)return;ctx.clearRect(0,0,W,H);const R=W*.42,cx=W/2,cy=H/2,c=Math.cos(rot),s=Math.sin(rot),tilt=.35,ct=Math.cos(tilt),st=Math.sin(tilt);
+    for(const p of pts){let x=p[0]*c-p[2]*s,z=p[0]*s+p[2]*c,y=p[1];const y2=y*ct-z*st,z2=y*st+z*ct;if(z2<-.15)continue;
+      const a=.12+.55*(z2+1)/2;ctx.fillStyle=`rgba(${110+40*z2|0},${150+40*z2|0},255,${a})`;const sz=.8+1.1*(z2+1)/2;ctx.fillRect(cx+x*R-sz/2,cy+y2*R-sz/2,sz,sz)}
+    ctx.strokeStyle='rgba(91,165,255,.10)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.stroke();
+    if(!RM)rot+=.0018;requestAnimationFrame(draw)};
+  size();draw();addEventListener('resize',size);
+  new IntersectionObserver(([e])=>{const was=run;run=e.isIntersecting;if(run&&!was)draw()}).observe(cv)}
+
+/* ---- Client cards ---- */
+const CC=[['MO','Mrs. Olga Gutmann','risk','At risk','1534879',591.50,3243.46,'4 days ago','0.10 lots'],
+ ['KS','Kris Streich PhD','risk','At risk','7967262',308.55,2516.51,'5 days ago','0.01 lots'],
+ ['AK','Albert Kessler','hot','Hot','8805073',407.16,409.20,'Yesterday','0.05 lots'],
+ ['HT','Hugo Tremblay-Little','dead','Dead','8072797',1463.35,2.83,'5 days ago','0.01 lots']];
+const ccw=$('#ccards');
+CC.forEach((c,i)=>{const d=document.createElement('div');d.className='ccard';d.style.transitionDelay=(.15+i*.1)+'s';
+  d.innerHTML=`<span class="n">${i+1}</span><span class="av">${c[0]}</span><div><div class="nm">${c[1]}</div><div class="meta"><span class="pill ${c[2]}">${ICON[c[2]]?ICON[c[2]]+' ':''}${c[3]}</span><span class="id">ID ${c[4]}</span></div></div>
+  <div class="stats"><div><div class="k">Rebate</div><div class="v g">${money(c[5])}</div></div><div><div class="k">Equity</div><div class="v ${c[6]<10?'r':'g'}">${money(c[6])}</div></div><div><div class="k">Last trade</div><div class="v" style="font-size:12px">${c[7]}</div><div class="t">${c[8]}</div></div></div>`;
+  ccw.appendChild(d)});
+io.observe(ccw);
+
+/* ---- Rebate engine feed ---- */
+const feed=$('#feed'),engT=$('#engTotal'),eng=$('#engine');let engVal=0,feedTimer=null;
+const BR=['VANTAGE','PU PRIME','VT','STARTRADER'],NM=['O. Gutmann','H. Prosacco','K. Streich','D. Davis','A. Kessler','L. Gerlach','R. Torp','S. Kilback','P. Weissnat','C. Dickens'];
+const addFeed=(instant)=>{const lots=(Math.random()*1.6+.05),reb=lots*(Math.random()*4+5);const r=document.createElement('div');r.className='feed-row';if(instant)r.style.animation='none';
+  r.innerHTML=`<span class="br">${BR[Math.random()*4|0]}</span><span class="tn">${NM[Math.random()*NM.length|0]}</span><span class="lots">${lots.toFixed(2)} lots</span><span class="rb">+${money(reb)}</span>`;
+  feed.prepend(r);while(feed.children.length>8)feed.lastChild.remove();const from=engVal;engVal+=reb;if(!instant)tween(engT,from,engVal,600,v=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}))};
+eng.addEventListener('reveal',()=>{engVal=48210.37;tween(engT,0,engVal,1500,v=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}));for(let i=0;i<6;i++)addFeed(true);
+  if(!RM)feedTimer=setInterval(()=>addFeed(false),1600)});
+io.observe(eng);
+
+/* ---- Leaderboard (interactive tabs) ---- */
+const LB=[ // name, tag, rebate all-time, month rebate, equity, pl, lastTradeDays
+ ['Mrs. Olga Gutmann','risk',14265.78,1210.40,3243.46,2643.46,4],
+ ['Kris Streich PhD','risk',12360.47,890.12,2516.51,2316.51,5],
+ ['Laurence Smith','risk',9837.94,402.33,581.72,581.72,9],
+ ['Albert Kessler','hot',8072.57,1544.90,409.20,-90.80,1],
+ ['Hipolito Prosacco','hot',6411.20,1388.05,8334.06,1934.06,0],
+ ['Delilah Davis','risk',5120.66,310.48,1307.11,207.11,6],
+ ['Hugo Tremblay-Little','dead',4880.12,0,2.83,-497.17,31],
+ ['Celia Weber IV','dead',3402.90,0,0.20,-299.80,44]];
+const TAG={hot:['hot','Hot'],risk:['risk','At risk'],dead:['dead','Dead']};
+const VIEWS={all:{note:'Ranked by lifetime rebate',sort:(a,b)=>b[2]-a[2],cols:[['Rebate',r=>money(r[2]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g'],['P/L',r=>(r[5]<0?'−':'+')+money(Math.abs(r[5])),r=>r[5]<0?'r':'g']]},
+ month:{note:'Ranked by rebate this month',sort:(a,b)=>b[3]-a[3],cols:[['This month',r=>money(r[3]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g'],['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]},
+ active:{note:'Traded in the last 7 days',filter:r=>r[6]<=7,sort:(a,b)=>a[6]-b[6],cols:[['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago',''],['This month',r=>money(r[3]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g']]},
+ low:{note:'Lowest equity first · time to check in',sort:(a,b)=>a[4]-b[4],cols:[['Equity',r=>money(r[4]),'r'],['Rebate',r=>money(r[2]),'g'],['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]}};
+const lbList=$('#lbList');
+const renderLB=k=>{const v=VIEWS[k];let rows=LB.slice();if(v.filter)rows=rows.filter(v.filter);rows.sort(v.sort);rows=rows.slice(0,5);
+  $('#lbNote').textContent=v.note;$('#lbCount').textContent=rows.length+' of '+LB.length+' traders';
+  lbList.innerHTML=rows.map((r,i)=>`<div class="lb-row" style="animation:feedin .45s var(--ease) ${i*.06}s both"><span class="n">${i+1}</span><div class="nm">${r[0]}<br><span class="pill ${TAG[r[1]][0]}">${ICON[r[1]]?ICON[r[1]]+' ':''}${TAG[r[1]][1]}</span></div>${v.cols.map((c,j)=>{const cl=typeof c[2]==='function'?c[2](r):c[2];return `<div class="c${j>0?' hide-s':''}"><div class="k">${c[0]}</div><div class="v ${cl}">${c[1](r)}</div></div>`}).join('')}</div>`).join('')};
+const tabs=[...document.querySelectorAll('#lbTabs button')];let lbAuto=null,lbIdx=0,lbManual=false;
+const showTab=i=>{lbIdx=i;tabs.forEach((b,j)=>b.setAttribute('aria-selected',j===i));renderLB(tabs[i].dataset.k)};
+tabs.forEach((b,i)=>b.addEventListener('click',()=>{lbManual=true;clearInterval(lbAuto);showTab(i)}));
+renderLB('all');
+const lbEl=$('#lb');
+if(!RM)new IntersectionObserver(([e])=>{clearInterval(lbAuto);if(e.isIntersecting&&!lbManual)lbAuto=setInterval(()=>showTab((lbIdx+1)%tabs.length),4200)},{threshold:.5}).observe(lbEl);
+io.observe(lbEl);
+
+/* ---- Top depositors ---- */
+const DP=[['Margarette Gislason','9993038',26652.00],['Sidney Kilback','9507980',16754.25],['Robin Torp','7728240',13000.00],['Jerry Erdman-Labadie','9383265',12780.19],['Hugo Tremblay-Little','8072797',10819.74],['Peter Weissnat','8872812',10285.61]];
+$('#depoList').innerHTML=DP.map((d,i)=>`<div class="drow" style="transition-delay:${.2+i*.08}s"><span class="n ${['g','s','b'][i]||''}">${i+1}</span><div><b>${d[0]}</b><small>ID: ${d[1]}</small></div><span class="v">${money(d[2])}</span></div>`).join('');
+io.observe($('#depo'));
+
+/* ---- Sub-IB tree links ---- */
+const tree=$('#tree'),links=$('#links'),NS='http://www.w3.org/2000/svg';
+const drawLinks=()=>{[...links.querySelectorAll('path')].forEach(p=>p.remove());const tb=tree.getBoundingClientRect();
+  tree.querySelectorAll('.node[data-p]').forEach(n=>{const p=tree.querySelector(`.node[data-id="${n.dataset.p}"]`);const a=p.getBoundingClientRect(),b=n.getBoundingClientRect();
+    const x1=a.left+a.width/2-tb.left,y1=a.bottom-tb.top,x2=b.left+b.width/2-tb.left,y2=b.top-tb.top,my=(y1+y2)/2;
+    const path=document.createElementNS(NS,'path');path.setAttribute('d',`M${x1} ${y1} C${x1} ${my} ${x2} ${my} ${x2} ${y2}`);path.setAttribute('class','link');path.dataset.to=n.dataset.id;path.dataset.from=n.dataset.p;links.appendChild(path)})};
+const lightPath=id=>{const chain=[];let n=tree.querySelector(`.node[data-id="${id}"]`);while(n){chain.push(n.dataset.id);n=n.dataset.p?tree.querySelector(`.node[data-id="${n.dataset.p}"]`):null}
+  tree.querySelectorAll('.node').forEach(x=>x.classList.toggle('hl',chain.includes(x.dataset.id)&&x.dataset.id!=='m'));
+  links.querySelectorAll('path').forEach(p=>p.classList.toggle('lit',chain.includes(p.dataset.to)));
+  const t1=chain[chain.length-2];const nm=t1&&tree.querySelector(`.node[data-id="${t1}"] b`);if(nm)$('#topProd').textContent=nm.textContent};
+tree.querySelectorAll('.node').forEach((n,i)=>{n.style.transitionDelay=(.1+i*.08)+'s';n.addEventListener('mouseenter',()=>lightPath(n.dataset.id))});
+let leaf=0;const leaves=['a2','a1','b1'];
+tree.addEventListener('reveal',()=>{drawLinks();setTimeout(()=>lightPath('a2'),900);if(!RM)setInterval(()=>{leaf=(leaf+1)%leaves.length;lightPath(leaves[leaf])},2600)});
+addEventListener('resize',()=>{if(tree.classList.contains('in'))drawLinks()});
+io.observe(tree);
+
+/* ---- Comparison table ---- */
+const COLS=['Basic client list','Lot tracking','Trader analytics','Leaderboards','Dormant account detection','Sub-affiliate insights','Network intelligence'];
+const CK='<span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>';
+const XX='<span class="xx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>';
+const ROWS=[['Vantage',2],['PU Prime',2],['VT Markets',2],['StarTrader',2],['RebateTools',7]];
+const cmpT=$('#cmpT');let k=0;
+cmpT.innerHTML=`<div class="ct hd"><span>Platform</span>${COLS.map(c=>`<span>${c}</span>`).join('')}</div>`+ROWS.map((r,i)=>`<div class="ct${i===4?' us':''}"><span>${r[0]}</span>${COLS.map((_,j)=>{const h=j<r[1]?CK:XX;return h.replace('class="','style="transition-delay:'+(.2+(k++)*.025)+'s" class="')}).join('')}</div>`).join('');
+io.observe($('#cmp'));
+
+/* ---- Generic reveals ---- */
+document.querySelectorAll('.rv,.step').forEach(el=>io.observe(el));
+
+/* ---- Scroll: progress + dashboard tilt ---- */
+const prog=$('#progress');let ticking=false;
+const onScroll=()=>{ticking=false;const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${max>0?y/max:0})`;
+  if(!RM&&innerWidth>700){const r=dash.getBoundingClientRect(),p=Math.min(1,Math.max(0,1-(r.top-innerHeight*.15)/(innerHeight*.75)));dash.style.transform=`rotateX(${18*(1-p)}deg) scale(${.94+.06*p})`}};
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+/* ---- Sticky mobile CTA ---- */
+const sticky=$('#sticky'),heroCta=document.querySelector('.hero .hero-cta'),fin=document.querySelector('.final');let heroVis=true,finVis=false;
+const upS=()=>sticky.classList.toggle('show',!heroVis&&!finVis);
+new IntersectionObserver(([e])=>{heroVis=e.isIntersecting||e.boundingClientRect.top>0;upS()}).observe(heroCta);
+new IntersectionObserver(([e])=>{finVis=e.isIntersecting;upS()}).observe(fin);
+})();
+</script>
+</body>
+</html>
