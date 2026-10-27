@@ -46,18 +46,19 @@ img,svg{display:block}
 ::selection{background:var(--indigo);color:#fff}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.06}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.035em;line-height:1.06}
 h1{font-size:clamp(40px,6.6vw,80px)}
 h2{font-size:clamp(30px,4.2vw,50px)}
 h3{font-size:19px;letter-spacing:-.015em;line-height:1.25;font-weight:700}
 p{margin:0;color:var(--fg-2)}
 .lede{font-size:clamp(16.5px,1.5vw,19px);line-height:1.6}
-.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(91,165,255,.35);background:rgba(91,165,255,.08);color:#8cc1ff;font-size:12.5px;font-weight:600}
-.tag svg{width:14px;height:14px}
+.tag{display:inline-flex;align-items:center;gap:9px;padding:6px 10px;border-radius:6px;border:1px solid rgba(91,165,255,.3);background:rgba(91,165,255,.06);color:#9cc8ff;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.tag b{color:var(--blue);font-weight:500}
+.tag svg{width:13px;height:13px}
 .mono{font-family:var(--mono)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:10px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
 .btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 40px -12px rgba(99,106,242,.75),inset 0 1px 0 rgba(255,255,255,.25)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 50px -12px rgba(91,165,255,.85),inset 0 1px 0 rgba(255,255,255,.25)}
 .btn-ghost{background:rgba(255,255,255,.03);border-color:var(--line-2);color:var(--fg)}
@@ -65,7 +66,8 @@ p{margin:0;color:var(--fg-2)}
 .btn svg{width:19px;height:19px}
 
 /* Card */
-.card{background:linear-gradient(180deg,rgba(20,29,52,.75),rgba(12,18,34,.85));border:1px solid var(--line-2);border-radius:18px;position:relative}
+.card{background:linear-gradient(180deg,rgba(18,26,47,.85),rgba(11,17,32,.92));border:1px solid var(--line-2);border-radius:12px;position:relative;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.card:hover{border-color:rgba(91,165,255,.38);box-shadow:0 18px 50px -24px rgba(0,0,0,.8),0 0 0 1px rgba(91,165,255,.08)}
 .card.glow::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(91,165,255,.55),transparent 35%,transparent 65%,rgba(99,106,242,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
 /* Top bar */
@@ -101,7 +103,7 @@ footer .brand .mark{width:30px;height:30px}
 
 /* Dashboard mock */
 .stage{perspective:1600px;margin:64px auto 0;max-width:1120px}
-.dash{display:grid;grid-template-columns:56px 230px 1fr;border-radius:18px;overflow:hidden;background:#0a0f1d;border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02),0 0 120px -40px rgba(99,106,242,.6);transform-origin:50% 0;transform:rotateX(18deg) scale(.94);will-change:transform;font-size:13px}
+.dash{display:grid;grid-template-columns:56px 230px 1fr;border-radius:12px;overflow:hidden;background:#0a0f1d;border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02),0 0 120px -40px rgba(99,106,242,.6);transform-origin:50% 0;transform:rotateX(18deg) scale(.94);will-change:transform;font-size:13px}
 .d-rail{background:#0b1121;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0}
 .d-rail .rt{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.35);margin-bottom:10px}
 .d-rail .rail-mark{width:34px;height:34px;object-fit:contain;margin-bottom:10px}
@@ -145,7 +147,8 @@ footer .brand .mark{width:30px;height:30px}
 .who2 .ph{display:flex;align-items:center;gap:6px;color:var(--fg-3);font-family:var(--mono);font-size:11px;margin-top:3px}
 .wa{width:14px;height:14px;border-radius:4px;background:#25d366;display:inline-grid;place-items:center}
 .wa svg{width:10px;height:10px;color:#fff}
-.pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:4px;white-space:nowrap;letter-spacing:.01em}
+.pill::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
 .pill.hot{color:#34d399;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3)}
 .pill.risk{color:#fbbf24;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3)}
 .pill.dead{color:#fca5a5;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3)}
@@ -156,13 +159,15 @@ footer .brand .mark{width:30px;height:30px}
 .v.flash{text-shadow:0 0 14px rgba(0,209,144,.9);color:#7dffd0}
 
 /* Logos / sync strip */
-.sync{padding:70px 0 30px;text-align:center}
+.sync{padding:64px 0 56px;text-align:center;position:relative}
 .sync .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
 .sync-svg{max-width:880px;margin:22px auto 0}
 .sync-svg svg{width:100%;height:auto;overflow:visible}
 .sync-m{display:none;max-width:420px;margin:22px auto 0}
 .sync-m .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sync-m .chips span{height:78px;padding:6px;border:1px solid var(--line-2);border-radius:14px;background:#060b18;display:grid;place-items:center}
+.sync-m .chips span{height:78px;padding:6px;border:1px solid var(--line-2);border-radius:10px;background:#060b18;display:grid;place-items:center;animation:chipglow 2.4s infinite}
+.sync-m .chips span:nth-child(2){animation-delay:.6s}.sync-m .chips span:nth-child(3){animation-delay:1.2s}.sync-m .chips span:nth-child(4){animation-delay:1.8s}
+@keyframes chipglow{0%,45%,100%{border-color:rgba(140,160,220,.2);box-shadow:none}12%{border-color:#5ba5ff;box-shadow:0 0 20px -4px rgba(91,165,255,.7)}}
 .sync-m .chips img{height:66px;width:auto;border-radius:10px}
 .sync-m .chips img.wide{height:auto;width:82%}
 .sync-m .pipe{height:44px;width:2px;margin:0 auto;background:linear-gradient(180deg,#5ba5ff,#636af2);position:relative;overflow:hidden;opacity:.8}
@@ -173,10 +178,16 @@ footer .brand .mark{width:30px;height:30px}
 @keyframes flow{to{stroke-dashoffset:-32}}
 
 /* Sections */
-section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
+section.block{padding:clamp(80px,10vw,128px) 0;position:relative}
+.band{background:linear-gradient(180deg,#0a1122 0%,#080d1b 100%);border-top:1px solid rgba(140,160,220,.09);border-bottom:1px solid rgba(140,160,220,.09)}
+.band::before{content:"";position:absolute;left:50%;top:-1px;width:min(560px,80%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(91,165,255,.7),transparent)}
+.band::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(140,160,220,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.band>.wrap{position:relative;z-index:1}
 .sec-head{max-width:720px;margin-bottom:52px}
 .sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
 .sec-head .tag{margin-bottom:20px}
+.split>.card.rv,.lb-pair>.card.rv{transform:translateY(28px) scale(.97)}
+.split>.card.rv.in,.lb-pair>.card.rv.in{transform:none}
 .sec-head p{margin-top:18px}
 .split{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(32px,6vw,80px);align-items:center}
 .split.flip > :first-child{order:2}
@@ -186,7 +197,17 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 
 /* Outcomes */
 .outs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.out{padding:26px 22px 22px;display:flex;flex-direction:column}
+.out{padding:26px 22px 22px;display:flex;flex-direction:column;overflow:hidden}
+.out::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--grad);transition:width 1.1s var(--ease) .35s}
+.out.in::before{width:100%}
+.outs .out.rv{transform:translateY(34px) scale(.97)}
+.outs .out.rv.in{transform:none}
+.outs .d1{transition-delay:.12s}.outs .d2{transition-delay:.24s}.outs .d3{transition-delay:.36s}
+.out .ov .pill,.out .ov .arr,.out .ov-n{opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+.out.in .ov .pill,.out.in .ov .arr,.out.in .ov-n{opacity:1;transform:none}
+.out.in .ov>*:nth-child(1){transition-delay:.7s}.out.in .ov>*:nth-child(2){transition-delay:.9s}.out.in .ov>*:nth-child(3){transition-delay:1.1s}
+.ov .arr{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
 .out .ono{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.1em}
 .out h3{margin:12px 0 10px;font-size:18px}
 .out p{font-size:14.5px;flex:1}
@@ -208,7 +229,15 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 
 /* Problem cards */
 .pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.pain{padding:24px 22px}
+.pain{padding:24px 22px;overflow:hidden}
+.pains .pain.rv{transform:translateX(-40px)}
+.pains .pain.rv.in{transform:none}
+.pains .pain.d1{transition-delay:.15s}.pains .pain.d2{transition-delay:.3s}.pains .pain.d3{transition-delay:.45s}
+.pain::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,#ff6b6b,rgba(255,107,107,0));transition:width 1s var(--ease) .3s}
+.pain.in::before{width:100%}
+.pain.d1::before{transition-delay:.45s}.pain.d2::before{transition-delay:.6s}.pain.d3::before{transition-delay:.75s}
+.pain .ic{transition:transform .6s cubic-bezier(.3,1.6,.5,1) .5s}
+.pain:not(.in) .ic{transform:scale(.4) rotate(-20deg)}
 .pain .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.25);color:#ff9b9b;margin-bottom:18px}
 .pain .ic svg{width:19px;height:19px}
 .pain h3{font-size:17px;margin-bottom:8px}
@@ -219,7 +248,7 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 .modal-h{display:flex;justify-content:space-between;align-items:center;padding:4px 6px 14px}
 .modal-h b{display:flex;align-items:center;gap:10px;font-size:16px}
 .modal-h .x{width:30px;height:30px;border:1px solid var(--line-2);border-radius:9px;display:grid;place-items:center;color:var(--fg-3)}
-.ccard{display:grid;grid-template-columns:auto auto 1fr;gap:12px 12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.015);margin-top:10px;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease),border-color .3s}
+.ccard{display:grid;grid-template-columns:auto auto 1fr;gap:12px 12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015);margin-top:10px;opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease),border-color .3s}
 .in .ccard{opacity:1;transform:none}
 .ccard:hover{border-color:rgba(91,165,255,.45)}
 .ccard .n{width:28px;height:28px;border-radius:8px;border:1px solid var(--line-2);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--fg-2)}
@@ -332,7 +361,9 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 
 /* Stats */
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
-.stat{padding:28px 18px}
+.stat{padding:28px 18px;overflow:hidden}
+.stat::after{content:"";position:absolute;left:50%;bottom:0;height:2px;width:0;transform:translateX(-50%);background:var(--grad);transition:width 1.2s var(--ease) .3s}
+.stat.in::after{width:60%}
 .stat .ic{width:42px;height:42px;margin:0 auto 14px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--fg-2)}
 .stat .ic svg{width:19px;height:19px}
 .stat .n{font-size:clamp(38px,4.6vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1;background:linear-gradient(180deg,#fff,#9aa6c2);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
@@ -341,6 +372,7 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 /* Steps */
 .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
 .step{padding:26px 24px 28px}
+.steps3{position:relative}
 .step .no{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--blue)}
 .step h3{margin:14px 0 8px}
 .step p{font-size:15px}
@@ -372,6 +404,89 @@ footer{border-top:1px solid var(--line);padding:30px 0 100px}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--fg-3)}
 footer nav{display:flex;gap:20px}
 footer nav a:hover{color:var(--fg)}
+
+
+/* ===== Application form ===== */
+.ap{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.ap.open{display:flex}
+.ap-back{position:absolute;inset:0;background:rgba(3,6,14,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:apfade .3s}
+.ap-panel{position:relative;width:min(620px,100%);max-height:calc(100dvh - 40px);display:flex;flex-direction:column;background:linear-gradient(180deg,#0e1628,#0a1020);border:1px solid var(--line-2);border-radius:14px;box-shadow:0 40px 120px -20px rgba(0,0,0,.9),0 0 0 1px rgba(91,165,255,.06);animation:apin .4s var(--ease);overflow:hidden}
+@keyframes apfade{from{opacity:0}}
+@keyframes apin{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.ap-top{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ap-top img{width:30px;height:30px}
+.ap-top b{font-size:15px;font-weight:700;flex:1}
+.ap-top .cnt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--fg-3);text-transform:uppercase}
+.ap-x{appearance:none;width:34px;height:34px;border-radius:8px;border:1px solid var(--line-2);background:transparent;color:var(--fg-2);cursor:pointer;font-size:15px}
+.ap-x:hover{border-color:var(--blue);color:#fff}
+.ap-prog{height:2px;background:rgba(255,255,255,.06)}
+.ap-prog i{display:block;height:100%;width:0;background:var(--grad);transition:width .5s var(--ease)}
+.ap-body{padding:28px 28px 8px;overflow:auto;flex:1}
+.ap-step{display:none}
+.ap-step.on{display:block;animation:stepin .45s var(--ease)}
+.ap-step.back{animation-name:stepback}
+@keyframes stepin{from{opacity:0;transform:translateX(24px)}}
+@keyframes stepback{from{opacity:0;transform:translateX(-24px)}}
+.ap-step h3{font-size:clamp(22px,3vw,27px);font-weight:700;letter-spacing:-.025em}
+.ap-step .sub{margin:8px 0 22px;font-size:15px;color:var(--fg-2)}
+.ap-step .grp{margin-top:20px}
+.ap-step .grp-k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);margin-bottom:10px}
+.fl{display:grid;gap:6px;margin-bottom:14px}
+.fl span{font-size:13px;font-weight:600;color:var(--fg-2)}
+.fl input{height:50px;padding:0 14px;border-radius:9px;border:1px solid var(--line-2);background:#070c18;color:var(--fg);font:inherit;font-size:16px;transition:border-color .2s,box-shadow .2s}
+.fl input::placeholder{color:#525c72}
+.fl input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(91,165,255,.18)}
+.fl.err input{border-color:#ff6b6b}
+.fl .em{font-size:12.5px;color:#ff8a8a;display:none}
+.fl.err .em{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.opts.cols5{grid-template-columns:repeat(5,1fr)}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt label{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 14px;border-radius:9px;border:1px solid var(--line-2);background:#0b1222;cursor:pointer;font-weight:600;font-size:14.5px;transition:border-color .2s,background .2s,transform .15s}
+.opt label:hover{border-color:rgba(91,165,255,.5)}
+.opt label:active{transform:scale(.98)}
+.opt label img{width:28px;height:28px;border-radius:6px;object-fit:cover;flex:none}
+.opt label .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line-2);flex:none;margin-left:auto;display:grid;place-items:center;transition:all .2s}
+.opt input[type=radio]+label .bx{border-radius:50%}
+.opt input:checked+label{border-color:var(--blue);background:rgba(91,165,255,.1);box-shadow:inset 0 0 0 1px rgba(91,165,255,.4)}
+.opt input:checked+label .bx{background:var(--grad);border-color:transparent}
+.opt input:checked+label .bx::after{content:"";width:8px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.opt input:focus-visible+label{outline:2px solid var(--blue);outline-offset:2px}
+.opts.cols5 .opt label{justify-content:center;text-align:center;padding:10px 6px;font-size:14px}
+.opts.cols5 .opt label .bx{display:none}
+.ap-err{font-size:13px;color:#ff8a8a;margin-top:12px;min-height:18px}
+.ap-legal{font-size:12px;color:var(--fg-3);margin-top:6px}
+.ap-legal a{text-decoration:underline}
+.ap-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 28px 22px}
+.ap-nav .btn{height:48px}
+.ap-nav .bk{background:none;border:0;color:var(--fg-3);font:inherit;font-size:14px;font-weight:600;cursor:pointer;padding:8px 4px}
+.ap-nav .bk:hover{color:#fff}
+.ap-nav .bk[hidden]{display:block;visibility:hidden}
+.ap-nav .hint{font-family:var(--mono);font-size:11px;color:var(--fg-3);margin-left:auto;margin-right:4px}
+.done-ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(0,209,144,.12);border:1px solid rgba(0,209,144,.45);color:var(--green);margin-bottom:18px;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+.done-ic svg{width:26px;height:26px}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.summ{border:1px solid var(--line-2);border-radius:10px;margin:18px 0 6px;overflow:hidden}
+.summ div{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:10px 14px;border-top:1px solid var(--line);font-size:14px}
+.summ div:first-child{border-top:0}
+.summ dt,.summ .k{color:var(--fg-3);font-size:12.5px}
+.btn-wa{background:#25d366;color:#04230f;box-shadow:0 14px 40px -12px rgba(37,211,102,.6);width:100%;height:54px;font-size:16px}
+.btn-wa:hover{transform:translateY(-2px);background:#2be274}
+.btn-wa svg{width:20px;height:20px}
+@media (max-width:700px){
+  .ap{padding:0;align-items:stretch}
+  .ap-panel{width:100%;max-height:none;height:100dvh;border-radius:0;border:0}
+  .ap-body{padding:22px 18px 8px}
+  .ap-nav{padding:14px 18px 18px;border-top:1px solid var(--line)}
+  .ap-nav .hint{display:none}
+  .ap-top .hide-s{display:none}
+  .row2{grid-template-columns:1fr;gap:0}
+  .opts{grid-template-columns:1fr 1fr}
+  .opts.cols5{grid-template-columns:repeat(3,1fr)}
+  .summ div{grid-template-columns:120px 1fr}
+}
 
 /* Sticky mobile CTA */
 .sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;transform:translateY(150%);transition:transform .35s var(--ease)}
@@ -468,7 +583,7 @@ footer nav a:hover{color:var(--fg)}
       <h1 class="rv d1">Know your clients. <span class="grad">Maximise your rebates.</span></h1>
       <p class="lede rv d2">RebateTools gives you live oversight of every client and every sub-affiliate in your network, so you can spot who's slowing down, back who's growing, and stop leaving rebates on the table.</p>
       <div class="hero-cta rv d3">
-        <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Enquire on WhatsApp</a>
+        <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Get started</a>
         <a class="btn btn-ghost" href="#features">See what it does</a>
       </div>
       <div class="hero-proof rv d3">
@@ -509,7 +624,7 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== BROKER SYNC ===================== -->
-<section class="sync" id="sync">
+<section class="sync band" id="sync">
   <div class="wrap">
     <div class="k rv">Connects to the partner programmes you already use</div>
     <div class="sync-svg rv d1">
@@ -517,23 +632,22 @@ footer nav a:hover{color:var(--fg)}
         <defs>
           <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#636af2"/></linearGradient>
           <filter id="gl"><feGaussianBlur stdDeviation="6"/></filter>
+          <filter id="dg" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <g fill="none" stroke="rgba(140,160,220,.22)" stroke-width="1.5">
-          <path d="M110 112 C110 160 440 140 440 192"/><path d="M330 112 C330 160 440 150 440 192"/><path d="M550 112 C550 160 440 150 440 192"/><path d="M770 112 C770 160 440 140 440 192"/>
-        </g>
-        <g fill="none" stroke="url(#fl)" stroke-width="2" class="flow">
-          <path d="M110 112 C110 160 440 140 440 192"/><path d="M330 112 C330 160 440 150 440 192"/><path d="M550 112 C550 160 440 150 440 192"/><path d="M770 112 C770 160 440 140 440 192"/>
-        </g>
+        <g fill="none" stroke="rgba(140,160,220,.18)" stroke-width="1.5"><path id="sp0" d="M110 112 C110 160 440 140 440 192"/><path id="sp1" d="M330 112 C330 160 440 150 440 192"/><path id="sp2" d="M550 112 C550 160 440 150 440 192"/><path id="sp3" d="M770 112 C770 160 440 140 440 192"/></g>
+        <path d="M110 112 C110 160 440 140 440 192" fill="none" stroke="url(#fl)" stroke-width="1.6" stroke-dasharray="3 9" opacity=".55"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="1.2s" repeatCount="indefinite"/></path><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="0.8s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="1.6s" repeatCount="indefinite"/></circle><path d="M330 112 C330 160 440 150 440 192" fill="none" stroke="url(#fl)" stroke-width="1.6" stroke-dasharray="3 9" opacity=".55"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="1.2s" repeatCount="indefinite"/></path><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="1.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="1.4s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="2.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="2.2s" repeatCount="indefinite"/></circle><path d="M550 112 C550 160 440 150 440 192" fill="none" stroke="url(#fl)" stroke-width="1.6" stroke-dasharray="3 9" opacity=".55"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="1.2s" repeatCount="indefinite"/></path><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="2.0s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="2.0s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="2.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="2.8s" repeatCount="indefinite"/></circle><path d="M770 112 C770 160 440 140 440 192" fill="none" stroke="url(#fl)" stroke-width="1.6" stroke-dasharray="3 9" opacity=".55"><animate attributeName="stroke-dashoffset" from="0" to="-48" dur="1.2s" repeatCount="indefinite"/></path><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="1.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="1.8s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="2.6s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="2.6s" repeatCount="indefinite"/></circle><circle r="3.2" fill="#9fd0ff" filter="url(#dg)"><animateMotion dur="2.4s" begin="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sp3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.4s" begin="3.4s" repeatCount="indefinite"/></circle>
+        <g class="bk-glow"><rect x="41" y="3" width="138" height="112" rx="15" fill="none" stroke="#5ba5ff" stroke-width="2" opacity="0" filter="url(#dg)"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.12;.4;1" dur="2.4s" begin="0.0s" repeatCount="indefinite"/></rect><rect x="261" y="3" width="138" height="112" rx="15" fill="none" stroke="#5ba5ff" stroke-width="2" opacity="0" filter="url(#dg)"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.12;.4;1" dur="2.4s" begin="0.6s" repeatCount="indefinite"/></rect><rect x="481" y="3" width="138" height="112" rx="15" fill="none" stroke="#5ba5ff" stroke-width="2" opacity="0" filter="url(#dg)"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.12;.4;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></rect><rect x="691" y="3" width="158" height="112" rx="15" fill="none" stroke="#5ba5ff" stroke-width="2" opacity="0" filter="url(#dg)"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.12;.4;1" dur="2.4s" begin="1.7999999999999998s" repeatCount="indefinite"/></rect></g>
         <g class="bk">
-          <rect x="44" y="6" width="132" height="106" rx="16" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/vantage.webp" x="50" y="14" width="120" height="90"/>
-          <rect x="264" y="6" width="132" height="106" rx="16" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/puprime.webp" x="270" y="14" width="120" height="90"/>
-          <rect x="484" y="6" width="132" height="106" rx="16" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/vtmarkets.webp" x="490" y="14" width="120" height="90"/>
-          <rect x="694" y="6" width="152" height="106" rx="16" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/startrader.webp" x="704" y="34" width="132" height="45"/>
+          <rect x="44" y="6" width="132" height="106" rx="12" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/vantage.webp" x="50" y="14" width="120" height="90"/>
+          <rect x="264" y="6" width="132" height="106" rx="12" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/puprime.webp" x="270" y="14" width="120" height="90"/>
+          <rect x="484" y="6" width="132" height="106" rx="12" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/vtmarkets.webp" x="490" y="14" width="120" height="90"/>
+          <rect x="694" y="6" width="152" height="106" rx="12" fill="#060b18" stroke="rgba(140,160,220,.28)"/><image href="assets/startrader.webp" x="704" y="34" width="132" height="45"/>
         </g>
-        <rect x="320" y="188" width="240" height="72" rx="20" fill="url(#fl)" opacity=".55" filter="url(#gl)"/>
-        <rect x="320" y="188" width="240" height="72" rx="20" fill="#101a35" stroke="url(#fl)" stroke-width="1.5"/>
+        <rect x="320" y="188" width="240" height="72" rx="14" fill="url(#fl)" opacity=".5" filter="url(#gl)"><animate attributeName="opacity" values=".3;.75;.3" dur=".6s" repeatCount="indefinite"/></rect>
+        <rect x="320" y="188" width="240" height="72" rx="14" fill="#101a35" stroke="url(#fl)" stroke-width="1.5"/>
         <image href="assets/rt-mark.webp" x="336" y="198" width="52" height="52"/>
-        <text x="472" y="231" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="800" font-size="20" fill="#fff">Rebate<tspan fill="#7aa2ff">Tools</tspan></text>
+        <text x="472" y="226" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-weight="700" font-size="20" fill="#fff">Rebate<tspan fill="#7aa2ff">Tools</tspan></text>
+        <text x="472" y="245" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="1.5" fill="#00d190">● SYNCING</text>
       </svg>
     </div>
     <div class="sync-m rv d1" aria-hidden="true"><div class="chips"><span><img src="assets/vantage.webp" alt="Vantage"></span><span><img src="assets/puprime.webp" alt="PU Prime"></span><span><img src="assets/vtmarkets.webp" alt="VT Markets"></span><span><img src="assets/startrader.webp" alt="StarTrader" class="wide"></span></div><div class="pipe"></div><div class="hub"><img src="assets/rt-mark.webp" alt="" width="34" height="34" style="width:34px;height:34px">RebateTools</div></div>
@@ -544,7 +658,7 @@ footer nav a:hover{color:var(--fg)}
 <section class="block" id="features">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv">The problem</div>
+      <div class="tag rv"><b>01</b>The problem</div>
       <h2 class="rv d1">Partner portals show you data. <span class="grad">They don't show you what to do.</span></h2>
       <p class="lede rv d2">Managing a network from partner back-offices and spreadsheets means you find out about problems weeks too late, and never quite know where your income is really coming from.</p>
     </div>
@@ -558,15 +672,15 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== WHY / OUTCOMES ===================== -->
-<section class="block" style="padding-top:0">
+<section class="block band">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv">Why IBs switch to RebateTools</div>
+      <div class="tag rv"><b>02</b>Why IBs switch</div>
       <h2 class="rv d1">Active oversight of your network. <span class="grad">More from every partner.</span></h2>
       <p class="lede rv d2">Your income depends on clients staying active and partners staying productive. RebateTools shows you both, live, so you can act on it the same day.</p>
     </div>
     <div class="outs">
-      <div class="card out rv"><span class="ono">01</span><h3>Catch churn before it costs you</h3><p>Clients who slow down or go quiet are flagged automatically, so you reach out while there's still a relationship to save.</p><div class="ov"><span class="pill risk">⚠ At risk</span><span class="arr">→</span><span class="pill hot">🔥 Re-engaged</span></div></div>
+      <div class="card out rv"><span class="ono">01</span><h3>Catch churn before it costs you</h3><p>Clients who slow down or go quiet are flagged automatically, so you reach out while there's still a relationship to save.</p><div class="ov"><span class="pill risk">At risk</span><span class="arr">→</span><span class="pill hot">Re-engaged</span></div></div>
       <div class="card out rv d1"><span class="ono">02</span><h3>Know exactly where your income comes from</h3><p>Every rebate broken down by client, partner and platform. Double down on what works, drop what doesn't.</p><div class="ov"><span class="ov-n">By client · partner · platform</span><span class="mini-bar"><i style="--w:100%"></i></span></div></div>
       <div class="card out rv d2"><span class="ono">03</span><h3>Grow the partners who grow you</h3><p>See which sub-affiliates are producing and which have stalled, then manage your network on facts, not gut feel.</p><div class="ov"><span class="pill hot">Alpha ↑ 18%</span><span class="pill dead">Gamma ↓ 6%</span></div></div>
       <div class="card out rv d3"><span class="ono">04</span><h3>Get hours back every week</h3><p>No exports, no spreadsheets, no reconciling reports by hand. Open the dashboard and it's already done.</p><div class="ov"><span class="ov-n" style="color:var(--green)">0 spreadsheets</span></div></div>
@@ -578,7 +692,7 @@ footer nav a:hover{color:var(--fg)}
 <section class="block">
   <div class="wrap split">
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg>Client intelligence</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg><b>03</b>Client intelligence</div>
       <h2 class="rv d1" style="margin-top:18px">Know who's active, at risk <span class="grad">or gone, at a glance.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">Every client in your network in one place, automatically segmented and tagged. See who's hot, who's slipping and who's stopped, so you can act before the income disappears.</p>
       <ul class="ticks rv d3">
@@ -595,10 +709,10 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== F2 AUTOMATED REBATE TRACKING ===================== -->
-<section class="block">
+<section class="block band">
   <div class="wrap split flip">
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Automated rebate tracking</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg><b>04</b>Automated rebate tracking</div>
       <h2 class="rv d1" style="margin-top:18px">No more manual spreadsheets. <span class="grad">Ever.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">RebateTools syncs your partner data automatically and calculates rebates as they happen, so you always know exactly what you're earning, and who it's coming from.</p>
       <ul class="ticks rv d3">
@@ -621,7 +735,7 @@ footer nav a:hover{color:var(--fg)}
 <section class="block">
   <div class="wrap">
     <div class="sec-head">
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>Leaderboards</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg><b>05</b>Leaderboards</div>
       <h2 class="rv d1">See your most valuable clients. <span class="grad">Instantly.</span></h2>
       <p class="lede rv d2">Rank every client by lifetime rebate, this month, who's active right now or whose balance is running low. Spot your biggest accounts and focus your time where it pays.</p>
     </div>
@@ -647,7 +761,7 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== F4 SUB-IB ===================== -->
-<section class="block">
+<section class="block band">
   <div class="wrap split">
     <div class="card glow tree rv" id="tree">
       <svg class="links" id="links"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#00d190"/></linearGradient></defs></svg>
@@ -665,7 +779,7 @@ footer nav a:hover{color:var(--fg)}
       <div class="tree-cap"><span>Network rebates · this month</span><span>Top producer: <b id="topProd">Sub-IB Alpha</b></span></div>
     </div>
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg>Sub-IB management</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg><b>06</b>Sub-IB management</div>
       <h2 class="rv d1" style="margin-top:18px">Full control over your <span class="grad">sub-affiliate data.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">Track performance across every sub-IB in your network. See where your volume is really coming from, and which partners are actually growing your business.</p>
       <ul class="ticks rv d3">
@@ -679,11 +793,11 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== MID CTA ===================== -->
-<section style="padding:10px 0 40px">
+<section style="padding:56px 0 0">
   <div class="wrap">
     <div class="card glow midcta rv">
       <div><h3>See your own network in RebateTools.</h3><p>Message us and we'll show you what your clients and partners look like inside the dashboard.</p></div>
-      <a class="btn btn-primary" data-wa>Book a walkthrough on WhatsApp <span>→</span></a>
+      <a class="btn btn-primary" data-wa>Book a walkthrough <span>→</span></a>
     </div>
   </div>
 </section>
@@ -700,7 +814,7 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== STATS ===================== -->
-<section class="block" style="padding-top:20px">
+<section class="block band" style="padding:64px 0">
   <div class="wrap stats-row">
     <div class="card stat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div><div class="n"><span data-count="30000" data-sep="1">0</span>+</div><p>Automated rebate calculations</p></div>
     <div class="card stat rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div class="n"><span data-count="4">0</span></div><p>Partner platforms, auto-synced</p></div>
@@ -725,7 +839,7 @@ footer nav a:hover{color:var(--fg)}
 <section class="block" style="padding-top:20px">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv">How it works</div>
+      <div class="tag rv"><b>07</b>How it works</div>
       <h2 class="rv d1">Set up once. <span class="grad">It runs itself.</span></h2>
     </div>
     <div class="steps3">
@@ -737,10 +851,10 @@ footer nav a:hover{color:var(--fg)}
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="block" style="padding-top:20px">
+<section class="block band">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv">FAQ</div>
+      <div class="tag rv"><b>08</b>FAQ</div>
       <h2 class="rv d1">Questions IBs <span class="grad">usually ask.</span></h2>
     </div>
     <div class="faq rv">
@@ -764,7 +878,7 @@ footer nav a:hover{color:var(--fg)}
     <h2 class="rv d1">Stop guessing. <span class="grad">Start calculating.</span></h2>
     <p class="lede rv d2">Take active control of your network. See every client, every partner and every rebate, live, in one place.</p>
     <div class="hero-cta rv d3">
-      <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Get started on WhatsApp <span>→</span></a>
+      <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Get started <span>→</span></a>
     </div>
   </div>
 </section>
@@ -779,7 +893,59 @@ footer nav a:hover{color:var(--fg)}
   </div>
 </footer>
 
-<div class="sticky" id="sticky"><a data-wa><span>Enquire on WhatsApp</span><span><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg></span></a></div>
+<!-- ===================== APPLICATION FORM ===================== -->
+<div class="ap" id="ap" role="dialog" aria-modal="true" aria-labelledby="apT0">
+  <div class="ap-back" data-close></div>
+  <div class="ap-panel">
+    <div class="ap-top"><img src="assets/rt-mark.webp" alt=""><b>Get started<span class="hide-s"> with RebateTools</span></b><span class="cnt" id="apCnt">Step 1 of 5</span><button type="button" class="ap-x" data-close aria-label="Close">✕</button></div>
+    <div class="ap-prog"><i id="apProg"></i></div>
+    <form class="ap-body" id="apForm" novalidate>
+      <div class="ap-step on" data-s="0">
+        <h3 id="apT0">First, what's your name?</h3>
+        <p class="sub">It takes about a minute. We'll use your answers to tailor your walkthrough.</p>
+        <div class="row2">
+          <label class="fl"><span>First name</span><input name="first" autocomplete="given-name" placeholder="Jane"><em class="em">Please enter your first name</em></label>
+          <label class="fl"><span>Last name</span><input name="last" autocomplete="family-name" placeholder="Smith"></label>
+        </div>
+      </div>
+      <div class="ap-step" data-s="1">
+        <h3>How can we reach you?</h3>
+        <p class="sub">We'll send your walkthrough here. No spam.</p>
+        <label class="fl"><span>Mobile (with country code)</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+44 7700 900123"><em class="em">Please enter a valid phone number</em></label>
+        <label class="fl"><span>Email</span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="jane@company.com"><em class="em">Please enter a valid email address</em></label>
+        <!-- EDIT: link to your privacy policy -->
+        <p class="ap-legal">By continuing you agree to be contacted about RebateTools. See our <a href="/privacy" target="_blank">privacy policy</a>.</p>
+      </div>
+      <div class="ap-step" data-s="2">
+        <h3>Which partner platforms do you use?</h3>
+        <p class="sub">Select all that apply.</p>
+        <div class="opts "><div class="opt"><input type="checkbox" id="platforms-0" name="platforms" value="Vantage"><label for="platforms-0"><img src="assets/vantage.webp" alt="">Vantage<span class="bx"></span></label></div><div class="opt"><input type="checkbox" id="platforms-1" name="platforms" value="PU Prime"><label for="platforms-1"><img src="assets/puprime.webp" alt="">PU Prime<span class="bx"></span></label></div><div class="opt"><input type="checkbox" id="platforms-2" name="platforms" value="VT Markets"><label for="platforms-2"><img src="assets/vtmarkets.webp" alt="">VT Markets<span class="bx"></span></label></div><div class="opt"><input type="checkbox" id="platforms-3" name="platforms" value="StarTrader"><label for="platforms-3"><img src="assets/startrader-icon.webp" alt="">StarTrader<span class="bx"></span></label></div><div class="opt"><input type="checkbox" id="platforms-4" name="platforms" value="Other"><label for="platforms-4">Other<span class="bx"></span></label></div></div>
+      </div>
+      <div class="ap-step" data-s="3">
+        <h3>How many sub-affiliates are in your network?</h3>
+        <p class="sub">Partners who refer clients under you.</p>
+        <div class="opts cols5"><div class="opt"><input type="radio" id="subs-0" name="subs" value="None yet"><label for="subs-0">None yet<span class="bx"></span></label></div><div class="opt"><input type="radio" id="subs-1" name="subs" value="1–5"><label for="subs-1">1–5<span class="bx"></span></label></div><div class="opt"><input type="radio" id="subs-2" name="subs" value="6–20"><label for="subs-2">6–20<span class="bx"></span></label></div><div class="opt"><input type="radio" id="subs-3" name="subs" value="21–50"><label for="subs-3">21–50<span class="bx"></span></label></div><div class="opt"><input type="radio" id="subs-4" name="subs" value="50+"><label for="subs-4">50+<span class="bx"></span></label></div></div>
+      </div>
+      <div class="ap-step" data-s="4">
+        <h3>Where are you now, and where do you want to be?</h3>
+        <p class="sub">A rough idea is fine. It helps us show you what matters most for your network.</p>
+        <div class="grp"><div class="grp-k">Current monthly rebates</div><div class="opts cols5"><div class="opt"><input type="radio" id="now-0" name="now" value="Under $1k"><label for="now-0">Under $1k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="now-1" name="now" value="$1k–$5k"><label for="now-1">$1k–$5k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="now-2" name="now" value="$5k–$20k"><label for="now-2">$5k–$20k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="now-3" name="now" value="$20k–$50k"><label for="now-3">$20k–$50k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="now-4" name="now" value="$50k+"><label for="now-4">$50k+<span class="bx"></span></label></div></div></div>
+        <div class="grp"><div class="grp-k">Your 12-month goal (per month)</div><div class="opts cols5"><div class="opt"><input type="radio" id="goal-0" name="goal" value="Up to $5k"><label for="goal-0">Up to $5k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="goal-1" name="goal" value="$5k–$20k"><label for="goal-1">$5k–$20k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="goal-2" name="goal" value="$20k–$50k"><label for="goal-2">$20k–$50k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="goal-3" name="goal" value="$50k–$100k"><label for="goal-3">$50k–$100k<span class="bx"></span></label></div><div class="opt"><input type="radio" id="goal-4" name="goal" value="$100k+"><label for="goal-4">$100k+<span class="bx"></span></label></div></div></div>
+      </div>
+      <div class="ap-step" data-s="5">
+        <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h3 id="apDoneT">You're all set.</h3>
+        <p class="sub">Last step: send your details to our team on WhatsApp and we'll reply with a walkthrough built around your network.</p>
+        <div class="summ" id="apSumm"></div>
+        <a class="btn btn-wa" id="apWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Continue on WhatsApp</a>
+      </div>
+      <p class="ap-err" id="apErr" role="alert"></p>
+    </form>
+    <div class="ap-nav" id="apNav"><button type="button" class="bk" id="apBack" hidden>← Back</button><span class="hint">Press Enter ↵</span><button type="button" class="btn btn-primary" id="apNext">Continue <span>→</span></button></div>
+  </div>
+</div>
+
+<div class="sticky" id="sticky"><a data-wa><span>Get started</span><span><svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg></span></a></div>
 
 <script>
 (()=>{
@@ -791,8 +957,7 @@ const $=s=>document.querySelector(s);
 const WA_NUMBER='447446978735';
 const WA_MSG="Hi, I'm interested in RebateTools. Please can you tell me more and how to get set up?";
 const WA='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_MSG);
-document.querySelectorAll('[data-wa]').forEach(a=>{a.href=WA;a.target='_blank';a.rel='noopener';
-  a.addEventListener('click',()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}})});
+/* CTAs now open the application form (see bottom of script) */
 
 /* ---- helpers ---- */
 const money=(v,dp=2)=>'$'+Number(v).toLocaleString('en-US',{minimumFractionDigits:dp,maximumFractionDigits:dp});
@@ -823,7 +988,7 @@ const TR=[
  ['Hipolito Prosacco',[['hot','Hot']],1790.05,52.43,52.43,8334.06,'•••• 7348'],
  ['Delilah Davis',[['risk','At risk']],1708.64,51.69,49.27,1307.11,'•••• 9851'],
  ['Kris Streich PhD',[['hot','Hot']],1696.41,50.64,50.54,4620.80,'•••• 7023']];
-const ICON={hot:'🔥',dead:'',risk:'⚠',low:''};
+const ICON={hot:'',dead:'',risk:'',low:''};
 const LA=['Today','12 days ago','19 days ago','9 days ago','4 days ago','Today','6 days ago','Yesterday'];
 const WAIC='<span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span>';
 const trophy='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>';
@@ -861,6 +1026,22 @@ const makeGlobe=(cv,opt={})=>{if(!cv)return;const ctx=cv.getContext('2d');let W,
     // dots
     for(const p of pts){const q=proj(p);if(q[2]<-.12)continue;const a=.10+.5*(q[2]+1)/2,sz=.7+1.1*(q[2]+1)/2;ctx.fillStyle=`rgba(${120+40*q[2]|0},${160+40*q[2]|0},255,${a})`;ctx.fillRect(q[0]-sz/2,q[1]-sz/2,sz,sz)}
     ctx.strokeStyle='rgba(91,165,255,.12)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.stroke();
+    // meridians + latitude rings (front-facing segments only)
+    ctx.lineWidth=1;
+    for(let m=0;m<6;m++){const lon=m*Math.PI/6;let prev=null;for(let k=0;k<=48;k++){const la=-Math.PI/2+Math.PI*k/48;const q=proj([Math.cos(la)*Math.cos(lon),-Math.sin(la),Math.cos(la)*Math.sin(lon)]);
+      if(prev&&q[2]>0&&prev[2]>0){ctx.strokeStyle=`rgba(91,165,255,${.05+.1*q[2]})`;ctx.beginPath();ctx.moveTo(prev[0],prev[1]);ctx.lineTo(q[0],q[1]);ctx.stroke()}prev=q}}
+    for(const lat of [-60,-30,0,30,60]){const la=lat*Math.PI/180;let prev=null;for(let k=0;k<=64;k++){const lo=Math.PI*2*k/64;const q=proj([Math.cos(la)*Math.cos(lo),-Math.sin(la),Math.cos(la)*Math.sin(lo)]);
+      if(prev&&q[2]>0&&prev[2]>0){ctx.strokeStyle=`rgba(91,165,255,${(lat===0?.1:.05)+.08*q[2]})`;ctx.beginPath();ctx.moveTo(prev[0],prev[1]);ctx.lineTo(q[0],q[1]);ctx.stroke()}prev=q}}
+    // outer HUD ring with rotating ticks
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(tm*.08);
+    ctx.strokeStyle='rgba(91,165,255,.22)';ctx.lineWidth=1;ctx.setLineDash([2,6]);ctx.beginPath();ctx.arc(0,0,R*1.12,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+    for(let k=0;k<72;k++){const an=k/72*Math.PI*2,l=k%6===0?10:4;ctx.strokeStyle=k%6===0?'rgba(140,190,255,.45)':'rgba(140,190,255,.18)';ctx.beginPath();ctx.moveTo(Math.cos(an)*R*1.16,Math.sin(an)*R*1.16);ctx.lineTo(Math.cos(an)*(R*1.16+l),Math.sin(an)*(R*1.16+l));ctx.stroke()}
+    ctx.strokeStyle='rgba(0,209,144,.55)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,R*1.12,0,Math.PI*.18);ctx.stroke();
+    ctx.restore();
+    // orbiting satellite on a tilted ring
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(-.35);ctx.scale(1,.28);ctx.strokeStyle='rgba(99,106,242,.28)';ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(0,0,R*1.3,0,Math.PI*2);ctx.stroke();ctx.restore();
+    {const an=tm*.5,ox=Math.cos(an)*R*1.3,oy=Math.sin(an)*R*1.3*.28,rr=-.35,sx=cx+ox*Math.cos(rr)-oy*Math.sin(rr),sy=cy+ox*Math.sin(rr)+oy*Math.cos(rr);
+      if(!(Math.sin(an)<0&&Math.hypot(sx-cx,sy-cy)<R)){const gg=ctx.createRadialGradient(sx,sy,0,sx,sy,14);gg.addColorStop(0,'rgba(160,210,255,.9)');gg.addColorStop(1,'rgba(160,210,255,0)');ctx.fillStyle=gg;ctx.beginPath();ctx.arc(sx,sy,14,0,Math.PI*2);ctx.fill();ctx.fillStyle='#e6f2ff';ctx.beginPath();ctx.arc(sx,sy,2.6,0,Math.PI*2);ctx.fill()}}
     // arcs
     const SEG=36;
     for(const e of E){const samp=[];for(let k=0;k<=SEG;k++){const t=k/SEG;samp.push(proj(slerp(e.a,e.b,t),1+.22*Math.sin(Math.PI*t)))}
@@ -878,7 +1059,7 @@ const makeGlobe=(cv,opt={})=>{if(!cv)return;const ctx=cv.getContext('2d');let W,
     for(let k=pings.length-1;k>=0;k--){const p=pings[k],age=tm-p.t;if(age>1.8){pings.splice(k,1);continue}const a=age<.2?age/.2:1-(age-.2)/1.6;
       ctx.strokeStyle=`rgba(0,209,144,${.6*(1-age/1.8)})`;ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(p.x,p.y,4+age*16,0,Math.PI*2);ctx.stroke();
       if(opt.labels!==false){ctx.fillStyle=`rgba(0,209,144,${a})`;ctx.fillText('+$'+p.v,p.x,p.y-12-age*16)}}
-    if(!RM)rot+=opt.speed||.0016;requestAnimationFrame(draw)};
+    if(!RM)rot+=opt.speed||.0024;requestAnimationFrame(draw)};
   size();requestAnimationFrame(draw);addEventListener('resize',size);
   new IntersectionObserver(([e])=>{const was=run;run=e.isIntersecting;if(run&&!was)requestAnimationFrame(draw)}).observe(cv)};
 makeGlobe($('#globe'),{labels:innerWidth>700});
@@ -972,6 +1153,54 @@ const prog=$('#progress');let ticking=false;
 const onScroll=()=>{ticking=false;const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${max>0?y/max:0})`;
   if(!RM&&innerWidth>700){const r=dash.getBoundingClientRect(),p=Math.min(1,Math.max(0,1-(r.top-innerHeight*.15)/(innerHeight*.75)));dash.style.transform=`rotateX(${18*(1-p)}deg) scale(${.94+.06*p})`}};
 addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+
+
+/* ---- Application form: multi-step, dynamic WhatsApp hand-off ---- */
+// EDIT: paste your CRM webhook URL (e.g. GoHighLevel inbound webhook) to capture every application
+const CRM_WEBHOOK='';
+const ap=$('#ap'),apForm=$('#apForm'),steps=[...ap.querySelectorAll('.ap-step')],nextB=$('#apNext'),backB=$('#apBack'),errEl=$('#apErr'),nav=$('#apNav');
+const LAST=4;let st=0,lastFocus=null,submitted=false;
+const val=n=>{const els=apForm.elements[n];if(!els)return '';if(els.length!==undefined&&els[0]&&els[0].type){if(els[0].type==='checkbox')return [...els].filter(e=>e.checked).map(e=>e.value);const c=[...els].find(e=>e.checked);return c?c.value:''}return (els.value||'').trim()};
+const setErr=(name,on)=>{const f=apForm.elements[name];const l=f&&f.closest&&f.closest('.fl');if(l)l.classList.toggle('err',on)};
+const check=i=>{errEl.textContent='';
+  if(i===0){const ok=val('first').length>0;setErr('first',!ok);return ok}
+  if(i===1){const ph=val('phone').replace(/[^\d]/g,''),okP=ph.length>=7&&ph.length<=15,okE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'));setErr('phone',!okP);setErr('email',!okE);return okP&&okE}
+  if(i===2){const ok=val('platforms').length>0;if(!ok)errEl.textContent='Pick at least one platform';return ok}
+  if(i===3){const ok=!!val('subs');if(!ok)errEl.textContent='Pick one option';return ok}
+  if(i===4){const ok=!!val('now')&&!!val('goal');if(!ok)errEl.textContent='Pick one option in each row';return ok}
+  return true};
+const show=(i,dir=1)=>{st=i;steps.forEach((el,j)=>{el.classList.toggle('on',j===i);el.classList.toggle('back',j===i&&dir<0)});
+  $('#apProg').style.width=(i>=5?100:(i/5*100))+'%';$('#apCnt').textContent=i>=5?'Complete':'Step '+(i+1)+' of 5';
+  backB.hidden=i===0||i>=5;nav.style.display=i>=5?'none':'';nextB.innerHTML=i===LAST?'Submit application <span>→</span>':'Continue <span>→</span>';
+  const f=steps[i].querySelector('input:not([type=checkbox]):not([type=radio])');if(f&&matchMedia('(pointer:fine)').matches)setTimeout(()=>f.focus(),60)};
+const waText=d=>`Hi, I've just applied for RebateTools.\n\nName: ${d.name}\nPlatforms: ${d.platforms.join(', ')}\nSub-affiliates: ${d.subs}\nMonthly rebates now: ${d.now}\n12-month goal: ${d.goal}\n\nPlease send me the next steps.`;
+const finish=()=>{const p=new URLSearchParams(location.search);
+  const d={name:(val('first')+' '+val('last')).trim(),first:val('first'),last:val('last'),phone:val('phone'),email:val('email'),platforms:val('platforms'),subs:val('subs'),now:val('now'),goal:val('goal'),
+    source:'rebatetools-landing',page:location.href,utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||'',utm_content:p.get('utm_content')||'',submitted_at:new Date().toISOString()};
+  if(CRM_WEBHOOK&&!submitted){try{fetch(CRM_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),keepalive:true})}catch(_){}}
+  try{window.fbq&&fbq('track','Lead',{content_name:'RebateTools application'})}catch(_){}
+  submitted=true;
+  $('#apDoneT').textContent=`You're all set, ${d.first}.`;
+  const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  $('#apSumm').innerHTML=[['Platforms',d.platforms.join(', ')],['Sub-affiliates',d.subs],['Monthly rebates now',d.now],['12-month goal',d.goal]].map(r=>`<div><span class="k">${r[0]}</span><span>${esc(r[1])}</span></div>`).join('');
+  const wa=$('#apWa');wa.href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waText(d));
+  wa.onclick=()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}};
+  show(5)};
+nextB.addEventListener('click',()=>{if(!check(st))return;if(st===LAST)finish();else show(st+1)});
+backB.addEventListener('click',()=>{errEl.textContent='';show(Math.max(0,st-1),-1)});
+apForm.addEventListener('submit',e=>{e.preventDefault();nextB.click()});
+apForm.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='checkbox'){e.preventDefault();nextB.click()}});
+apForm.addEventListener('input',e=>{const l=e.target.closest('.fl');if(l)l.classList.remove('err');errEl.textContent=''});
+// single-choice steps auto-advance
+apForm.addEventListener('change',e=>{if(e.target.type!=='radio')return;errEl.textContent='';
+  if(st===3)setTimeout(()=>{if(st===3)nextB.click()},280);
+  if(st===4&&val('now')&&val('goal'))setTimeout(()=>{if(st===4)nextB.click()},350)});
+const openAp=()=>{lastFocus=document.activeElement;ap.classList.add('open');document.documentElement.style.overflow='hidden';if(!submitted)show(st);try{window.fbq&&fbq('track','InitiateCheckout')}catch(_){}};
+const closeAp=()=>{ap.classList.remove('open');document.documentElement.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus({preventScroll:true})};
+ap.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeAp));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&ap.classList.contains('open'))closeAp()});
+document.querySelectorAll('[data-wa]').forEach(a=>{a.setAttribute('href','#get-started');a.removeAttribute('target');a.addEventListener('click',e=>{e.preventDefault();openAp()})});
+if(location.hash==='#get-started')openAp();
 
 /* ---- Sticky mobile CTA ---- */
 const sticky=$('#sticky'),heroCta=document.querySelector('.hero .hero-cta'),fin=document.querySelector('.final');let heroVis=true,finVis=false;
