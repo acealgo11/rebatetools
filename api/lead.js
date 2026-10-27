@@ -30,7 +30,6 @@ const STAGE = {
 
 const CF = {
   platforms: 'msIcTl4HQT4GNB5X7TRl',
-  subs: 'f92gLVnBAavnm4nW0Nh6',
   now: 'VxWXiiKIHlAfEXtbQ4x9',
   goal: 'tk5pOHOAgMfXcKymuwUB',
   step: 'D1ZjIw0yk9fX3juhS3ou',
@@ -152,7 +151,7 @@ module.exports = async (req, res) => {
   const d = {
     phone, email: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? email : '',
     first: clean(b.first, 60), last: clean(b.last, 60),
-    platforms, subs: clean(b.subs, 40), now: clean(b.now, 40), goal: clean(b.goal, 40),
+    platforms, now: clean(b.now, 40), goal: clean(b.goal, 40),
     step: Math.max(1, Math.min(9, parseInt(b.step, 10) || 1)),
     utm_source: clean(b.utm_source), utm_medium: clean(b.utm_medium), utm_campaign: clean(b.utm_campaign), utm_content: clean(b.utm_content),
     fbclid: clean(b.fbclid, 400), fbc: clean(b.fbc, 400), fbp: clean(b.fbp, 200),
@@ -164,7 +163,7 @@ module.exports = async (req, res) => {
   // Only send fields that have values, so a later partial update never blanks earlier answers.
   const cf = [];
   const put = (id, v) => { if (v !== '' && v != null) cf.push({ id, field_value: String(v) }); };
-  put(CF.platforms, d.platforms); put(CF.subs, d.subs); put(CF.now, d.now); put(CF.goal, d.goal);
+  put(CF.platforms, d.platforms); put(CF.now, d.now); put(CF.goal, d.goal);
   put(CF.step, d.step);
   put(CF.utm_source, d.utm_source); put(CF.utm_medium, d.utm_medium); put(CF.utm_campaign, d.utm_campaign); put(CF.utm_content, d.utm_content);
   put(CF.fbclid, d.fbclid); put(CF.fbc, d.fbc); put(CF.fbp, d.fbp); put(CF.ua, d.ua); put(CF.page, d.page);
