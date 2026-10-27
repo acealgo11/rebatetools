@@ -467,7 +467,8 @@ footer nav a:hover{color:var(--fg)}
 .opts.cols5 .opt label{justify-content:center;text-align:center;padding:10px 6px;font-size:14px}
 .opts.cols5 .opt label .bx{display:none}
 .ap-err{font-size:13px;color:#ff8a8a;margin-top:12px;min-height:18px}
-.ap-legal{font-size:12px;color:var(--fg-3);margin-top:6px}
+.ap-legal{font-size:12px;color:var(--fg-3);margin-top:6px;line-height:1.55}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
 .ap-legal a{text-decoration:underline}
 .ap-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 28px 22px}
 .ap-nav .btn{height:48px}
@@ -576,6 +577,13 @@ main,footer{position:relative;z-index:1}
   html{scroll-behavior:auto}
 }
 </style>
+<!-- ===== Meta Pixel =====
+     EDIT: paste your pixel ID below. Leave empty to disable. Use the same ID as META_PIXEL_ID in Vercel
+     so browser + server events de-duplicate. -->
+<script>
+window.META_PIXEL_ID='';
+if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',window.META_PIXEL_ID);fbq('track','PageView');}
+</script>
 </head>
 <body>
 <div id="progress"></div>
@@ -907,8 +915,7 @@ main,footer{position:relative;z-index:1}
 <footer>
   <div class="wrap">
     <a href="#top" class="brand" style="font-size:16px"><img class="mark" src="assets/rt-mark.webp" alt="" width="30" height="30"><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
-    <!-- EDIT: point these at your real Privacy Policy and Terms pages -->
-    <nav><a href="#features">Features</a><a href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
+    <nav><a href="#features">Features</a><a href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
     <span>© 2026 RebateTools</span>
   </div>
 </footer>
@@ -921,20 +928,21 @@ main,footer{position:relative;z-index:1}
     <div class="ap-prog"><i id="apProg"></i></div>
     <form class="ap-body" id="apForm" novalidate>
       <div class="ap-step on" data-s="0">
-        <h3 id="apT0">First, what's your name?</h3>
+        <h3 id="apT0">Where should we send your custom growth plan?</h3>
         <p class="sub">Answer 5 quick questions and we'll build a growth plan around your network. Takes about a minute.</p>
+        <label class="fl"><span>Mobile number</span><span class="ph-wrap"><span class="cc" aria-hidden="true"><svg viewBox="0 0 60 30" width="20" height="10"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="ukt"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukt)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>+44</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="7700 900123" aria-label="UK mobile number"></span><em class="em">Please enter a valid UK mobile number</em></label>
+        <label class="hp" aria-hidden="true">Company website<input name="company_website" tabindex="-1" autocomplete="off"></label>
+        <!-- EDIT: consent wording -->
+        <p class="ap-legal">By continuing you agree that RebateTools may contact you about your growth plan by phone, SMS, WhatsApp and email. You can opt out at any time. See our <a href="/privacy/" target="_blank">privacy policy</a>.</p>
+      </div>
+      <div class="ap-step" data-s="1">
+        <h3>Great. Who are we building this for?</h3>
+        <p class="sub">So we can personalise your plan.</p>
         <div class="row2">
           <label class="fl"><span>First name</span><input name="first" autocomplete="given-name" placeholder="Jane"><em class="em">Please enter your first name</em></label>
           <label class="fl"><span>Last name</span><input name="last" autocomplete="family-name" placeholder="Smith"></label>
         </div>
-      </div>
-      <div class="ap-step" data-s="1">
-        <h3>How can we reach you?</h3>
-        <p class="sub">We'll send your growth plan here. No spam.</p>
-        <label class="fl"><span>Mobile number</span><span class="ph-wrap"><span class="cc" aria-hidden="true"><svg viewBox="0 0 60 30" width="20" height="10"><clipPath id="ukc"><path d="M0 0v30h60V0z"/></clipPath><clipPath id="ukt"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#ukc)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukt)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>+44</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="7700 900123" aria-label="UK mobile number"></span><em class="em">Please enter a valid UK mobile number</em></label>
         <label class="fl"><span>Email</span><span class="dom" role="group" aria-label="Quick email domains"><button type="button" data-d="gmail.com">@gmail.com</button><button type="button" data-d="outlook.com">@outlook.com</button><button type="button" data-d="hotmail.com">@hotmail.com</button><button type="button" data-d="icloud.com">@icloud.com</button><button type="button" data-d="yahoo.com">@yahoo.com</button></span><input name="email" type="text" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="jane@gmail.com"><em class="em">Please enter a valid email address</em></label>
-        <!-- EDIT: link to your privacy policy -->
-        <p class="ap-legal">By continuing you agree to be contacted about RebateTools. See our <a href="/privacy" target="_blank">privacy policy</a>.</p>
       </div>
       <div class="ap-step" data-s="2">
         <h3>Which partner platforms do you use?</h3>
@@ -1166,17 +1174,43 @@ addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(o
 
 
 /* ---- Application form: multi-step, dynamic WhatsApp hand-off ---- */
-// EDIT: paste your CRM webhook URL (e.g. GoHighLevel inbound webhook) to capture every application
-const CRM_WEBHOOK='';
 const ap=$('#ap'),apForm=$('#apForm'),steps=[...ap.querySelectorAll('.ap-step')],nextB=$('#apNext'),backB=$('#apBack'),errEl=$('#apErr'),nav=$('#apNav');
 const LAST=4;let st=0,lastFocus=null,submitted=false;
 const val=n=>{const els=apForm.elements[n];if(!els)return '';if(els.length!==undefined&&els[0]&&els[0].type){if(els[0].type==='checkbox')return [...els].filter(e=>e.checked).map(e=>e.value);const c=[...els].find(e=>e.checked);return c?c.value:''}return (els.value||'').trim()};
+/* ---- Lead capture → /api/lead (GoHighLevel) + Meta pixel ---- */
+const LEAD_API='/api/lead';
+const uid=()=>(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2));
+const store=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(_){return null}};
+const cookie=n=>{const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):''};
+// first-touch attribution, kept across visits
+(()=>{const q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(k=>{const v=q.get(k);if(v&&!store('rt_'+k))store('rt_'+k,v)});
+  const fb=q.get('fbclid');if(fb)store('rt_fbc_built','fb.1.'+Date.now()+'.'+fb)})();
+const LEAD={q:Promise.resolve(),contactId:store('rt_contact')||'',partialEventId:'pl_'+uid(),eventId:'ld_'+uid(),captured:false,maxStep:1,pending:null};
+const payload=stage=>({stage,step:LEAD.maxStep,contactId:LEAD.contactId,phone:ukE164(val('phone')),first:val('first'),last:val('last'),email:val('email'),
+  platforms:val('platforms'),subs:val('subs'),now:val('now'),goal:val('goal'),company_website:val('company_website'),
+  utm_source:store('rt_utm_source')||'',utm_medium:store('rt_utm_medium')||'',utm_campaign:store('rt_utm_campaign')||'',utm_content:store('rt_utm_content')||'',
+  fbclid:store('rt_fbclid')||'',fbc:cookie('_fbc')||store('rt_fbc_built')||'',fbp:cookie('_fbp'),ua:navigator.userAgent,page:location.href.split('#')[0],
+  eventId:LEAD.eventId,partialEventId:LEAD.partialEventId,firstCapture:!LEAD.captured});
+const sendLead=(stage,beacon)=>{if(!phoneOk())return Promise.resolve();const body=JSON.stringify(payload(stage));
+  if(stage==='partial'&&!LEAD.captured){LEAD.captured=true;try{window.fbq&&fbq('trackCustom','PartialLead',{},{eventID:LEAD.partialEventId})}catch(_){}}
+  if(beacon&&navigator.sendBeacon){navigator.sendBeacon(LEAD_API,new Blob([body],{type:'application/json'}));return Promise.resolve()}
+  // requests run one at a time so a fast Continue can't race the first capture
+  LEAD.q=LEAD.q.then(()=>fetch(LEAD_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...JSON.parse(body),contactId:LEAD.contactId}),keepalive:true}).then(r=>r.json()).then(j=>{if(j&&j.contactId){LEAD.contactId=j.contactId;store('rt_contact',j.contactId)}}).catch(()=>{}));return LEAD.q};
+// capture the phone the moment it's valid, even if they never press Continue
+let capTimer=null;
+apForm.addEventListener('input',e=>{if(e.target.name!=='phone')return;clearTimeout(capTimer);if(phoneOk()&&!LEAD.captured)capTimer=setTimeout(()=>sendLead('partial'),900)});
+apForm.addEventListener('focusout',e=>{if(e.target.name==='phone'&&phoneOk()&&!LEAD.captured)sendLead('partial')});
+// last-chance flush if they leave mid-form
+const flush=()=>{if(phoneOk()&&!submitted&&LEAD.dirty){LEAD.dirty=false;sendLead('partial',true)}};
+addEventListener('pagehide',flush);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flush()});
+apForm.addEventListener('change',()=>{LEAD.dirty=true});apForm.addEventListener('input',()=>{LEAD.dirty=true});
 const setErr=(name,on)=>{const f=apForm.elements[name];const l=f&&f.closest&&f.closest('.fl');if(l)l.classList.toggle('err',on)};
 const ukDigits=v=>{let d=String(v).replace(/[^\d+]/g,'');if(d.startsWith('+44'))d=d.slice(3);else if(d.startsWith('0044'))d=d.slice(4);d=d.replace(/\D/g,'');if(d.startsWith('44')&&d.length>=12)d=d.slice(2);if(d.startsWith('0'))d=d.slice(1);return d};
 const ukE164=v=>'+44'+ukDigits(v);
+const phoneOk=()=>{const ph=ukDigits(val('phone'));return /^7\d{9}$/.test(ph)||/^[1-9]\d{8,9}$/.test(ph)};
 const check=i=>{errEl.textContent='';
-  if(i===0){const ok=val('first').length>0;setErr('first',!ok);return ok}
-  if(i===1){const ph=ukDigits(val('phone')),okP=/^7\d{9}$/.test(ph)||/^[1-9]\d{8,9}$/.test(ph),okE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'));setErr('phone',!okP);setErr('email',!okE);return okP&&okE}
+  if(i===0){const ok=phoneOk();setErr('phone',!ok);return ok}
+  if(i===1){const okF=val('first').length>0,okE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val('email'));setErr('first',!okF);setErr('email',!okE);return okF&&okE}
   if(i===2){const ok=val('platforms').length>0;if(!ok)errEl.textContent='Pick at least one platform';return ok}
   if(i===3){const ok=!!val('subs');if(!ok)errEl.textContent='Pick one option';return ok}
   if(i===4){const ok=!!val('now')&&!!val('goal');if(!ok)errEl.textContent='Pick one option in each row';return ok}
@@ -1186,11 +1220,10 @@ const show=(i,dir=1)=>{st=i;steps.forEach((el,j)=>{el.classList.toggle('on',j===
   backB.hidden=i===0||i>=5;nav.style.display=i>=5?'none':'';nextB.innerHTML=i===LAST?'Submit application <span>→</span>':'Continue <span>→</span>';
   const f=steps[i].querySelector('input:not([type=checkbox]):not([type=radio])');if(f&&matchMedia('(pointer:fine)').matches)setTimeout(()=>f.focus(),60)};
 const waText=d=>`Hi, I've just applied for RebateTools.\n\nName: ${d.name}\nPlatforms: ${d.platforms.join(', ')}\nSub-affiliates: ${d.subs}\nMonthly rebates now: ${d.now}\n12-month goal: ${d.goal}\n\nPlease send me my custom growth plan.`;
-const finish=()=>{const p=new URLSearchParams(location.search);
+const finish=()=>{
   const d={name:(val('first')+' '+val('last')).trim(),first:val('first'),last:val('last'),phone:ukE164(val('phone')),country:'GB',email:val('email'),platforms:val('platforms'),subs:val('subs'),now:val('now'),goal:val('goal'),
-    source:'rebatetools-landing',page:location.href,utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||'',utm_content:p.get('utm_content')||'',submitted_at:new Date().toISOString()};
-  if(CRM_WEBHOOK&&!submitted){try{fetch(CRM_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),keepalive:true})}catch(_){}}
-  try{window.fbq&&fbq('track','Lead',{content_name:'RebateTools application'})}catch(_){}
+    };
+  if(!submitted){LEAD.maxStep=6;sendLead('complete');try{window.fbq&&fbq('track','Lead',{content_name:'RebateTools application'},{eventID:LEAD.eventId})}catch(_){}}
   submitted=true;
   $('#apDoneT').textContent=`You're all set, ${d.first}.`;
   const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1198,7 +1231,7 @@ const finish=()=>{const p=new URLSearchParams(location.search);
   const wa=$('#apWa');wa.href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waText(d));
   wa.onclick=()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}};
   show(5)};
-nextB.addEventListener('click',()=>{if(!check(st))return;if(st===LAST)finish();else show(st+1)});
+nextB.addEventListener('click',()=>{if(!check(st))return;LEAD.maxStep=Math.max(LEAD.maxStep,st+2);if(st===LAST)finish();else{LEAD.dirty=false;sendLead('partial');show(st+1)}});
 backB.addEventListener('click',()=>{errEl.textContent='';show(Math.max(0,st-1),-1)});
 apForm.addEventListener('submit',e=>{e.preventDefault();nextB.click()});
 apForm.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'&&e.target.type!=='checkbox'){e.preventDefault();nextB.click()}});
@@ -1210,7 +1243,7 @@ apForm.addEventListener('input',e=>{if(e.target.name==='email'){const d=(e.targe
 apForm.addEventListener('change',e=>{if(e.target.type!=='radio')return;errEl.textContent='';
   if(st===3)setTimeout(()=>{if(st===3)nextB.click()},280);
   if(st===4&&val('now')&&val('goal'))setTimeout(()=>{if(st===4)nextB.click()},350)});
-const openAp=()=>{lastFocus=document.activeElement;ap.classList.add('open');document.documentElement.style.overflow='hidden';if(!submitted)show(st);try{window.fbq&&fbq('track','InitiateCheckout')}catch(_){}};
+const openAp=()=>{lastFocus=document.activeElement;ap.classList.add('open');document.documentElement.style.overflow='hidden';if(!submitted)show(st);try{window.fbq&&fbq('trackCustom','FormOpen')}catch(_){}};
 const closeAp=()=>{ap.classList.remove('open');document.documentElement.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus({preventScroll:true})};
 ap.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeAp));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&ap.classList.contains('open'))closeAp()});
