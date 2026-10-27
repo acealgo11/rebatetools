@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RebateTools — Affiliate Intelligence for Forex IBs</title>
-<meta name="description" content="RebateTools is the intelligence platform for forex IBs and affiliates. Every trader, sub-IB and rebate dollar, synced automatically and ranked in real time.">
+<title>RebateTools — Partner & Rebate Intelligence for IB Networks</title>
+<meta name="description" content="RebateTools gives introducing brokers and affiliate managers live oversight of every client and every sub-affiliate, so no rebate gets left on the table.">
 <meta name="theme-color" content="#070b16">
 <meta property="og:title" content="RebateTools — Know your clients. Maximise your rebates.">
-<meta property="og:description" content="Real-time client intelligence, automated rebate tracking and sub-IB analytics for forex affiliates.">
+<meta property="og:description" content="Live client oversight, automated rebate tracking and sub-affiliate analytics for IB networks.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,7 +87,7 @@ footer .brand .mark{width:30px;height:30px}
 /* Hero */
 .hero{position:relative;padding:150px 0 40px;overflow:hidden;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
-#globe{position:absolute;left:50%;top:40px;width:min(1100px,140vw);height:min(1100px,140vw);transform:translateX(-50%);opacity:.75}
+#globe{position:absolute;left:50%;top:20px;width:min(1150px,150vw);height:min(1150px,150vw);transform:translateX(-50%);opacity:.9}
 .hero-bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);opacity:.55}
 .hero-bg .halo{position:absolute;left:50%;top:-120px;width:1000px;height:640px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(99,106,242,.28),rgba(91,165,255,.08) 55%,transparent);filter:blur(10px)}
 .hero-head{text-align:center;max-width:900px;margin:0 auto}
@@ -183,6 +183,28 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 .ticks{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
 .ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--fg-2);font-size:15.5px}
 .ticks li::before{content:"";width:18px;height:18px;margin-top:3px;border-radius:50%;background:rgba(91,165,255,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235ba5ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/11px no-repeat;border:1px solid rgba(91,165,255,.4)}
+
+/* Outcomes */
+.outs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.out{padding:26px 22px 22px;display:flex;flex-direction:column}
+.out .ono{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.1em}
+.out h3{margin:12px 0 10px;font-size:18px}
+.out p{font-size:14.5px;flex:1}
+.ov{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.ov .arr{color:var(--fg-3)}
+.ov-n{font-family:var(--mono);font-size:12px;color:var(--fg-2)}
+.mini-bar{flex:1;min-width:60px;height:6px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+.mini-bar i{display:block;height:100%;width:0;background:var(--grad);transition:width 1.4s var(--ease) .4s}
+.out.in .mini-bar i{width:var(--w)}
+/* Mid CTA */
+.midcta{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 32px;background:linear-gradient(120deg,rgba(40,70,160,.35),rgba(14,21,38,.9) 60%)}
+.midcta h3{font-size:clamp(20px,2.2vw,26px);font-weight:800}
+.midcta p{margin-top:6px;font-size:15px}
+/* Who it's for */
+.who{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 12px}
+.who-k{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-right:6px}
+.who-c{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.02);font-weight:600;font-size:14.5px}
+.who-c svg{width:17px;height:17px;color:var(--blue)}
 
 /* Problem cards */
 .pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -339,6 +361,7 @@ section.block{padding:clamp(80px,11vw,140px) 0;position:relative}
 
 /* Final CTA */
 .final{text-align:center;padding:clamp(100px,13vw,160px) 0;position:relative;overflow:hidden}
+#globe2{position:absolute;left:50%;top:50%;width:min(900px,130vw);height:min(900px,130vw);transform:translate(-50%,-38%);opacity:.45;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
 .final .halo{position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(99,106,242,.25),transparent);pointer-events:none}
 .final-logo{width:min(340px,70vw);height:auto;margin:0 auto 34px;position:relative;filter:drop-shadow(0 10px 40px rgba(0,209,144,.25))}
 .final h2{font-size:clamp(36px,5.6vw,68px);position:relative}
@@ -376,11 +399,13 @@ footer nav a:hover{color:var(--fg)}
   .d-side{display:none}
   .split,.lb-pair{grid-template-columns:1fr}
   .split.flip > :first-child{order:0}
-  .pains{grid-template-columns:1fr 1fr}
+  .pains,.outs{grid-template-columns:1fr 1fr}
+  .midcta{flex-direction:column;align-items:flex-start}
   .depo{max-width:none}
 }
 @media (max-width:700px){
   .sync-chip{display:none}
+  #globe{opacity:.6}
   .sync-svg{display:none}
   .sync-m{display:block}
   .hero{padding-top:118px}
@@ -392,7 +417,9 @@ footer nav a:hover{color:var(--fg)}
   .tr{grid-template-columns:40px minmax(0,1fr) 92px;padding:10px}
   .tr .hide-s{display:none}
   .rank{width:30px;height:30px}
-  .pains,.stats-row,.steps3{grid-template-columns:1fr}
+  .pains,.outs,.stats-row,.steps3{grid-template-columns:1fr}
+  .midcta .btn{width:100%}
+  .who-k{width:100%;text-align:center;margin:0 0 4px}
   .ccard{grid-template-columns:auto 1fr}
   .ccard .n{display:none}
   .ccard .stats>div{display:block;text-align:right}
@@ -423,7 +450,7 @@ footer nav a:hover{color:var(--fg)}
   <div class="wrap">
     <a href="#top" class="brand" aria-label="RebateTools"><img class="mark" src="assets/rt-mark.webp" alt="" width="38" height="38"><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
     <div class="top-right">
-      <div class="sync-chip"><i class="dot"></i><b>Auto-sync live</b>· Vantage · PU Prime · VT Markets · StarTrader</div>
+      <div class="sync-chip"><i class="dot"></i><b>Network sync live</b>· 4 partner platforms</div>
       <!-- EDIT: confirm the app login URL -->
       <a class="btn btn-primary login" href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a>
     </div>
@@ -437,17 +464,17 @@ footer nav a:hover{color:var(--fg)}
   <div class="hero-bg" aria-hidden="true"><div class="halo"></div><canvas id="globe"></canvas><div class="grid"></div></div>
   <div class="wrap">
     <div class="hero-head">
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg>Affiliate intelligence for forex IBs</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-6"/></svg>Partner intelligence for IB networks</div>
       <h1 class="rv d1">Know your clients. <span class="grad">Maximise your rebates.</span></h1>
-      <p class="lede rv d2">The intelligence platform for professional forex affiliates. Every trader, every sub-IB and every rebate dollar, synced automatically and ranked in real time.</p>
+      <p class="lede rv d2">RebateTools gives you live oversight of every client and every sub-affiliate in your network, so you can spot who's slowing down, back who's growing, and stop leaving rebates on the table.</p>
       <div class="hero-cta rv d3">
         <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Enquire on WhatsApp</a>
         <a class="btn btn-ghost" href="#features">See what it does</a>
       </div>
       <div class="hero-proof rv d3">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>No spreadsheets</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Auto-synced broker data</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Sub-IB analytics built in</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Every partner in one view</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg>Spot churn before it costs you</span>
       </div>
     </div>
 
@@ -470,9 +497,9 @@ footer nav a:hover{color:var(--fg)}
           <div id="segs"></div>
         </aside>
         <div class="d-main">
-          <div class="d-bar"><b>Trader leaderboard</b><div class="d-tabs"><span class="on">All time</span><span>This month</span><span>Active now</span><span>Low equity</span></div><span class="live"><i class="dot"></i>Live</span></div>
+          <div class="d-bar"><b>Client leaderboard</b><div class="d-tabs"><span class="on">All time</span><span>This month</span><span>Active now</span><span>Low balance</span></div><span class="live"><i class="dot"></i>Live</span></div>
           <div class="tbl" id="tbl">
-            <div class="tr th"><span>Rank</span><span>Trader</span><span class="num">Total rebates ↓</span><span class="num hide-s">Lots</span><span class="num hide-s">Commodities</span><span class="num hide-s">Equity</span></div>
+            <div class="tr th"><span>Rank</span><span>Client</span><span class="num">Total rebates ↓</span><span class="num hide-s">Volume</span><span class="num hide-s">Last active</span><span class="num hide-s">Balance</span></div>
           </div>
         </div>
       </div>
@@ -484,7 +511,7 @@ footer nav a:hover{color:var(--fg)}
 <!-- ===================== BROKER SYNC ===================== -->
 <section class="sync" id="sync">
   <div class="wrap">
-    <div class="k rv">Auto-syncs with the brokers you already work with</div>
+    <div class="k rv">Connects to the partner programmes you already use</div>
     <div class="sync-svg rv d1">
       <svg viewBox="0 0 880 270" aria-label="Vantage, PU Prime, VT Markets and StarTrader syncing into RebateTools">
         <defs>
@@ -518,14 +545,31 @@ footer nav a:hover{color:var(--fg)}
   <div class="wrap">
     <div class="sec-head center">
       <div class="tag rv">The problem</div>
-      <h2 class="rv d1">Your broker portal shows data. <span class="grad">It doesn't tell you anything.</span></h2>
-      <p class="lede rv d2">Running an IB network off broker back-offices and spreadsheets means you find out about problems weeks too late, and you never quite know where your money is coming from.</p>
+      <h2 class="rv d1">Partner portals show you data. <span class="grad">They don't show you what to do.</span></h2>
+      <p class="lede rv d2">Managing a network from partner back-offices and spreadsheets means you find out about problems weeks too late, and never quite know where your income is really coming from.</p>
     </div>
     <div class="pains">
-      <div class="card pain rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><h3>Hours in spreadsheets</h3><p>Exporting reports and working out rebates by hand, across every broker, every month.</p></div>
-      <div class="card pain rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Clients go quiet, unnoticed</h3><p>By the time you spot a trader has stopped, they've already moved on.</p></div>
+      <div class="card pain rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><h3>Hours in spreadsheets</h3><p>Exporting reports and reconciling rebates by hand, across every partner, every month.</p></div>
+      <div class="card pain rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Clients go quiet, unnoticed</h3><p>By the time you notice a client has gone quiet, they've already moved on.</p></div>
       <div class="card pain rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg></div><h3>Sub-IBs are a black box</h3><p>You can't see which partners are actually producing volume, and which are coasting.</p></div>
       <div class="card pain rv d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Rebates you can't trace</h3><p>Totals with no breakdown, so you can't tell which clients and campaigns earn you the most.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY / OUTCOMES ===================== -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="tag rv">Why IBs switch to RebateTools</div>
+      <h2 class="rv d1">Active oversight of your network. <span class="grad">More from every partner.</span></h2>
+      <p class="lede rv d2">Your income depends on clients staying active and partners staying productive. RebateTools shows you both, live, so you can act on it the same day.</p>
+    </div>
+    <div class="outs">
+      <div class="card out rv"><span class="ono">01</span><h3>Catch churn before it costs you</h3><p>Clients who slow down or go quiet are flagged automatically, so you reach out while there's still a relationship to save.</p><div class="ov"><span class="pill risk">⚠ At risk</span><span class="arr">→</span><span class="pill hot">🔥 Re-engaged</span></div></div>
+      <div class="card out rv d1"><span class="ono">02</span><h3>Know exactly where your income comes from</h3><p>Every rebate broken down by client, partner and platform. Double down on what works, drop what doesn't.</p><div class="ov"><span class="ov-n">By client · partner · platform</span><span class="mini-bar"><i style="--w:100%"></i></span></div></div>
+      <div class="card out rv d2"><span class="ono">03</span><h3>Grow the partners who grow you</h3><p>See which sub-affiliates are producing and which have stalled, then manage your network on facts, not gut feel.</p><div class="ov"><span class="pill hot">Alpha ↑ 18%</span><span class="pill dead">Gamma ↓ 6%</span></div></div>
+      <div class="card out rv d3"><span class="ono">04</span><h3>Get hours back every week</h3><p>No exports, no spreadsheets, no reconciling reports by hand. Open the dashboard and it's already done.</p><div class="ov"><span class="ov-n" style="color:var(--green)">0 spreadsheets</span></div></div>
     </div>
   </div>
 </section>
@@ -536,11 +580,11 @@ footer nav a:hover{color:var(--fg)}
     <div>
       <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg>Client intelligence</div>
       <h2 class="rv d1" style="margin-top:18px">Know who's active, at risk <span class="grad">or gone, at a glance.</span></h2>
-      <p class="lede rv d2" style="margin-top:18px">Every trader connected to your IB account in one place, automatically segmented and tagged. See who's hot, who's slipping and who's stopped, so you can act before the volume disappears.</p>
+      <p class="lede rv d2" style="margin-top:18px">Every client in your network in one place, automatically segmented and tagged. See who's hot, who's slipping and who's stopped, so you can act before the income disappears.</p>
       <ul class="ticks rv d3">
-        <li>Live segments: active, inactive, high drawdown, new and never traded</li>
-        <li>Hot, At Risk and Dead tags on every trader</li>
-        <li>Rebate, equity and last trade side by side</li>
+        <li>Live segments: active, inactive, low balance, new and never active</li>
+        <li>Hot, At Risk and Dead tags on every client</li>
+        <li>Rebate, balance and last activity side by side</li>
         <li>One tap to WhatsApp a client straight from their row</li>
       </ul>
     </div>
@@ -556,10 +600,10 @@ footer nav a:hover{color:var(--fg)}
     <div>
       <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Automated rebate tracking</div>
       <h2 class="rv d1" style="margin-top:18px">No more manual spreadsheets. <span class="grad">Ever.</span></h2>
-      <p class="lede rv d2" style="margin-top:18px">RebateTools syncs your broker data automatically and calculates lots, commodities and rebates as they happen, so you always know exactly what you're earning, and who it's coming from.</p>
+      <p class="lede rv d2" style="margin-top:18px">RebateTools syncs your partner data automatically and calculates rebates as they happen, so you always know exactly what you're earning, and who it's coming from.</p>
       <ul class="ticks rv d3">
-        <li>Synced from your broker accounts, no exports</li>
-        <li>Rebates broken down per trader, per lot</li>
+        <li>Synced from your partner accounts, no exports</li>
+        <li>Rebates broken down per client and per partner</li>
         <li>Time-based views: today, this month, all time</li>
       </ul>
     </div>
@@ -578,24 +622,24 @@ footer nav a:hover{color:var(--fg)}
   <div class="wrap">
     <div class="sec-head">
       <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>Leaderboards</div>
-      <h2 class="rv d1">See your most valuable traders. <span class="grad">Instantly.</span></h2>
-      <p class="lede rv d2">Rank every trader by lifetime rebate, this month, who's active right now or who's running low on equity. Spot your biggest depositors and focus your time where the money is.</p>
+      <h2 class="rv d1">See your most valuable clients. <span class="grad">Instantly.</span></h2>
+      <p class="lede rv d2">Rank every client by lifetime rebate, this month, who's active right now or whose balance is running low. Spot your biggest accounts and focus your time where it pays.</p>
     </div>
     <div class="lb-pair">
       <div class="card glow lb rv" id="lb">
-        <div class="lb-h"><div><b>Trader leaderboard</b><small id="lbCount">8 traders</small></div><span class="live" style="display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px"><i class="dot"></i>Live</span></div>
+        <div class="lb-h"><div><b>Client leaderboard</b><small id="lbCount">8 clients</small></div><span class="live" style="display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--fg-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 10px"><i class="dot"></i>Live</span></div>
         <div class="lb-tabs" role="tablist" id="lbTabs">
           <button type="button" role="tab" aria-selected="true" data-k="all">All time</button>
           <button type="button" role="tab" aria-selected="false" data-k="month">This month</button>
           <button type="button" role="tab" aria-selected="false" data-k="active">Active now</button>
-          <button type="button" role="tab" aria-selected="false" data-k="low">Low equity</button>
+          <button type="button" role="tab" aria-selected="false" data-k="low">Low balance</button>
         </div>
         <div class="lb-note" id="lbNote">Ranked by lifetime rebate · tap the tabs</div>
         <div class="lb-list" id="lbList"></div>
       </div>
       <div class="card depo rv d1" id="depo">
-        <div class="depo-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></i><div><b>Top 10 depositors</b><small>All time · net funding</small></div></div>
-        <div class="depo-total"><div class="k">Total net funding (top 10) · all time</div><div class="v">$<span data-count="126329.21" data-dec="2" data-sep="1">0</span></div></div>
+        <div class="depo-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></i><div><b>Top 10 accounts</b><small>All time · by account value</small></div></div>
+        <div class="depo-total"><div class="k">Combined account value (top 10)</div><div class="v">$<span data-count="126329.21" data-dec="2" data-sep="1">0</span></div></div>
         <div id="depoList"></div>
       </div>
     </div>
@@ -625,11 +669,21 @@ footer nav a:hover{color:var(--fg)}
       <h2 class="rv d1" style="margin-top:18px">Full control over your <span class="grad">sub-affiliate data.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">Track performance across every sub-IB in your network. See where your volume is really coming from, and which partners are actually growing your business.</p>
       <ul class="ticks rv d3">
-        <li>Monitor sub-affiliate trading volume in real time</li>
-        <li>See which partners generate the most clients and lots</li>
+        <li>Monitor sub-affiliate activity in real time</li>
+        <li>See which partners bring in the most clients and rebates</li>
         <li>Spot inactive or underperforming sub-IBs early</li>
         <li>Your entire affiliate structure in one clear view</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MID CTA ===================== -->
+<section style="padding:10px 0 40px">
+  <div class="wrap">
+    <div class="card glow midcta rv">
+      <div><h3>See your own network in RebateTools.</h3><p>Message us and we'll show you what your clients and partners look like inside the dashboard.</p></div>
+      <a class="btn btn-primary" data-wa>Book a walkthrough on WhatsApp <span>→</span></a>
     </div>
   </div>
 </section>
@@ -638,10 +692,10 @@ footer nav a:hover{color:var(--fg)}
 <section class="block">
   <div class="wrap">
     <div class="card cmp rv" id="cmp">
-      <div class="cmp-h"><h3>Broker dashboards vs <span class="grad">RebateTools</span></h3><p>Most broker dashboards show data. RebateTools shows intelligence.</p></div>
+      <div class="cmp-h"><h3>Partner dashboards vs <span class="grad">RebateTools</span></h3><p>Most partner dashboards show data. RebateTools shows intelligence.</p></div>
       <div class="cmp-scroll"><div class="cmp-t" id="cmpT"></div></div>
     </div>
-    <p class="rv" style="font-size:12px;color:var(--fg-3);margin-top:12px;text-align:center">Based on the standard IB dashboards each broker provides. Broker names are trademarks of their respective owners.</p>
+    <p class="rv" style="font-size:12px;color:var(--fg-3);margin-top:12px;text-align:center">Based on the standard partner dashboards each platform provides. Broker names are trademarks of their respective owners.</p>
   </div>
 </section>
 
@@ -649,8 +703,21 @@ footer nav a:hover{color:var(--fg)}
 <section class="block" style="padding-top:20px">
   <div class="wrap stats-row">
     <div class="card stat rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div><div class="n"><span data-count="30000" data-sep="1">0</span>+</div><p>Automated rebate calculations</p></div>
-    <div class="card stat rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div class="n"><span data-count="4">0</span></div><p>Broker integrations, auto-synced</p></div>
+    <div class="card stat rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg></div><div class="n"><span data-count="4">0</span></div><p>Partner platforms, auto-synced</p></div>
     <div class="card stat rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="n">24/7</div><p>Real-time tracking, no manual updates</p></div>
+  </div>
+</section>
+
+<!-- ===================== WHO IT'S FOR ===================== -->
+<section class="block" style="padding-top:20px;padding-bottom:20px">
+  <div class="wrap">
+    <div class="who rv">
+      <span class="who-k">Built for</span>
+      <span class="who-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg>Introducing brokers</span>
+      <span class="who-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg>Master IBs with sub-networks</span>
+      <span class="who-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M8 9h8M8 13h5"/></svg>Affiliate &amp; partner managers</span>
+      <span class="who-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 15c3 0 6 1.5 6 4"/></svg>Growing partner teams</span>
+    </div>
   </div>
 </section>
 
@@ -662,8 +729,8 @@ footer nav a:hover{color:var(--fg)}
       <h2 class="rv d1">Set up once. <span class="grad">It runs itself.</span></h2>
     </div>
     <div class="steps3">
-      <div class="card step rv"><div class="no">01</div><h3>Connect your IB accounts</h3><p>Message us and we'll link RebateTools to the broker accounts you already use.</p><div class="bar"><i></i></div></div>
-      <div class="card step rv d1"><div class="no">02</div><h3>We sync and calculate</h3><p>Traders, lots and rebates pull in automatically and stay up to date on their own.</p><div class="bar"><i></i></div></div>
+      <div class="card step rv"><div class="no">01</div><h3>Connect your accounts</h3><p>Message us and we'll link RebateTools to the partner accounts you already use.</p><div class="bar"><i></i></div></div>
+      <div class="card step rv d1"><div class="no">02</div><h3>We sync and calculate</h3><p>Clients, activity and rebates pull in automatically and stay up to date on their own.</p><div class="bar"><i></i></div></div>
       <div class="card step rv d2"><div class="no">03</div><h3>You see everything</h3><p>Log in to your dashboard and see every client, sub-IB and rebate dollar in one place.</p><div class="bar"><i></i></div></div>
     </div>
   </div>
@@ -677,9 +744,9 @@ footer nav a:hover{color:var(--fg)}
       <h2 class="rv d1">Questions IBs <span class="grad">usually ask.</span></h2>
     </div>
     <div class="faq rv">
-      <details><summary>Which brokers does RebateTools work with?<span class="pm">+</span></summary><div class="ans">RebateTools currently syncs with Vantage, PU Prime, VT Markets and StarTrader. Working with a different broker? Message us and ask, as more integrations are on the way.</div></details>
-      <details><summary>Do I need to export or upload anything?<span class="pm">+</span></summary><div class="ans">No. Once your IB accounts are connected, your traders, lots and rebates sync automatically. No spreadsheets, no manual uploads.</div></details>
-      <details><summary>Can I track my sub-IBs?<span class="pm">+</span></summary><div class="ans">Yes. You can see every sub-affiliate in your network, the volume and rebates they generate, and which ones are growing or going quiet.</div></details>
+      <details><summary>Which platforms does RebateTools work with?<span class="pm">+</span></summary><div class="ans">RebateTools currently syncs with Vantage, PU Prime, VT Markets and StarTrader partner accounts. Working with a different platform? Message us and ask, as more integrations are on the way.</div></details>
+      <details><summary>Do I need to export or upload anything?<span class="pm">+</span></summary><div class="ans">No. Once your partner accounts are connected, your clients, activity and rebates sync automatically. No spreadsheets, no manual uploads.</div></details>
+      <details><summary>Can I track my sub-IBs?<span class="pm">+</span></summary><div class="ans">Yes. You can see every sub-affiliate in your network, the clients and rebates they generate, and which ones are growing or going quiet.</div></details>
       <details><summary>Who can see my data?<span class="pm">+</span></summary><div class="ans">Your dashboard sits behind a secure login and only you, plus anyone you choose to give access, can see your network's data.</div></details>
       <!-- EDIT: add pricing if you want it on the page -->
       <details><summary>How much does it cost?<span class="pm">+</span></summary><div class="ans">Pricing depends on the size of your network. Message us on WhatsApp and we'll walk you through the options.</div></details>
@@ -690,11 +757,12 @@ footer nav a:hover{color:var(--fg)}
 <!-- ===================== FINAL CTA ===================== -->
 <section class="final">
   <div class="halo" aria-hidden="true"></div>
+  <canvas id="globe2" aria-hidden="true"></canvas>
   <div class="wrap">
     <img class="final-logo rv" src="assets/rt-logo.webp" alt="RebateTools" width="900" height="294">
     <div class="tag rv" style="margin-bottom:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg>Ready to start?</div>
     <h2 class="rv d1">Stop guessing. <span class="grad">Start calculating.</span></h2>
-    <p class="lede rv d2">Join the professional affiliates using RebateTools for accurate, real-time rebate intelligence.</p>
+    <p class="lede rv d2">Take active control of your network. See every client, every partner and every rebate, live, in one place.</p>
     <div class="hero-cta rv d3">
       <a class="btn btn-primary" data-wa><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Get started on WhatsApp <span>→</span></a>
     </div>
@@ -705,7 +773,8 @@ footer nav a:hover{color:var(--fg)}
 <footer>
   <div class="wrap">
     <a href="#top" class="brand" style="font-size:16px"><img class="mark" src="assets/rt-mark.webp" alt="" width="30" height="30"><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
-    <nav><a href="#features">Features</a><a href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a></nav>
+    <!-- EDIT: point these at your real Privacy Policy and Terms pages -->
+    <nav><a href="#features">Features</a><a href="https://www.rebatetools.com" target="_blank" rel="noopener">Login</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>
     <span>© 2026 RebateTools</span>
   </div>
 </footer>
@@ -743,7 +812,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
   t.querySelectorAll('[data-count]').forEach(count);t.dispatchEvent(new Event('reveal'));io.unobserve(t)}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
 
 /* ---- Hero dashboard ---- */
-const SEGS=[['Active (7d)','#5ba5ff',134],['Moderately active','#00d190',5],['Inactive (14d+)','#6b7280',34],['High drawdown','#e8c547',123],['New accounts','#a78bfa',1],['Inactive (30d+)','#6b7280',47],['Never traded','#e8c547',0]];
+const SEGS=[['Active (7d)','#5ba5ff',134],['Moderately active','#00d190',5],['Inactive (14d+)','#6b7280',34],['Low balance','#e8c547',123],['New accounts','#a78bfa',1],['Inactive (30d+)','#6b7280',47],['Never active','#e8c547',0]];
 $('#segs').innerHTML=SEGS.map((s,i)=>`<div class="seg" style="transition-delay:${.2+i*.06}s"><i class="sd" style="background:${s[1]}"></i><span class="sn">${s[0]}</span><span class="sc" data-count="${s[2]}">0</span></div>`).join('');
 const TR=[
  ['Mrs. Olga Gutmann',[['hot','Hot']],5385.48,161.00,158.00,15428.10,'•••• 8729'],
@@ -755,6 +824,7 @@ const TR=[
  ['Delilah Davis',[['risk','At risk']],1708.64,51.69,49.27,1307.11,'•••• 9851'],
  ['Kris Streich PhD',[['hot','Hot']],1696.41,50.64,50.54,4620.80,'•••• 7023']];
 const ICON={hot:'🔥',dead:'',risk:'⚠',low:''};
+const LA=['Today','12 days ago','19 days ago','9 days ago','4 days ago','Today','6 days ago','Yesterday'];
 const WAIC='<span class="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span>';
 const trophy='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg>';
 const medal='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><circle cx="12" cy="15" r="5"/><path d="M8 3l4 7 4-7"/></svg>';
@@ -763,9 +833,9 @@ TR.forEach((t,i)=>{const r=document.createElement('div');r.className='tr'+(i<3?'
   const rk=i===0?`<span class="rank g">${trophy}</span>`:i===1?`<span class="rank s">${medal}</span>`:i===2?`<span class="rank b">${medal}</span>`:`<span class="rank n">#${i+1}</span>`;
   r.innerHTML=`${rk}<div class="who2"><div class="nm">${t[0]} ${t[1].map(p=>`<span class="pill ${p[0]}">${ICON[p[0]]?ICON[p[0]]+' ':''}${p[1]}</span>`).join('')}</div><div class="ph">${WAIC}${t[6]}</div></div>
    <div class="cell num"><div class="k">Rebates</div><div class="v g" data-reb="${t[2]}">${money(t[2])}</div></div>
-   <div class="cell num hide-s"><div class="k">Lots</div><div class="v">${t[3].toFixed(2)}</div></div>
-   <div class="cell num hide-s"><div class="k">Commodities</div><div class="v">${t[4].toFixed(2)}</div></div>
-   <div class="cell num hide-s"><div class="k">Equity</div><div class="v ${t[5]<10?'r':''}">${money(t[5])}</div></div>`;
+   <div class="cell num hide-s"><div class="k">Volume</div><div class="v">${t[3].toFixed(1)}k</div></div>
+   <div class="cell num hide-s"><div class="k">Last active</div><div class="v" style="font-size:12.5px">${LA[i]}</div></div>
+   <div class="cell num hide-s"><div class="k">Balance</div><div class="v ${t[5]<10?'r':''}">${money(t[5])}</div></div>`;
   tbl.appendChild(r)});
 const dash=$('#dash');
 dash.addEventListener('reveal',()=>{const tc=$('#trCount');tween(tc,0,344,1500,v=>Math.round(v))});
@@ -774,36 +844,64 @@ io.observe(dash);
 if(!RM)setInterval(()=>{const cells=[...tbl.querySelectorAll('[data-reb]')];const c=cells[Math.floor(Math.random()*cells.length)];
   const from=+c.dataset.reb,to=from+Math.random()*9+.5;c.dataset.reb=to;c.classList.add('flash');tween(c,from,to,700,v=>money(v));setTimeout(()=>c.classList.remove('flash'),900)},1800);
 
-/* ---- Globe ---- */
-const cv=$('#globe');
-if(cv){const ctx=cv.getContext('2d');let W,H,dpr=Math.min(2,devicePixelRatio||1),run=true,rot=0;const N=900,pts=[];
-  for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=Math.PI*(3-Math.sqrt(5))*i;pts.push([Math.cos(th)*r,y,Math.sin(th)*r])}
+/* ---- Network globe: master IB hub, partner nodes, live arcs and rebate pings ---- */
+const makeGlobe=(cv,opt={})=>{if(!cv)return;const ctx=cv.getContext('2d');let W,H,dpr=Math.min(2,devicePixelRatio||1),run=true,rot=opt.rot||-.6,t0=performance.now();
+  const N=opt.dots||1000,pts=[];for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=Math.PI*(3-Math.sqrt(5))*i;pts.push([Math.cos(th)*r,y,Math.sin(th)*r])}
+  const ll=(lat,lon)=>{const a=lat*Math.PI/180,b=lon*Math.PI/180;return [Math.cos(a)*Math.cos(b),-Math.sin(a),Math.cos(a)*Math.sin(b)]};
+  const C={LDN:[51.5,-.1],DXB:[25.2,55.3],SIN:[1.35,103.8],SYD:[-33.9,151.2],HKG:[22.3,114.2],TYO:[35.7,139.7],JNB:[-26.2,28],LOS:[6.5,3.4],SAO:[-23.5,-46.6],NYC:[40.7,-74],MEX:[19.4,-99.1],KUL:[3.1,101.7],BOM:[19,72.8],LCA:[34.7,33],BOG:[4.7,-74.1],CAI:[30,31.2]};
+  const P={};for(const k in C)P[k]=ll(...C[k]);
+  const E=[['LDN','DXB'],['LDN','NYC'],['LDN','LOS'],['LDN','LCA'],['LDN','JNB'],['LDN','SAO'],['DXB','BOM'],['DXB','KUL'],['DXB','CAI'],['KUL','SIN'],['SIN','SYD'],['SIN','HKG'],['HKG','TYO'],['NYC','MEX'],['NYC','BOG'],['BOG','SAO'],['LCA','DXB'],['JNB','DXB']].map(([a,b],i)=>({a:P[a],b:P[b],off:Math.random(),spd:.18+Math.random()*.12,last:-1,i}));
+  const slerp=(a,b,t)=>{const d=Math.acos(Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])));if(d<1e-6)return a;const s1=Math.sin((1-t)*d)/Math.sin(d),s2=Math.sin(t*d)/Math.sin(d);return [a[0]*s1+b[0]*s2,a[1]*s1+b[1]*s2,a[2]*s1+b[2]*s2]};
+  const pings=[];
   const size=()=>{W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)};
-  const draw=()=>{if(!run)return;ctx.clearRect(0,0,W,H);const R=W*.42,cx=W/2,cy=H/2,c=Math.cos(rot),s=Math.sin(rot),tilt=.35,ct=Math.cos(tilt),st=Math.sin(tilt);
-    for(const p of pts){let x=p[0]*c-p[2]*s,z=p[0]*s+p[2]*c,y=p[1];const y2=y*ct-z*st,z2=y*st+z*ct;if(z2<-.15)continue;
-      const a=.12+.55*(z2+1)/2;ctx.fillStyle=`rgba(${110+40*z2|0},${150+40*z2|0},255,${a})`;const sz=.8+1.1*(z2+1)/2;ctx.fillRect(cx+x*R-sz/2,cy+y2*R-sz/2,sz,sz)}
-    ctx.strokeStyle='rgba(91,165,255,.10)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.stroke();
-    if(!RM)rot+=.0018;requestAnimationFrame(draw)};
-  size();draw();addEventListener('resize',size);
-  new IntersectionObserver(([e])=>{const was=run;run=e.isIntersecting;if(run&&!was)draw()}).observe(cv)}
+  const draw=now=>{if(!run)return;const tm=(now-t0)/1000;ctx.clearRect(0,0,W,H);const R=W*.42,cx=W/2,cy=H/2,c=Math.cos(rot),s=Math.sin(rot),tilt=.38,ct=Math.cos(tilt),st=Math.sin(tilt);
+    const proj=(v,h=1)=>{const x=v[0]*c-v[2]*s,z=v[0]*s+v[2]*c,y=v[1];const y2=y*ct-z*st,z2=y*st+z*ct;return [cx+x*R*h,cy+y2*R*h,z2]};
+    // atmosphere
+    const g=ctx.createRadialGradient(cx,cy,R*.85,cx,cy,R*1.18);g.addColorStop(0,'rgba(91,165,255,0)');g.addColorStop(.6,'rgba(91,165,255,.10)');g.addColorStop(1,'rgba(91,165,255,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.18,0,Math.PI*2);ctx.fill();
+    // dots
+    for(const p of pts){const q=proj(p);if(q[2]<-.12)continue;const a=.10+.5*(q[2]+1)/2,sz=.7+1.1*(q[2]+1)/2;ctx.fillStyle=`rgba(${120+40*q[2]|0},${160+40*q[2]|0},255,${a})`;ctx.fillRect(q[0]-sz/2,q[1]-sz/2,sz,sz)}
+    ctx.strokeStyle='rgba(91,165,255,.12)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.stroke();
+    // arcs
+    const SEG=36;
+    for(const e of E){const samp=[];for(let k=0;k<=SEG;k++){const t=k/SEG;samp.push(proj(slerp(e.a,e.b,t),1+.22*Math.sin(Math.PI*t)))}
+      ctx.lineWidth=1;for(let k=0;k<SEG;k++){const A=samp[k],B=samp[k+1];if(A[2]<-.05||B[2]<-.05)continue;ctx.strokeStyle=`rgba(110,150,255,${.16+.22*(A[2]+1)/2})`;ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke()}
+      // travelling pulse
+      const ph=((tm*e.spd+e.off)%1),head=ph*SEG|0,len=7;
+      for(let k=Math.max(0,head-len);k<head&&k<SEG;k++){const A=samp[k],B=samp[k+1];if(A[2]<-.05)continue;const f=1-(head-k)/len;ctx.strokeStyle=`rgba(${120+135*f|0},${200+55*f|0},255,${.85*f})`;ctx.lineWidth=1+1.8*f;ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke()}
+      const cyc=Math.floor(tm*e.spd+e.off);if(cyc!==e.last){if(e.last!==-1){const q=samp[SEG];if(q[2]>.05)pings.push({x:q[0],y:q[1],t:tm,v:(Math.random()*38+4).toFixed(2)})}e.last=cyc}}
+    // nodes
+    for(const k in P){const q=proj(P[k]);if(q[2]<0)continue;const hub=k==='LDN',pul=(Math.sin(tm*2.4+q[0]*.02)+1)/2,a=.4+.6*q[2];
+      ctx.fillStyle=hub?`rgba(0,209,144,${.18*a})`:`rgba(91,165,255,${.16*a})`;ctx.beginPath();ctx.arc(q[0],q[1],(hub?9:6)+pul*(hub?7:4),0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=hub?`rgba(120,255,210,${a})`:`rgba(190,215,255,${a})`;ctx.beginPath();ctx.arc(q[0],q[1],hub?3.4:2.4,0,Math.PI*2);ctx.fill()}
+    // rebate pings
+    ctx.font='600 12px "JetBrains Mono",monospace';ctx.textAlign='center';
+    for(let k=pings.length-1;k>=0;k--){const p=pings[k],age=tm-p.t;if(age>1.8){pings.splice(k,1);continue}const a=age<.2?age/.2:1-(age-.2)/1.6;
+      ctx.strokeStyle=`rgba(0,209,144,${.6*(1-age/1.8)})`;ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(p.x,p.y,4+age*16,0,Math.PI*2);ctx.stroke();
+      if(opt.labels!==false){ctx.fillStyle=`rgba(0,209,144,${a})`;ctx.fillText('+$'+p.v,p.x,p.y-12-age*16)}}
+    if(!RM)rot+=opt.speed||.0016;requestAnimationFrame(draw)};
+  size();requestAnimationFrame(draw);addEventListener('resize',size);
+  new IntersectionObserver(([e])=>{const was=run;run=e.isIntersecting;if(run&&!was)requestAnimationFrame(draw)}).observe(cv)};
+makeGlobe($('#globe'),{labels:innerWidth>700});
+makeGlobe($('#globe2'),{dots:700,speed:.0012,rot:1.2,labels:false});
 
 /* ---- Client cards ---- */
-const CC=[['MO','Mrs. Olga Gutmann','risk','At risk','1534879',591.50,3243.46,'4 days ago','0.10 lots'],
- ['KS','Kris Streich PhD','risk','At risk','7967262',308.55,2516.51,'5 days ago','0.01 lots'],
- ['AK','Albert Kessler','hot','Hot','8805073',407.16,409.20,'Yesterday','0.05 lots'],
- ['HT','Hugo Tremblay-Little','dead','Dead','8072797',1463.35,2.83,'5 days ago','0.01 lots']];
+const CC=[['MO','Mrs. Olga Gutmann','risk','At risk','1534879',591.50,3243.46,'4 days ago',''],
+ ['KS','Kris Streich PhD','risk','At risk','7967262',308.55,2516.51,'5 days ago',''],
+ ['AK','Albert Kessler','hot','Hot','8805073',407.16,409.20,'Yesterday',''],
+ ['HT','Hugo Tremblay-Little','dead','Dead','8072797',1463.35,2.83,'5 days ago','']];
 const ccw=$('#ccards');
 CC.forEach((c,i)=>{const d=document.createElement('div');d.className='ccard';d.style.transitionDelay=(.15+i*.1)+'s';
   d.innerHTML=`<span class="n">${i+1}</span><span class="av">${c[0]}</span><div><div class="nm">${c[1]}</div><div class="meta"><span class="pill ${c[2]}">${ICON[c[2]]?ICON[c[2]]+' ':''}${c[3]}</span><span class="id">ID ${c[4]}</span></div></div>
-  <div class="stats"><div><div class="k">Rebate</div><div class="v g">${money(c[5])}</div></div><div><div class="k">Equity</div><div class="v ${c[6]<10?'r':'g'}">${money(c[6])}</div></div><div><div class="k">Last trade</div><div class="v" style="font-size:12px">${c[7]}</div><div class="t">${c[8]}</div></div></div>`;
+  <div class="stats"><div><div class="k">Rebate</div><div class="v g">${money(c[5])}</div></div><div><div class="k">Balance</div><div class="v ${c[6]<10?'r':'g'}">${money(c[6])}</div></div><div><div class="k">Last active</div><div class="v" style="font-size:12px">${c[7]}</div><div class="t">${c[8]}</div></div></div>`;
   ccw.appendChild(d)});
 io.observe(ccw);
 
 /* ---- Rebate engine feed ---- */
 const feed=$('#feed'),engT=$('#engTotal'),eng=$('#engine');let engVal=0,feedTimer=null;
 const BR=['VANTAGE','PU PRIME','VT','STARTRADER'],NM=['O. Gutmann','H. Prosacco','K. Streich','D. Davis','A. Kessler','L. Gerlach','R. Torp','S. Kilback','P. Weissnat','C. Dickens'];
+const EV=['Rebate synced','Rebate synced','Rebate synced','Sub-IB rebate','New client linked'];
 const addFeed=(instant)=>{const lots=(Math.random()*1.6+.05),reb=lots*(Math.random()*4+5);const r=document.createElement('div');r.className='feed-row';if(instant)r.style.animation='none';
-  r.innerHTML=`<span class="br">${BR[Math.random()*4|0]}</span><span class="tn">${NM[Math.random()*NM.length|0]}</span><span class="lots">${lots.toFixed(2)} lots</span><span class="rb">+${money(reb)}</span>`;
+  r.innerHTML=`<span class="br">${BR[Math.random()*4|0]}</span><span class="tn">${NM[Math.random()*NM.length|0]}</span><span class="lots">${EV[Math.random()*EV.length|0]}</span><span class="rb">+${money(reb)}</span>`;
   feed.prepend(r);while(feed.children.length>8)feed.lastChild.remove();const from=engVal;engVal+=reb;if(!instant)tween(engT,from,engVal,600,v=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}))};
 eng.addEventListener('reveal',()=>{engVal=48210.37;tween(engT,0,engVal,1500,v=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}));for(let i=0;i<6;i++)addFeed(true);
   if(!RM)feedTimer=setInterval(()=>addFeed(false),1600)});
@@ -820,13 +918,13 @@ const LB=[ // name, tag, rebate all-time, month rebate, equity, pl, lastTradeDay
  ['Hugo Tremblay-Little','dead',4880.12,0,2.83,-497.17,31],
  ['Celia Weber IV','dead',3402.90,0,0.20,-299.80,44]];
 const TAG={hot:['hot','Hot'],risk:['risk','At risk'],dead:['dead','Dead']};
-const VIEWS={all:{note:'Ranked by lifetime rebate',sort:(a,b)=>b[2]-a[2],cols:[['Rebate',r=>money(r[2]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g'],['P/L',r=>(r[5]<0?'−':'+')+money(Math.abs(r[5])),r=>r[5]<0?'r':'g']]},
- month:{note:'Ranked by rebate this month',sort:(a,b)=>b[3]-a[3],cols:[['This month',r=>money(r[3]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g'],['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]},
- active:{note:'Traded in the last 7 days',filter:r=>r[6]<=7,sort:(a,b)=>a[6]-b[6],cols:[['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago',''],['This month',r=>money(r[3]),'g'],['Equity',r=>money(r[4]),r=>r[4]<10?'r':'g']]},
- low:{note:'Lowest equity first · time to check in',sort:(a,b)=>a[4]-b[4],cols:[['Equity',r=>money(r[4]),'r'],['Rebate',r=>money(r[2]),'g'],['Last trade',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]}};
+const VIEWS={all:{note:'Ranked by lifetime rebate',sort:(a,b)=>b[2]-a[2],cols:[['Rebate',r=>money(r[2]),'g'],['Balance',r=>money(r[4]),r=>r[4]<10?'r':'g'],['This month',r=>money(r[3]),'g']]},
+ month:{note:'Ranked by rebate this month',sort:(a,b)=>b[3]-a[3],cols:[['This month',r=>money(r[3]),'g'],['Balance',r=>money(r[4]),r=>r[4]<10?'r':'g'],['Last active',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]},
+ active:{note:'Active in the last 7 days',filter:r=>r[6]<=7,sort:(a,b)=>a[6]-b[6],cols:[['Last active',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago',''],['This month',r=>money(r[3]),'g'],['Balance',r=>money(r[4]),r=>r[4]<10?'r':'g']]},
+ low:{note:'Lowest balance first · time to check in',sort:(a,b)=>a[4]-b[4],cols:[['Balance',r=>money(r[4]),'r'],['Rebate',r=>money(r[2]),'g'],['Last active',r=>r[6]===0?'Today':r[6]===1?'Yesterday':r[6]+'d ago','']]}};
 const lbList=$('#lbList');
 const renderLB=k=>{const v=VIEWS[k];let rows=LB.slice();if(v.filter)rows=rows.filter(v.filter);rows.sort(v.sort);rows=rows.slice(0,5);
-  $('#lbNote').textContent=v.note;$('#lbCount').textContent=rows.length+' of '+LB.length+' traders';
+  $('#lbNote').textContent=v.note;$('#lbCount').textContent=rows.length+' of '+LB.length+' clients';
   lbList.innerHTML=rows.map((r,i)=>`<div class="lb-row" style="animation:feedin .45s var(--ease) ${i*.06}s both"><span class="n">${i+1}</span><div class="nm">${r[0]}<br><span class="pill ${TAG[r[1]][0]}">${ICON[r[1]]?ICON[r[1]]+' ':''}${TAG[r[1]][1]}</span></div>${v.cols.map((c,j)=>{const cl=typeof c[2]==='function'?c[2](r):c[2];return `<div class="c${j>0?' hide-s':''}"><div class="k">${c[0]}</div><div class="v ${cl}">${c[1](r)}</div></div>`}).join('')}</div>`).join('')};
 const tabs=[...document.querySelectorAll('#lbTabs button')];let lbAuto=null,lbIdx=0,lbManual=false;
 const showTab=i=>{lbIdx=i;tabs.forEach((b,j)=>b.setAttribute('aria-selected',j===i));renderLB(tabs[i].dataset.k)};
@@ -858,7 +956,7 @@ addEventListener('resize',()=>{if(tree.classList.contains('in'))drawLinks()});
 io.observe(tree);
 
 /* ---- Comparison table ---- */
-const COLS=['Basic client list','Lot tracking','Trader analytics','Leaderboards','Dormant account detection','Sub-affiliate insights','Network intelligence'];
+const COLS=['Basic client list','Volume tracking','Client analytics','Leaderboards','Dormant account detection','Sub-affiliate insights','Network intelligence'];
 const CK='<span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>';
 const XX='<span class="xx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>';
 const ROWS=[['Vantage',2,'vantage.webp'],['PU Prime',2,'puprime.webp'],['VT Markets',2,'vtmarkets.webp'],['StarTrader',2,'startrader-icon.webp'],['RebateTools',7,'rt-mark.webp']];
