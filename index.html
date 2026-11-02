@@ -346,8 +346,8 @@ section.block{padding:clamp(80px,10vw,128px) 0;position:relative}
 .cmp-h h3{font-size:clamp(20px,2.4vw,28px);font-weight:800}
 .cmp-h p{font-size:14px;margin-top:4px}
 .cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative}
-.cmp-t{min-width:760px}
-.ct{display:grid;grid-template-columns:1.3fr repeat(7,1fr);align-items:center;gap:6px;padding:12px 14px;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.025);margin-top:8px}
+.cmp-t{min-width:900px}
+.ct{display:grid;grid-template-columns:1.3fr repeat(8,1fr);align-items:center;gap:6px;padding:12px 14px;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.025);margin-top:8px}
 .ct.hd{background:none;border:0;font-size:12px;font-weight:700;color:var(--fg);text-align:center;line-height:1.3;padding-top:0;padding-bottom:0}
 .ct.hd span:first-child{text-align:left}
 .ct span{text-align:center}
@@ -573,6 +573,32 @@ main,footer{position:relative;z-index:1}
   .sticky{bottom:12px}
   .tree-cap{flex-direction:column;gap:4px}
 }
+
+/* needs-attention card */
+.attn{padding:20px}
+.attn-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.attn-h b{font-size:16px}
+.attn-n{font-size:11.5px;font-weight:700;color:#fca5a5;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);border-radius:999px;padding:3px 10px}
+.attn-r{display:grid;grid-template-columns:10px 1fr auto;gap:12px;align-items:center;padding:13px 4px;border-top:1px solid var(--line-2)}
+.attn-r b{display:block;font-size:14.5px;color:var(--fg)}
+.attn-r small{font-size:13px;color:var(--fg-2)}
+.ad{width:9px;height:9px;border-radius:50%}
+.ad.red{background:#ef4444;box-shadow:0 0 10px rgba(239,68,68,.7)}.ad.amb{background:#f5b301;box-shadow:0 0 10px rgba(245,179,1,.6)}.ad.blu{background:#2a95f0;box-shadow:0 0 10px rgba(42,149,240,.7)}
+.attn-a{font-size:12px;font-weight:600;color:var(--green);border:1px solid rgba(0,209,144,.3);background:rgba(0,209,144,.08);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.attn-f{font-size:11.5px;color:var(--fg-3);border-top:1px solid var(--line-2);padding-top:12px;margin-top:2px}
+.attn .attn-r{opacity:0;transform:translateX(14px);transition:opacity .5s,transform .5s}
+.attn.in .attn-r{opacity:1;transform:none}
+.attn.in .attn-r:nth-of-type(3){transition-delay:.12s}.attn.in .attn-r:nth-of-type(4){transition-delay:.24s}.attn.in .attn-r:nth-of-type(5){transition-delay:.36s}
+/* feature grid */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.015)}
+.ft{display:grid;grid-template-columns:22px 1fr;gap:14px;padding:24px 22px;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.ft:nth-child(3n){border-right:0}.ft:nth-last-child(-n+3){border-bottom:0}
+.ft svg{width:20px;height:20px;color:var(--blue);margin-top:2px}
+.ft h3{font-size:15.5px;margin:0 0 4px}
+.ft p{font-size:14px;margin:0}
+.cmp-sub{max-width:620px;margin:8px auto 0;color:var(--fg-3)}
+@media (max-width:1000px){.fgrid{grid-template-columns:1fr 1fr}.ft{border-right:1px solid var(--line-2)!important;border-bottom:1px solid var(--line-2)!important}.ft:nth-child(2n){border-right:0!important}.ft:last-child{border-bottom:0!important}}
+@media (max-width:700px){.fgrid{grid-template-columns:1fr}.ft{border-right:0!important}.attn-r{grid-template-columns:10px 1fr}.attn-a{grid-column:2;justify-self:start}}
 @media (prefers-reduced-motion:reduce){
   .flow,.ct.us::after{animation:none!important}
   .w>i{transform:none!important;transition:none!important}
@@ -719,15 +745,40 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
   </div>
 </section>
 
+<!-- ===================== EARLY WARNING / NEEDS ATTENTION ===================== -->
+<section class="block">
+  <div class="wrap split">
+    <div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b>03</b>Early warning</div>
+      <h2 class="rv d1" style="margin-top:18px">Know exactly what every client is doing. <span class="grad">And what to do about it.</span></h2>
+      <p class="lede rv d2" style="margin-top:18px">RebateTools reads your broker's IB portal and turns it into decisions: who to call, who to reward, and which partners to back. Every flag is rebate income you can still protect, if you act while there's still time.</p>
+      <ul class="ticks rv d3">
+        <li>Win back clients before they drift to another IB</li>
+        <li>Spot big withdrawals the day they happen, not at month end</li>
+        <li>Turn funded-but-idle accounts into trading, rebate-earning clients</li>
+        <li>Spend your time on the calls that actually move your income</li>
+      </ul>
+    </div>
+    <div class="card glow attn rv d1">
+      <div class="attn-h"><b>Needs attention</b><span class="attn-n">4 new</span></div>
+      <div class="attn-r"><i class="ad red"></i><div><b>D. Moreau</b><small>No trades in 16 days</small></div><span class="attn-a">Call before they move on</span></div>
+      <div class="attn-r"><i class="ad amb"></i><div><b>A. Rahman</b><small>Withdrew $12,400</small></div><span class="attn-a">Find out why, today</span></div>
+      <div class="attn-r"><i class="ad amb"></i><div><b>L. Chen</b><small>Equity below $50</small></div><span class="attn-a">Prompt a top-up</span></div>
+      <div class="attn-r"><i class="ad blu"></i><div><b>K. Osei</b><small>Funded, never traded</small></div><span class="attn-a">Get them trading</span></div>
+      <div class="attn-f">Sample data · flagged automatically from your broker data</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== F1 CLIENT INTELLIGENCE ===================== -->
 <section class="block">
   <div class="wrap split">
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg><b>03</b>Client intelligence</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/></svg><b>04</b>Client intelligence</div>
       <h2 class="rv d1" style="margin-top:18px">Know who's active, at risk <span class="grad">or gone, at a glance.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">Every client in your network in one place, automatically segmented and tagged. See who's hot, who's slipping and who's stopped, so you can act before the income disappears.</p>
       <ul class="ticks rv d3">
-        <li>Live segments: active, inactive, low balance, new and never active</li>
+        <li>Live segments: active, inactive, high drawdown, low balance, new and never active</li>
         <li>Hot, At Risk and Dead tags on every client</li>
         <li>Rebate, balance and last activity side by side</li>
         <li>One tap to WhatsApp a client straight from their row</li>
@@ -743,7 +794,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <section class="block band">
   <div class="wrap split flip">
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg><b>04</b>Automated rebate tracking</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg><b>05</b>Automated rebate tracking</div>
       <h2 class="rv d1" style="margin-top:18px">No more manual spreadsheets. <span class="grad">Ever.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">RebateTools syncs your partner data automatically and calculates rebates as they happen, so you always know exactly what you're earning, and who it's coming from.</p>
       <ul class="ticks rv d3">
@@ -766,9 +817,9 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <section class="block">
   <div class="wrap">
     <div class="sec-head">
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg><b>05</b>Leaderboards</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg><b>06</b>Leaderboards</div>
       <h2 class="rv d1">See your most valuable clients. <span class="grad">Instantly.</span></h2>
-      <p class="lede rv d2">Rank every client by lifetime rebate, this month, who's active right now or whose balance is running low. Spot your biggest accounts and focus your time where it pays.</p>
+      <p class="lede rv d2">Rank every client by rebate, lots traded or deposits, this month or all time, who's active right now or whose balance is running low. Spot your biggest accounts and focus your time where it pays.</p>
     </div>
     <div class="lb-pair">
       <div class="card glow lb rv" id="lb">
@@ -810,7 +861,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
       <div class="tree-cap"><span>Network rebates · this month</span><span>Top producer: <b id="topProd">Sub-IB Alpha</b></span></div>
     </div>
     <div>
-      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg><b>06</b>Sub-IB management</div>
+      <div class="tag rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-6 5M12 11.5l6 5"/></svg><b>07</b>Sub-IB management</div>
       <h2 class="rv d1" style="margin-top:18px">Full control over your <span class="grad">sub-affiliate data.</span></h2>
       <p class="lede rv d2" style="margin-top:18px">Track performance across every sub-IB in your network. See where your volume is really coming from, and which partners are actually growing your business.</p>
       <ul class="ticks rv d3">
@@ -820,6 +871,18 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
         <li>Your entire affiliate structure in one clear view</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- ===================== EVERYTHING INCLUDED ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="tag rv"><b>08</b>Everything included</div>
+      <h2 class="rv d1">Your broker portal tells you what happened. <span class="grad">RebateTools tells you what to do next.</span></h2>
+      <p class="lede rv d2">Built for IBs who want answers, not another export to clean up.</p>
+    </div>
+    <div class="fgrid rv"><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg><div><h3>Telegram summaries</h3><p>Daily, weekly and monthly numbers sent straight to Telegram.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg><div><h3>Excel exports</h3><p>Download any report to Excel for your own records.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><h3>Rebate calendar</h3><p>Every day's rebate on a calendar, so patterns jump out.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5"/><circle cx="17" cy="15" r="3"/><path d="M17 11v1M17 18v1M13.5 15h-1M21.5 15h-1"/></svg><div><h3>Multiple IB accounts</h3><p>Every IB login together under one dashboard.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 3 13l4-4"/><path d="M3 13h13"/><path d="M17 7l4 4-4 4"/><path d="M21 11H8"/></svg><div><h3>Money flow</h3><p>Deposits, withdrawals and net funding per client, so you follow the money.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg><div><h3>Client segments</h3><p>Active, dormant, high drawdown and new, kept up to date for you.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/></svg><div><h3>Leaderboards</h3><p>Rank clients by rebate, lots or deposits and know your best traders.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg><div><h3>Sync history</h3><p>Every sync logged, so you always know how fresh your data is.</p></div></div><div class="ft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><h3>Encrypted login</h3><p>Your broker portal login is stored encrypted and only used to sync your own data.</p></div></div></div>
   </div>
 </section>
 
@@ -837,7 +900,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <section class="block">
   <div class="wrap">
     <div class="card cmp rv" id="cmp">
-      <div class="cmp-h"><h3>Partner dashboards vs <span class="grad">RebateTools</span></h3><p>Most partner dashboards show data. RebateTools shows intelligence.</p></div>
+      <div class="cmp-h"><h3>Partner dashboards vs <span class="grad">RebateTools</span></h3><p>Most partner dashboards show data. RebateTools shows intelligence.</p><p class="cmp-sub">Your portal is a ledger. RebateTools sits on top of it and does the analysis you'd otherwise do by hand in a spreadsheet.</p></div>
       <div class="cmp-scroll"><div class="cmp-t" id="cmpT"></div></div>
     </div>
     <p class="rv" style="font-size:12px;color:var(--fg-3);margin-top:12px;text-align:center">Based on the standard partner dashboards each platform provides. Broker names are trademarks of their respective owners.</p>
@@ -870,11 +933,11 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <section class="block" style="padding-top:20px">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv"><b>07</b>How it works</div>
+      <div class="tag rv"><b>09</b>How it works</div>
       <h2 class="rv d1">Set up once. <span class="grad">It runs itself.</span></h2>
     </div>
     <div class="steps3">
-      <div class="card step rv"><div class="no">01</div><h3>Connect your accounts</h3><p>Message us and we'll link RebateTools to the partner accounts you already use.</p><div class="bar"><i></i></div></div>
+      <div class="card step rv"><div class="no">01</div><h3>Connect your IB login</h3><p>Add your broker portal login once. It's stored encrypted and only used to sync your own data.</p><div class="bar"><i></i></div></div>
       <div class="card step rv d1"><div class="no">02</div><h3>We sync and calculate</h3><p>Clients, activity and rebates pull in automatically and stay up to date on their own.</p><div class="bar"><i></i></div></div>
       <div class="card step rv d2"><div class="no">03</div><h3>You see everything</h3><p>Log in to your dashboard and see every client, sub-IB and rebate dollar in one place.</p><div class="bar"><i></i></div></div>
     </div>
@@ -885,13 +948,15 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <section class="block band">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="tag rv"><b>08</b>FAQ</div>
+      <div class="tag rv"><b>10</b>FAQ</div>
       <h2 class="rv d1">Questions IBs <span class="grad">usually ask.</span></h2>
     </div>
     <div class="faq rv">
       <details><summary>Which platforms does RebateTools work with?<span class="pm">+</span></summary><div class="ans">RebateTools currently syncs with Vantage, PU Prime, VT Markets and StarTrader partner accounts. Working with a different platform? Message us and ask, as more integrations are on the way.</div></details>
       <details><summary>Do I need to export or upload anything?<span class="pm">+</span></summary><div class="ans">No. Once your partner accounts are connected, your clients, activity and rebates sync automatically. No spreadsheets, no manual uploads.</div></details>
       <details><summary>Can I track my sub-IBs?<span class="pm">+</span></summary><div class="ans">Yes. You can see every sub-affiliate in your network, the clients and rebates they generate, and which ones are growing or going quiet.</div></details>
+      <details><summary>Is my broker login safe?<span class="pm">+</span></summary><div class="ans">Yes. You add your broker portal login once, it's stored encrypted, and it's only ever used to sync your own data into your dashboard.</div></details>
+      <details><summary>Do my clients see any of this?<span class="pm">+</span></summary><div class="ans">No. RebateTools is private to you and anyone you choose to give access to. Your clients never see your dashboard, your alerts or your rebate data.</div></details>
       <details><summary>Who can see my data?<span class="pm">+</span></summary><div class="ans">Your dashboard sits behind a secure login and only you, plus anyone you choose to give access, can see your network's data.</div></details>
       <!-- EDIT: add pricing if you want it on the page -->
       <details><summary>How much does it cost?<span class="pm">+</span></summary><div class="ans">Pricing depends on the size of your network. Message us on WhatsApp and we'll walk you through the options.</div></details>
@@ -1153,10 +1218,10 @@ addEventListener('resize',()=>{if(tree.classList.contains('in'))drawLinks()});
 io.observe(tree);
 
 /* ---- Comparison table ---- */
-const COLS=['Basic client list','Volume tracking','Client analytics','Leaderboards','Dormant account detection','Sub-affiliate insights','Network intelligence'];
+const COLS=['Client list','Lot &amp; rebate totals','Per-trader analytics &amp; history','Leaderboards by rebate, lots or deposits','Dormant &amp; at-risk detection','Deposit &amp; withdrawal trends','Sub-IB performance by tier','Daily, weekly &amp; monthly summaries'];
 const CK='<span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>';
 const XX='<span class="xx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>';
-const ROWS=[['Vantage',2,'vantage.webp'],['PU Prime',2,'puprime.webp'],['VT Markets',2,'vtmarkets.webp'],['StarTrader',2,'startrader-icon.webp'],['RebateTools',7,'rt-mark.webp']];
+const ROWS=[['Vantage',2,'vantage.webp'],['PU Prime',2,'puprime.webp'],['VT Markets',2,'vtmarkets.webp'],['StarTrader',2,'startrader-icon.webp'],['RebateTools',8,'rt-mark.webp']];
 const cmpT=$('#cmpT');let k=0;
 cmpT.innerHTML=`<div class="ct hd"><span>Platform</span>${COLS.map(c=>`<span>${c}</span>`).join('')}</div>`+ROWS.map((r,i)=>`<div class="ct${i===4?' us':''}"><span class="pf"><img src="assets/${r[2]}" alt="">${r[0]}</span>${COLS.map((_,j)=>{const h=j<r[1]?CK:XX;return h.replace('class="','style="transition-delay:'+(.2+(k++)*.025)+'s" class="')}).join('')}</div>`).join('');
 io.observe($('#cmp'));
