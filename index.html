@@ -10,6 +10,7 @@
 <meta property="og:description" content="Live client oversight, automated rebate tracking and sub-affiliate analytics for IB networks.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,8 +26,8 @@
   --fg-2:#b6bfd3;
   --fg-3:#7e889e;
   --blue:#5ba5ff;
-  --indigo:#636af2;
-  --grad:linear-gradient(92deg,#5ba5ff 0%,#636af2 100%);
+  --indigo:#00cdb4;
+  --grad:linear-gradient(92deg,#2a95f0 0%,#00cdb4 100%);
   --green:#00d190;
   --orange:#f5a524;
   --red:#ff6b6b;
@@ -59,7 +60,7 @@ p{margin:0;color:var(--fg-2)}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:-.005em;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.25),0 8px 24px -8px rgba(99,106,242,.65),inset 0 1px 0 rgba(255,255,255,.22)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 1px 1px rgba(0,0,0,.25),0 8px 24px -8px rgba(42,149,240,.65),inset 0 1px 0 rgba(255,255,255,.22)}
 .btn>span:last-child{display:inline-block;transition:transform .25s var(--ease)}
 .btn:hover>span:last-child{transform:translateX(3px)}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 1px rgba(0,0,0,.25),0 14px 36px -10px rgba(91,165,255,.75),inset 0 1px 0 rgba(255,255,255,.22)}
@@ -70,7 +71,7 @@ p{margin:0;color:var(--fg-2)}
 /* Card */
 .card{background:linear-gradient(180deg,rgba(19,27,48,.88),rgba(11,17,32,.94));border:1px solid rgba(140,160,220,.13);border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 60px -30px rgba(0,0,0,.55),0 12px 24px -16px rgba(0,0,0,.45);position:relative;transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
 .card:hover{border-color:rgba(91,165,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 50px 100px -30px rgba(0,0,0,.7),0 0 0 1px rgba(91,165,255,.06)}
-.card.glow::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(91,165,255,.55),transparent 35%,transparent 65%,rgba(99,106,242,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card.glow::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(91,165,255,.55),transparent 35%,transparent 65%,rgba(42,149,240,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
 /* Top bar */
 .top{position:absolute;top:0;left:0;right:0;z-index:30}
@@ -78,6 +79,9 @@ p{margin:0;color:var(--fg-2)}
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:-.02em}
 .brand .rt{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:-.02em;color:#fff;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.35);box-shadow:0 0 20px -6px rgba(0,209,144,.5)}
 .brand b{font-weight:800}
+.brand .logo{height:26px;width:auto;display:block}
+.brand .logo.sm{height:22px}
+@media(max-width:520px){.brand .logo{height:21px}}
 .brand .mark{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,209,144,.35))}
 footer .brand .mark{width:30px;height:30px}
 .brand .t2{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -93,7 +97,7 @@ footer .brand .mark{width:30px;height:30px}
 .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
 #globe{position:absolute;left:50%;top:20px;width:min(1150px,150vw);height:min(1150px,150vw);transform:translateX(-50%);opacity:.9}
 .hero-bg .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 65% 55% at 50% 30%,#000 25%,transparent 75%);opacity:.55}
-.hero-bg .halo{position:absolute;left:50%;top:-120px;width:1000px;height:640px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(99,106,242,.28),rgba(91,165,255,.08) 55%,transparent);filter:blur(10px)}
+.hero-bg .halo{position:absolute;left:50%;top:-120px;width:1000px;height:640px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(42,149,240,.28),rgba(91,165,255,.08) 55%,transparent);filter:blur(10px)}
 .hero-head{text-align:center;max-width:900px;margin:0 auto}
 .hero-head .tag{margin-bottom:24px}
 .hero-head h1 .grad{display:block;padding-bottom:.06em}
@@ -105,7 +109,7 @@ footer .brand .mark{width:30px;height:30px}
 
 /* Dashboard mock */
 .stage{perspective:1600px;margin:64px auto 0;max-width:1120px}
-.dash{display:grid;grid-template-columns:56px 230px 1fr;border-radius:12px;overflow:hidden;background:#0a0f1d;border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02),0 0 120px -40px rgba(99,106,242,.6);transform-origin:50% 0;transform:rotateX(18deg) scale(.94);will-change:transform;font-size:13px}
+.dash{display:grid;grid-template-columns:56px 230px 1fr;border-radius:12px;overflow:hidden;background:#0a0f1d;border:1px solid var(--line-2);box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02),0 0 120px -40px rgba(42,149,240,.6);transform-origin:50% 0;transform:rotateX(18deg) scale(.94);will-change:transform;font-size:13px}
 .d-rail{background:#0b1121;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0}
 .d-rail .rt{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:12px;font-weight:800;background:linear-gradient(140deg,#16443d,#0b1f24);border:1px solid rgba(0,209,144,.35);margin-bottom:10px}
 .d-rail .rail-mark{width:34px;height:34px;object-fit:contain;margin-bottom:10px}
@@ -172,10 +176,10 @@ footer .brand .mark{width:30px;height:30px}
 @keyframes chipglow{0%,45%,100%{border-color:rgba(140,160,220,.2);box-shadow:none}12%{border-color:#5ba5ff;box-shadow:0 0 20px -4px rgba(91,165,255,.7)}}
 .sync-m .chips img{height:66px;width:auto;border-radius:10px}
 .sync-m .chips img.wide{height:auto;width:82%}
-.sync-m .pipe{height:44px;width:2px;margin:0 auto;background:linear-gradient(180deg,#5ba5ff,#636af2);position:relative;overflow:hidden;opacity:.8}
+.sync-m .pipe{height:44px;width:2px;margin:0 auto;background:linear-gradient(180deg,#5ba5ff,#00cdb4);position:relative;overflow:hidden;opacity:.8}
 .sync-m .pipe::after{content:"";position:absolute;left:0;width:2px;height:14px;top:-14px;background:#fff;animation:drip 1.2s linear infinite}
 @keyframes drip{to{top:100%}}
-.sync-m .hub{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;background:#101a35;border:1px solid #5ba5ff;box-shadow:0 0 30px -6px rgba(99,106,242,.7);font-weight:800}
+.sync-m .hub{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;background:#101a35;border:1px solid #5ba5ff;box-shadow:0 0 30px -6px rgba(42,149,240,.7);font-weight:800}
 .flow{stroke-dasharray:6 10;animation:flow 1.6s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-32}}
 
@@ -396,8 +400,8 @@ section.block{padding:clamp(80px,10vw,128px) 0;position:relative}
 /* Final CTA */
 .final{text-align:center;padding:clamp(100px,13vw,160px) 0;position:relative;overflow:hidden}
 #globe2{position:absolute;left:50%;top:50%;width:min(900px,130vw);height:min(900px,130vw);transform:translate(-50%,-38%);opacity:.45;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
-.final .halo{position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(99,106,242,.25),transparent);pointer-events:none}
-.final-logo{width:min(340px,70vw);height:auto;margin:0 auto 34px;position:relative;filter:drop-shadow(0 10px 40px rgba(0,209,144,.25))}
+.final .halo{position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(42,149,240,.25),transparent);pointer-events:none}
+.final-logo{width:min(420px,78vw);height:auto;margin:0 auto 34px;position:relative;filter:drop-shadow(0 10px 40px rgba(0,209,144,.25))}
 .final h2{font-size:clamp(36px,5.6vw,68px);position:relative}
 .final p{max-width:520px;margin:20px auto 34px;position:relative}
 .final .hero-cta{position:relative}
@@ -505,7 +509,7 @@ footer nav a:hover{color:var(--fg)}
 /* Sticky mobile CTA */
 .sticky{position:fixed;left:50%;bottom:18px;z-index:50;width:min(420px,calc(100% - 24px));transform:translate(-50%,160%);transition:transform .4s var(--ease)}
 .sticky.show{transform:translate(-50%,0)}
-.sticky a{display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 8px 0 22px;border-radius:999px;background:var(--grad);color:#fff;font-weight:700;box-shadow:0 14px 40px -10px rgba(99,106,242,.8)}
+.sticky a{display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 8px 0 22px;border-radius:999px;background:var(--grad);color:#fff;font-weight:700;box-shadow:0 14px 40px -10px rgba(42,149,240,.8)}
 .sticky a span:last-child{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:18px}
 .sticky svg{width:20px;height:20px}
 
@@ -592,7 +596,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 <!-- ===================== TOP BAR ===================== -->
 <header class="top">
   <div class="wrap">
-    <a href="#top" class="brand" aria-label="RebateTools"><img class="mark" src="assets/rt-mark.webp" alt="" width="38" height="38"><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
+    <a href="#top" class="brand" aria-label="RebateTools"><img class="logo" src="assets/rt-logo.webp" alt="RebateTools" width="1250" height="151"></a>
     <div class="top-right">
       <div class="sync-chip"><i class="dot"></i><b>Network sync live</b>· 4 partner platforms</div>
       <a class="btn btn-primary login" href="#get-started" data-wa>Login</a>
@@ -657,7 +661,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
     <div class="sync-svg rv d1">
       <svg viewBox="0 0 880 270" aria-label="Vantage, PU Prime, VT Markets and StarTrader syncing into RebateTools">
         <defs>
-          <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#636af2"/></linearGradient>
+          <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ba5ff"/><stop offset="1" stop-color="#00cdb4"/></linearGradient>
           <filter id="gl"><feGaussianBlur stdDeviation="6"/></filter>
           <filter id="dg" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
@@ -900,7 +904,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
   <div class="halo" aria-hidden="true"></div>
   <canvas id="globe2" aria-hidden="true"></canvas>
   <div class="wrap">
-    <img class="final-logo rv" src="assets/rt-logo.webp" alt="RebateTools" width="900" height="294">
+    <img class="final-logo rv" src="assets/rt-logo.webp" alt="RebateTools" width="1250" height="151">
     <div class="tag rv" style="margin-bottom:22px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8z"/></svg>Ready to start?</div>
     <h2 class="rv d1">Stop guessing. <span class="grad">Start calculating.</span></h2>
     <p class="lede rv d2">Take active control of your network. See every client, every partner and every rebate, live, in one place.</p>
@@ -913,7 +917,7 @@ if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=functi
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="brand" style="font-size:16px"><img class="mark" src="assets/rt-mark.webp" alt="" width="30" height="30"><span class="wm"><b>Rebate</b><span class="t2">Tools</span></span></a>
+    <a href="#top" class="brand" aria-label="RebateTools"><img class="logo sm" src="assets/rt-logo.webp" alt="RebateTools" width="1250" height="151"></a>
     <nav><a href="#features">Features</a><a href="#get-started" data-wa>Login</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav>
     <span>© 2026 RebateTools</span>
   </div>
