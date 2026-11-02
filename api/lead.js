@@ -7,46 +7,21 @@
 //   - opportunity in "RebateTools – Sales": Partial Lead → New Lead (never moved backwards)
 //   - optional: sends PartialLead / Lead to Meta CAPI (deduplicated with the browser pixel via event_id)
 //
+//   - optional: sends partial_lead / lead to Whop Ads (Events API), deduplicated with the Whop pixel
+//
 // Required Vercel environment variables (Project → Settings → Environment Variables):
 //   GHL_TOKEN        Private Integration Token from the Core Capital sub-account (starts with "pit-")
 //                    Scopes: contacts.readonly, contacts.write, opportunities.readonly, opportunities.write
 // Optional:
 //   GHL_LOCATION_ID  defaults to Core Capital
+//   WHOP_ACCOUNT_ID  Whop account ID (biz_…)  — same value as window.WHOP_ACCOUNT_ID in index.html
+//   WHOP_API_KEY     Whop Account API key with the event:create permission
 //   META_PIXEL_ID    Meta pixel / dataset ID
 //   META_CAPI_TOKEN  Conversions API access token
 //   ALLOWED_ORIGINS  comma-separated extra origins allowed to post (e.g. a preview URL)
 
 const crypto = require('crypto');
-
-const API = 'https://services.leadconnectorhq.com';
-const VERSION = '2021-07-28';
-const LOCATION_ID = process.env.GHL_LOCATION_ID || '2zRWujfV6pZbfyQdRvfr';
-
-const PIPELINE_ID = 'YmfAjD6vPfP60m3QoIKU'; // RebateTools – Sales
-const STAGE = {
-  partial: '958b28a1-995c-418a-ac49-b5b46713eb93', // Partial Lead
-  newLead: 'e36ec003-928b-4418-bd04-411e0fef89db', // New Lead
-};
-
-const CF = {
-  platforms: 'msIcTl4HQT4GNB5X7TRl',
-  now: 'VxWXiiKIHlAfEXtbQ4x9',
-  goal: 'tk5pOHOAgMfXcKymuwUB',
-  step: 'D1ZjIw0yk9fX3juhS3ou',
-  utm_source: '4oaeE1dDfl2C9egBzFrp',
-  utm_medium: 'qA0xQHTytmIxdqZP2Zt6',
-  utm_campaign: 'WX9DVV7zBAX0J2KZgP4u',
-  utm_content: 'H60GVJxkNUzn5LWG1mGK',
-  fbclid: 'PiYes2mtTQZsyvuyVpB3',
-  fbc: '6hCnmpQ87ls3NbdGv7lR',
-  fbp: 'QE5SzvKtGlTtj3Pw1Mbx',
-  eventId: 'jSf7bUaGpSpc2YqacmdN',
-  ua: 'a0HR0GsQHBf2i3nBaVaT',
-  page: 'KYju9s4Gp94DpWcTPWDe',
-  completedAt: 'zoHJmc4Sh9v41wbnwj9B',
-};
-
-const TAGS = { base: 'rebatetools lead', partial: 'rt partial', complete: 'rt complete' };
+const { LOCATION_ID, PIPELINE_ID, STAGE, CF, TAGS, clean, ghl, urlParam, sendWhop } = require('./_lib');
 
 const ALLOWED = [
   'https://rebatetools.co.uk', 'https://www.rebatetools.co.uk',
@@ -56,8 +31,6 @@ const ALLOWED = [
 const originOk = o => !o || ALLOWED.includes(o) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/.test(o) || /^http:\/\/localhost(:\d+)?$/.test(o);
 
 // ---------- helpers ----------
-const clean = (v, max = 200) => (v == null ? '' : String(v).replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max));
-
 function ukE164(raw) {
   let d = String(raw || '').replace(/[^\d+]/g, '');
   if (d.startsWith('+44')) d = d.slice(3);
@@ -67,23 +40,6 @@ function ukE164(raw) {
   if (d.startsWith('0')) d = d.slice(1);
   if (!/^7\d{9}$/.test(d) && !/^[1-9]\d{8,9}$/.test(d)) return null;
   return '+44' + d;
-}
-
-async function ghl(method, path, body, version = VERSION) {
-  const r = await fetch(API + path, {
-    method,
-    headers: {
-      Authorization: 'Bearer ' + process.env.GHL_TOKEN,
-      Version: version,
-      Accept: 'application/json',
-      ...(body ? { 'Content-Type': 'application/json' } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const text = await r.text();
-  let data; try { data = text ? JSON.parse(text) : {}; } catch { data = { raw: text }; }
-  if (!r.ok) { const e = new Error(`GHL ${method} ${path} → ${r.status}`); e.detail = data; throw e; }
-  return data;
 }
 
 const sha = v => (v ? crypto.createHash('sha256').update(String(v).trim().toLowerCase()).digest('hex') : undefined);
@@ -158,7 +114,12 @@ module.exports = async (req, res) => {
     eventId: clean(b.eventId, 80), partialEventId: clean(b.partialEventId, 80),
     ua: clean(b.ua || req.headers['user-agent'], 400), page: clean(b.page, 500),
     contactId: clean(b.contactId, 40),
+    landing: clean(b.landing, 1000), wuid: clean(b.wuid, 120),
+    wacid: clean(b.wacid, 80), wasid: clean(b.wasid, 80), waid: clean(b.waid, 80),
+    ip: clean((req.headers['x-forwarded-for'] || '').split(',')[0], 64),
   };
+  if (!d.wacid) d.wacid = clean(urlParam(d.landing, 'wacid'), 80);
+  if (!d.waid) d.waid = clean(urlParam(d.landing, 'waid'), 80);
 
   // Only send fields that have values, so a later partial update never blanks earlier answers.
   const cf = [];
@@ -167,6 +128,7 @@ module.exports = async (req, res) => {
   put(CF.step, d.step);
   put(CF.utm_source, d.utm_source); put(CF.utm_medium, d.utm_medium); put(CF.utm_campaign, d.utm_campaign); put(CF.utm_content, d.utm_content);
   put(CF.fbclid, d.fbclid); put(CF.fbc, d.fbc); put(CF.fbp, d.fbp); put(CF.ua, d.ua); put(CF.page, d.page);
+  put(CF.landing, d.landing); put(CF.wuid, d.wuid); put(CF.ip, d.ip); put(CF.wacid, d.wacid); put(CF.waid, d.waid);
   if (complete) { put(CF.eventId, d.eventId); put(CF.completedAt, new Date().toISOString()); }
 
   const contactBody = { phone, country: 'GB', customFields: cf };
@@ -217,9 +179,15 @@ module.exports = async (req, res) => {
       await ghl('POST', '/opportunities/upsert', upd);
     }
 
-    // 5. Meta Conversions API (optional)
-    if (complete) await sendCapi('Lead', d, req);
-    else if (b.firstCapture) await sendCapi('PartialLead', d, req);
+    // 5. Conversions: Whop Ads (Events API) + Meta CAPI. Both optional, both deduplicated with the browser via event_id.
+    const whopEvt = name => sendWhop({
+      name, id: name === 'lead' ? d.eventId : d.partialEventId, source: 'website', url: d.landing || d.page,
+      user: { anonymous_id: d.wuid, email: d.email, phone, first_name: d.first, last_name: d.last, external_id: contactId },
+      context: { ip_address: d.ip, user_agent: d.ua, fbclid: d.fbclid, fbc: d.fbc, fbp: d.fbp,
+        utm_source: d.utm_source, utm_medium: d.utm_medium, utm_campaign: d.utm_campaign, utm_content: d.utm_content },
+    });
+    if (complete) await Promise.all([sendCapi('Lead', d, req), whopEvt('lead')]);
+    else if (b.firstCapture) await Promise.all([sendCapi('PartialLead', d, req), whopEvt('partial_lead')]);
 
     return res.status(200).json({ ok: true, contactId, isNew });
   } catch (e) {

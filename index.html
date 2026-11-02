@@ -607,6 +607,13 @@ main,footer{position:relative;z-index:1}
   html{scroll-behavior:auto}
 }
 </style>
+<!-- ===== Whop Pixel (Whop Ads) =====
+     EDIT: paste your Whop account ID (starts with biz_, from your Whop dashboard URL). Leave empty to disable.
+     Use the same ID as WHOP_ACCOUNT_ID in Vercel so browser + server events de-duplicate. -->
+<script>
+window.WHOP_ACCOUNT_ID='';
+if(window.WHOP_ACCOUNT_ID){!function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");whop.setScope(window.WHOP_ACCOUNT_ID);whop.track("page");}
+</script>
 <!-- ===== Meta Pixel =====
      EDIT: paste your pixel ID below. Leave empty to disable. Use the same ID as META_PIXEL_ID in Vercel
      so browser + server events de-duplicate. -->
@@ -1246,16 +1253,19 @@ const uid=()=>(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Mat
 const store=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(_){return null}};
 const cookie=n=>{const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):''};
 // first-touch attribution, kept across visits
-(()=>{const q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(k=>{const v=q.get(k);if(v&&!store('rt_'+k))store('rt_'+k,v)});
+(()=>{const q=new URLSearchParams(location.search);['utm_source','utm_medium','utm_campaign','utm_content','fbclid','wacid','wasid','waid'].forEach(k=>{const v=q.get(k);if(v&&!store('rt_'+k))store('rt_'+k,v)});
+  if(location.search&&!store('rt_landing'))store('rt_landing',location.href.split('#')[0]);
   const fb=q.get('fbclid');if(fb)store('rt_fbc_built','fb.1.'+Date.now()+'.'+fb)})();
 const LEAD={q:Promise.resolve(),contactId:store('rt_contact')||'',partialEventId:'pl_'+uid(),eventId:'ld_'+uid(),captured:false,maxStep:1,pending:null};
 const payload=stage=>({stage,step:LEAD.maxStep,contactId:LEAD.contactId,phone:ukE164(val('phone')),first:val('first'),last:val('last'),email:val('email'),
   platforms:val('platforms'),now:val('now'),goal:val('goal'),company_website:val('company_website'),
   utm_source:store('rt_utm_source')||'',utm_medium:store('rt_utm_medium')||'',utm_campaign:store('rt_utm_campaign')||'',utm_content:store('rt_utm_content')||'',
   fbclid:store('rt_fbclid')||'',fbc:cookie('_fbc')||store('rt_fbc_built')||'',fbp:cookie('_fbp'),ua:navigator.userAgent,page:location.href.split('#')[0],
+  landing:store('rt_landing')||location.href.split('#')[0],wacid:store('rt_wacid')||'',wasid:store('rt_wasid')||'',waid:store('rt_waid')||'',wuid:cookie('_wuid')||store('_wuid')||'',
   eventId:LEAD.eventId,partialEventId:LEAD.partialEventId,firstCapture:!LEAD.captured});
 const sendLead=(stage,beacon)=>{if(!phoneOk())return Promise.resolve();const body=JSON.stringify(payload(stage));
-  if(stage==='partial'&&!LEAD.captured){LEAD.captured=true;try{window.fbq&&fbq('trackCustom','PartialLead',{},{eventID:LEAD.partialEventId})}catch(_){}}
+  if(stage==='partial'&&!LEAD.captured){LEAD.captured=true;try{window.fbq&&fbq('trackCustom','PartialLead',{},{eventID:LEAD.partialEventId})}catch(_){}
+    try{window.whop&&window.WHOP_ACCOUNT_ID&&whop.track('partial_lead',{event_id:LEAD.partialEventId,phone:ukE164(val('phone')),country:'GB'})}catch(_){}}
   if(beacon&&navigator.sendBeacon){navigator.sendBeacon(LEAD_API,new Blob([body],{type:'application/json'}));return Promise.resolve()}
   // requests run one at a time so a fast Continue can't race the first capture
   LEAD.q=LEAD.q.then(()=>fetch(LEAD_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...JSON.parse(body),contactId:LEAD.contactId}),keepalive:true}).then(r=>r.json()).then(j=>{if(j&&j.contactId){LEAD.contactId=j.contactId;store('rt_contact',j.contactId)}}).catch(()=>{}));return LEAD.q};
@@ -1285,13 +1295,14 @@ const waText=d=>`Hi, I've just applied for RebateTools.\n\nName: ${d.name}\nPlat
 const finish=()=>{
   const d={name:(val('first')+' '+val('last')).trim(),first:val('first'),last:val('last'),phone:ukE164(val('phone')),country:'GB',email:val('email'),platforms:val('platforms'),now:val('now'),goal:val('goal'),
     };
-  if(!submitted){LEAD.maxStep=5;sendLead('complete');try{window.fbq&&fbq('track','Lead',{content_name:'RebateTools application'},{eventID:LEAD.eventId})}catch(_){}}
+  if(!submitted){LEAD.maxStep=5;sendLead('complete');try{window.fbq&&fbq('track','Lead',{content_name:'RebateTools application'},{eventID:LEAD.eventId})}catch(_){}
+    try{window.whop&&window.WHOP_ACCOUNT_ID&&whop.track('lead',{event_id:LEAD.eventId,email:val('email'),phone:ukE164(val('phone')),first_name:val('first'),last_name:val('last'),country:'GB'})}catch(_){}}
   submitted=true;
   $('#apDoneT').textContent=`You're all set, ${d.first}.`;
   const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   $('#apSumm').innerHTML=[['Platforms',d.platforms.join(', ')],['Monthly rebates now',d.now],['12-month goal',d.goal]].map(r=>`<div><span class="k">${r[0]}</span><span>${esc(r[1])}</span></div>`).join('');
   const wa=$('#apWa');wa.href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waText(d));
-  wa.onclick=()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}};
+  wa.onclick=()=>{try{window.fbq&&fbq('track','Contact',{method:'whatsapp'})}catch(_){}try{window.whop&&window.WHOP_ACCOUNT_ID&&whop.track('contact',{event_id:'ct_'+LEAD.eventId})}catch(_){}};
   show(4)};
 nextB.addEventListener('click',()=>{if(!check(st))return;LEAD.maxStep=Math.max(LEAD.maxStep,st+2);if(st===LAST)finish();else{LEAD.dirty=false;sendLead('partial');show(st+1)}});
 backB.addEventListener('click',()=>{errEl.textContent='';show(Math.max(0,st-1),-1)});
