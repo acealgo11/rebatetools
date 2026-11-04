@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/book", "destination": "https://api.leadconnectorhq.com/widget/bookings/rebate-tools", "permanent": false }
+  ]
+}
