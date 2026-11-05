@@ -176,7 +176,8 @@ module.exports = async (req, res) => {
       });
       oppId = r.opportunity && r.opportunity.id;
     } else {
-      const upd = { locationId: LOCATION_ID, id: opp.id, pipelineId: PIPELINE_ID, contactId, name: `${name} – RebateTools` };
+      const upd = { locationId: LOCATION_ID, id: opp.id, pipelineId: PIPELINE_ID, contactId };
+      if (d.first || d.last) upd.name = `${name} – RebateTools`; // never overwrite a real name with the phone number
       if (complete && opp.pipelineStageId === STAGE.partial) upd.pipelineStageId = STAGE.newLead;
       await ghl('POST', '/opportunities/upsert', upd);
     }
@@ -198,15 +199,16 @@ module.exports = async (req, res) => {
 
       // 4c. One "RebateTools application" note (shows in the deal's Notes), updated in place on each submission
       try {
-        const vals = Object.fromEntries((await ghl('GET', `/opportunities/${oppId}`)).opportunity.customFields
-          .map(f => [f.id, f.fieldValue == null ? '' : String(f.fieldValue)]));
+        const o = (await ghl('GET', `/opportunities/${oppId}`)).opportunity || {};
+        const vals = Object.fromEntries((o.customFields || []).map(f => [f.id, f.fieldValue == null ? '' : String(f.fieldValue)]));
+        const who = (o.contact && o.contact.name) || name, mail = d.email || (o.contact && o.contact.email) || '';
         const v = k => vals[OCF[k]] || '—';
         const HEAD = 'RebateTools application';
         const noteBody = [
           `${HEAD} (${v('status')})`,
-          `Name: ${name}`,
+          `Name: ${who}`,
           `Phone: ${phone}`,
-          d.email ? `Email: ${d.email}` : null,
+          mail ? `Email: ${mail}` : null,
           `Platforms: ${v('platforms')}`,
           `Monthly rebates now: ${v('now')}`,
           `12-month goal: ${v('goal')}`,
