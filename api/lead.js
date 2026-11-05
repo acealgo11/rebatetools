@@ -195,6 +195,30 @@ module.exports = async (req, res) => {
       oput(OCF.landing, d.landing);
       try { await ghl('PUT', `/opportunities/${oppId}`, { customFields: ocf }); }
       catch (e) { console.error('opp fields error', e.message, JSON.stringify(e.detail || {}).slice(0, 400)); }
+
+      // 4c. One "RebateTools application" note (shows in the deal's Notes), updated in place on each submission
+      try {
+        const vals = Object.fromEntries((await ghl('GET', `/opportunities/${oppId}`)).opportunity.customFields
+          .map(f => [f.id, f.fieldValue == null ? '' : String(f.fieldValue)]));
+        const v = k => vals[OCF[k]] || '—';
+        const HEAD = 'RebateTools application';
+        const noteBody = [
+          `${HEAD} (${v('status')})`,
+          `Name: ${name}`,
+          `Phone: ${phone}`,
+          d.email ? `Email: ${d.email}` : null,
+          `Platforms: ${v('platforms')}`,
+          `Monthly rebates now: ${v('now')}`,
+          `12-month goal: ${v('goal')}`,
+          `Source: ${v('source')} · Campaign: ${v('campaign')} · Ad: ${v('ad')}`,
+          `Landing page: ${v('landing')}`,
+          `Updated: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })} UK`,
+        ].filter(Boolean).join('\n');
+        const notes = (await ghl('GET', `/contacts/${contactId}/notes`)).notes || [];
+        const mine = notes.find(n => String(n.body || '').startsWith(HEAD));
+        if (mine) await ghl('PUT', `/contacts/${contactId}/notes/${mine.id}`, { body: noteBody });
+        else await ghl('POST', `/contacts/${contactId}/notes`, { body: noteBody });
+      } catch (e) { console.error('note error', e.message, JSON.stringify(e.detail || {}).slice(0, 400)); }
     }
 
     // 5. Conversions: Whop Ads (Events API) + Meta CAPI. Both optional, both deduplicated with the browser via event_id.
