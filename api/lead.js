@@ -21,7 +21,7 @@
 //   ALLOWED_ORIGINS  comma-separated extra origins allowed to post (e.g. a preview URL)
 
 const crypto = require('crypto');
-const { LOCATION_ID, PIPELINE_ID, STAGE, CF, TAGS, clean, ghl, urlParam, sendWhop } = require('./_lib');
+const { LOCATION_ID, PIPELINE_ID, STAGE, CF, OCF, TAGS, clean, ghl, urlParam, sendWhop } = require('./_lib');
 
 const ALLOWED = [
   'https://rebatetools.co.uk', 'https://www.rebatetools.co.uk',
@@ -168,15 +168,33 @@ module.exports = async (req, res) => {
 
     // 4. Opportunity (never moved backwards)
     const name = [d.first, d.last].filter(Boolean).join(' ') || phone;
+    let oppId = opp && opp.id;
     if (!opp) {
-      await ghl('POST', '/opportunities/upsert', {
+      const r = await ghl('POST', '/opportunities/upsert', {
         locationId: LOCATION_ID, pipelineId: PIPELINE_ID, contactId,
         pipelineStageId: complete ? STAGE.newLead : STAGE.partial, status: 'open', name: `${name} – RebateTools`,
       });
+      oppId = r.opportunity && r.opportunity.id;
     } else {
       const upd = { locationId: LOCATION_ID, id: opp.id, pipelineId: PIPELINE_ID, contactId, name: `${name} – RebateTools` };
       if (complete && opp.pipelineStageId === STAGE.partial) upd.pipelineStageId = STAGE.newLead;
       await ghl('POST', '/opportunities/upsert', upd);
+    }
+
+    // 4b. Form answers + ad source onto the opportunity (only non-empty values, so nothing is blanked)
+    if (oppId) {
+      const ocf = [];
+      const oput = (id, v) => { if (v !== '' && v != null) ocf.push({ id, fieldValue: String(v) }); };
+      const viaWhop = !!(d.wacid || d.waid || /whop/i.test(d.utm_source));
+      oput(OCF.platforms, d.platforms); oput(OCF.now, d.now); oput(OCF.goal, d.goal);
+      if (complete) oput(OCF.status, 'Complete');
+      else if (!alreadyBeyondPartial) oput(OCF.status, `Partial (step ${d.step})`);
+      if (d.utm_source || viaWhop || d.fbclid || !opp) oput(OCF.source, d.utm_source || (viaWhop ? 'whop' : (d.fbclid ? 'meta' : 'direct')));
+      oput(OCF.campaign, d.utm_campaign || d.wacid);
+      oput(OCF.ad, d.utm_content || d.waid);
+      oput(OCF.landing, d.landing);
+      try { await ghl('PUT', `/opportunities/${oppId}`, { customFields: ocf }); }
+      catch (e) { console.error('opp fields error', e.message, JSON.stringify(e.detail || {}).slice(0, 400)); }
     }
 
     // 5. Conversions: Whop Ads (Events API) + Meta CAPI. Both optional, both deduplicated with the browser via event_id.

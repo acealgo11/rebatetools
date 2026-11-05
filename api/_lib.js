@@ -34,7 +34,19 @@ const CF = {
   waid: 'lzA0N46QZBjSLdtfWEjF',
 };
 
-const TAGS = { base: 'rebatetools lead', partial: 'rt partial', complete: 'rt complete' };
+// GHL opportunity custom fields ("RT …") — form answers + ad source shown on the deal
+const OCF = {
+  platforms: 'chbfi71n2XHoVxXswlMG',
+  now: 'MebVGDAFsZsXVYRJ8gis',
+  goal: 'qDcTASqxZZzALyj9RHjH',
+  status: 'fgJ59pH7mWZYHwXkKosT',
+  source: 'nm42lrOt7WjnvEk6XlUP',
+  campaign: 'uVfxXbOiy1ynkwiDZNrs',
+  ad: 'fqMAW48xBbj8Tir6SQNK',
+  landing: '4WiiNK9Es9O5Uilc0aN2',
+};
+
+const TAGS ={ base: 'rebatetools lead', partial: 'rt partial', complete: 'rt complete' };
 
 const clean = (v, max = 200) => (v == null ? '' : String(v).replace(/[\u0000-\u001f]/g, ' ').trim().slice(0, max));
 
@@ -92,4 +104,4 @@ async function sendWhop(e) {
   }
 }
 
-module.exports = { API, VERSION, LOCATION_ID, PIPELINE_ID, STAGE, CF, TAGS, clean, ghl, urlParam, sendWhop };
+module.exports = { API, VERSION, LOCATION_ID, PIPELINE_ID, STAGE, CF, OCF, TAGS, clean, ghl, urlParam, sendWhop };
