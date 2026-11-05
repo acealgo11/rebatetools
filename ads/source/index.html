@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"></head>
+<body><div id="root"></div>
+<script src="parts.js"></script><script src="ads.js"></script>
+<script>
+const q=new URLSearchParams(location.search);const n=+q.get('ad'),fmt=q.get('fmt')||'sq';
+document.body.className=fmt+(q.get('guide')?' guide':'');
+const a=A[n];const s=document.createElement('section');s.className='ad on '+a.cls;if(a.style)s.setAttribute('style',a.style);
+s.innerHTML=a[fmt=='f45'?'sq':fmt];document.getElementById('root').appendChild(s);
+if(q.get('guide')&&fmt=='vt'){s.insertAdjacentHTML('beforeend','<div style="position:absolute;left:0;right:0;top:0;height:285px;background:rgba(255,0,80,.18);border-bottom:2px dashed #ff0050;z-index:9"></div><div style="position:absolute;left:0;right:0;top:1250px;height:670px;background:rgba(255,0,80,.10);border-top:2px dashed #ff0050;z-index:9"></div><div style="position:absolute;left:0;right:0;top:1635px;border-top:2px dashed #ffb000;z-index:9"></div>')}
+document.fonts.ready.then(()=>{
+ document.querySelectorAll('.h').forEach(el=>{el.style.whiteSpace='nowrap';el.style.display='block';
+  const avail=el.parentElement.clientWidth;const w=el.scrollWidth;if(w>avail){el.style.zoom=(avail/w).toFixed(4)}});
+ if(fmt=='f45'){const c=s.querySelector('.c');const kids=[...c.children].filter(k=>getComputedStyle(k).position!='absolute'&&!k.classList.contains('sp'));let g=null;const groups=[];
+  kids.forEach(k=>{const big=k.offsetHeight>=160||k.classList.contains('top')||k.querySelector('.h')||k.querySelector('.cta');if(!g||big&&!(g.dataset.small)){g=document.createElement('div');groups.push(g);c.insertBefore(g,k)}else if(big){g=document.createElement('div');groups.push(g);c.insertBefore(g,k)}g.appendChild(k);g.dataset.small=big?'':'1'});}
+ if(fmt=='vt'){const c=s.querySelector('.c');const ctaW=[...c.children].find(k=>getComputedStyle(k).position!='absolute'&&k.querySelector('.cta'));let over=ctaW.offsetTop+ctaW.offsetHeight-1340;window.OVER=over;
+  if(over>0){const kids=[...c.children].filter(k=>getComputedStyle(k).position!='absolute'&&!k.querySelector('.cta')&&!k.classList.contains('top')&&!k.querySelector('.h'));
+   const big=kids.sort((a,b)=>b.offsetHeight-a.offsetHeight)[0];const hgt=big.offsetHeight;big.style.zoom=((hgt-over)/hgt*(parseFloat(big.style.zoom)||1)).toFixed(4);window.FIT=big.offsetHeight}}
+ window.READY=1});
+</script></body></html>
