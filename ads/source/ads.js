@@ -5,14 +5,14 @@ const A={};
 // vertical (9:16) headlines: shorter lines, bigger type
 const H=(fs,html,extra='')=>`<div class="h" style="font-size:${fs}px;letter-spacing:-.055em;line-height:.98;${extra}">${html}</div>`;
 const hv={
-3:H(112,'Still tracking<br>rebates in<br><span style="position:relative;display:inline-block"><span class="gt g-brand">spreadsheets?</span><span style="position:absolute;left:-1%;right:7%;top:52%;height:10px;background:#ff6b6b;border-radius:9px;transform:rotate(-1.2deg);opacity:.92"></span></span>','color:var(--ink)'),
-4:H(106,'Your top client went<br>quiet <span class="gt g-orange">12 days ago.</span><br>Did you notice?'),
-5:H(104,'Which sub-IB<br>is actually<br><span class="gt g-teal">making you money?</span>','text-align:center'),
-6:H(124,'Stop guessing.<br><span class="gt g-brand">Start calculating.</span>','color:var(--ink)'),
+3:H(104,'Still running<br>your IB network<br>on <span style="position:relative;display:inline-block"><span class="gt g-brand">spreadsheets?</span><span style="position:absolute;left:-1%;right:7%;top:52%;height:10px;background:#ff6b6b;border-radius:9px;transform:rotate(-1.2deg);opacity:.92"></span></span>','color:var(--ink)'),
+4:H(100,'Your best IB client<br>stopped trading<br><span class="gt g-orange">12 days ago.</span><br>Did you notice?'),
+5:H(98,'You\'re building<br>an IB network, but<br>do you actually know<br><span class="gt g-teal">who drives it?</span>','text-align:center'),
+6:H(124,'<div style="font-size:42px;line-height:1.2;letter-spacing:-.02em;font-weight:700;color:#2a95f0;margin-bottom:26px">Your IB rebates, calculated<br>automatically, across every broker.</div>Stop guessing.<br><span class="gt g-brand">Start calculating.</span>','color:var(--ink)'),
 7:H(116,'Your rebates<br>dropped 31%.<br><span class="gt g-coral">Do you know why?</span>','color:var(--ink)'),
-8:H(90,'<span style="color:#3f4a63">A few clients drive<br>most of your rebates.</span><br><span class="gt g-teal">Do you know<br>which ones?</span>'),
-9:H(136,"Who's trading<br>less than<br><span class=\"gt g-plum\">last week?</span>"),
-10:H(132,"Know who's<br>keeping your<br><span class=\"gt g-gold\">income alive.</span>",'color:var(--ink);text-align:center'),
+8:H(90,'<div style="font-size:38px;line-height:1.2;letter-spacing:-.02em;font-weight:700;color:#00a88f;margin-bottom:24px">For IBs &amp; affiliates with a trading community</div><span style="color:#3f4a63">A few clients drive<br>most of your rebates.</span><br><span class="gt g-teal">Do you know<br>which ones?</span>'),
+9:H(116,"Who in your<br>IB network is<br>trading less than<br><span class=\"gt g-plum\">last week?</span>"),
+10:H(124,"IBs: which<br>traders keep your<br><span class=\"gt g-gold\">income alive?</span>",'color:var(--ink);text-align:center'),
 };
 
 
@@ -110,7 +110,7 @@ const after3=(w=410)=>`<div style="width:${w}px;background:#0b1224;border-radius
  <div class="row" style="gap:8px;margin-top:10px">${['Today','This month','All time'].map((t,i)=>`<span style="font-size:13px;padding:5px 10px;border-radius:7px;border:1px solid ${i==1?'rgba(42,149,240,.6)':'rgba(140,160,220,.2)'};${i==1?'background:rgba(42,149,240,.16)':'color:var(--fg2)'}">${t}</span>`).join('')}</div></div>`;
 const zoomWrap=(h,z)=>`<div style="zoom:${z}">${h}</div>`;
 const tagc=(t,c,bg)=>`<span class="mono" style="font-size:14px;letter-spacing:.16em;color:${c};background:${bg};padding:6px 12px;border-radius:999px">${t}</span>`;
-const hl3=(a,b)=>`<div class="h" style="color:var(--ink)"><div style="font-size:${a}px">Still tracking rebates in</div><div style="position:relative;display:inline-block;font-size:${b}px"><span class="gt g-brand">spreadsheets?</span><span style="position:absolute;left:-1%;right:6%;top:50%;height:${b*.075}px;background:#ff6b6b;border-radius:9px;transform:rotate(-1.2deg);opacity:.92"></span></div></div>`;
+const hl3=(a,b)=>`<div class="h" style="color:var(--ink)"><div style="font-size:${a}px">Still running your<br>IB network on</div><div style="position:relative;display:inline-block;font-size:${b}px"><span class="gt g-brand">spreadsheets?</span><span style="position:absolute;left:-1%;right:6%;top:50%;height:${b*.075}px;background:#ff6b6b;border-radius:9px;transform:rotate(-1.2deg);opacity:.92"></span></div></div>`;
 const checks3=`<div style="font-size:21px;font-weight:600;color:var(--ink);line-height:1.75"><div class="row" style="gap:12px">${ic('check',22,'#00b07a',2.4)}Synced from your partner accounts</div><div class="row" style="gap:12px">${ic('check',22,'#00b07a',2.4)}Every rebate, per client &amp; partner</div></div>`;
 A[3]={cls:'light grid',
 sq:`<div class="c">${topRow(pill('<b>0 spreadsheets</b> · 0 exports'),true)}
@@ -144,7 +144,7 @@ const clients4=(f=1)=>`<div style="position:relative">
  <span style="position:absolute;right:${-14*f}px;top:${-22*f}px;width:${48*f}px;height:${48*f}px;border-radius:50%;background:linear-gradient(135deg,#f5a524,#ff6b6b);display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(255,140,60,.6);z-index:2">${ic('bell',24*f,'#fff',2)}<b style="position:absolute;top:-6px;right:-6px;background:#fff;color:#d0452f;font-size:${12*f}px;width:${22*f}px;height:${22*f}px;border-radius:50%;display:flex;align-items:center;justify-content:center">3</b></span>
  <div style="display:grid;gap:${12*f}px">${client4('ES','Ernest Schuppe','c-risk','AT RISK','12 days ago','$1.76','hi',f)}${client4('LS','Laurence Smith','c-dead','DEAD','9 days ago','$8.49','',f)}${client4('DD','Delilah Davis','c-risk','AT RISK','6 days ago','$1,307','',f)}${client4('KS','Kris Streich','c-hot','HOT','Yesterday','$4,620','done',f)}</div>
  <div class="lab" style="text-align:right;margin-top:12px;font-size:12px">Product preview · sample data</div></div>`;
-const hl4=(fs)=>`<div class="h" style="font-size:${fs}px;letter-spacing:-.055em">Your top client went<br>quiet <span class="gt g-orange">12 days ago.</span><br>Did you notice?</div>`;
+const hl4=(fs)=>`<div class="h" style="font-size:${fs}px;letter-spacing:-.055em">Your best IB client<br>stopped trading<br><span class="gt g-orange">12 days ago.</span><br>Did you notice?</div>`;
 const tags4=`<div class="row" style="gap:16px">${tagc('AT RISK','#f5a524','rgba(245,165,36,.12)').replace('border-radius:999px','border-radius:8px;border:1px solid rgba(245,165,36,.4)')}<span style="color:var(--fg3);font-size:26px">→</span>${tagc('RE-ENGAGED','#00d190','rgba(0,209,144,.1)').replace('border-radius:999px','border-radius:8px;border:1px solid rgba(0,209,144,.4)')}</div>`;
 const sub4=`<div class="sub" style="font-size:24px">By the time most IBs spot it, the client has already moved on. <b>RebateTools flags who's slowing down automatically</b>, so you reach out while there's still a relationship to save.</div>`;
 const cta4=cta('Catch churn before it costs you','background:#fff;color:#0b1020;box-shadow:0 22px 50px -14px rgba(255,107,107,.55)').replace('<i>','<i style="color:#ff6b6b">');
@@ -184,12 +184,12 @@ const tree5=(f=1,h=430)=>{const W=952;return `<div style="position:relative;widt
  <div style="position:absolute;left:162px;width:150px;top:${365*f}px">${leaf5('Affiliate A2','$6,410',f)}</div>
  <div style="position:absolute;left:400px;width:150px;top:${365*f}px">${leaf5('Affiliate B1','$4,980',f)}</div>
 </div>`};
-const hl5=(fs)=>`<div class="h" style="text-align:center;font-size:${fs}px;letter-spacing:-.05em">Which sub-IB is actually<br><span class="gt g-teal">making you money?</span></div>`;
+const hl5=(fs)=>`<div class="h h5" style="text-align:center;font-size:${fs}px;letter-spacing:-.05em">You're building an IB<br>network, but do you<br>actually know<br><span class="gt g-teal">who drives it?</span></div>`;
 const cta5=cta('Grow the partners who grow you','background:linear-gradient(92deg,#00d190,#2a95f0);color:#03150e;box-shadow:0 22px 50px -14px rgba(0,209,144,.6)');
 const bg5='background:radial-gradient(800px 600px at 50% 55%,rgba(0,209,144,.12),transparent 65%),#070b14';
 A[5]={cls:'dark grid',style:bg5,
 sq:`<div class="c">${topRow(pill('Sub-IB management'))}
-<div style="margin-top:36px">${hl5(86)}</div>
+<div style="margin-top:36px">${hl5(84)}</div>
 <div class="mono" style="text-align:center;margin-top:24px;font-size:15px;letter-spacing:.2em;color:var(--fg2)">SEE EVERY TIER OF YOUR NETWORK · LIVE</div>
 <div style="margin-top:30px">${tree5(.94,410)}</div>
 <div class="lab" style="text-align:right;font-size:12px;margin-top:-6px">Product preview · sample data</div>
@@ -210,7 +210,7 @@ const banner6=(f=1)=>`<div style="background:linear-gradient(100deg,#0b1224,#121
 const step6=(n,i,t,d,f=1)=>`<div class="wcard" style="padding:${20*f}px ${22*f}px;border-radius:${18*f}px"><div class="row"><span class="mono" style="font-size:${14*f}px;color:#2a95f0">${n}</span><span class="sp"></span><span style="width:${40*f}px;height:${40*f}px;border-radius:10px;background:#eaf4fe;display:flex;align-items:center;justify-content:center">${ic(i,20*f,'#2a95f0')}</span></div><b style="display:block;font-size:${22*f}px;letter-spacing:-.015em;margin-top:6px;color:var(--ink)">${t}</b><div style="font-size:${16*f}px;line-height:1.4;color:var(--ink2);margin-top:6px">${d}</div></div>`;
 const steps6=(f=1,cols=3)=>`<div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${14*f}px">${step6('01','link','Connect your accounts','Message us and we link the partner accounts you already use.',f)}${step6('02','sync','We sync &amp; calculate','Clients, activity and rebates pull in automatically and stay current.',f)}${step6('03','eye','You see everything','Log in and every client, sub-IB and rebate is already there.',f)}</div>`;
 const built6=`<div class="row" style="gap:12px;flex-wrap:wrap"><span class="lab" style="margin-right:8px">Built for</span>${['Introducing brokers','Master IBs','Affiliate managers','Partner teams'].map(t=>`<span style="background:#fff;border:1px solid #dfe4ee;border-radius:999px;padding:9px 18px;font-size:17px;font-weight:600;color:var(--ink)">${t}</span>`).join('')}</div>`;
-const hl6=(fs)=>`<div class="h" style="font-size:${fs}px;color:var(--ink);letter-spacing:-.055em">Stop guessing.<br><span class="gt g-brand">Start calculating.</span></div>`;
+const hl6=(fs)=>`<div class="h" style="font-size:${fs}px;color:var(--ink);letter-spacing:-.055em"><div style="font-size:34px;line-height:1.2;letter-spacing:-.02em;font-weight:700;color:#2a95f0;margin-bottom:20px">Your IB rebates, calculated automatically, across every broker.</div>Stop guessing.<br><span class="gt g-brand">Start calculating.</span></div>`;
 A[6]={cls:'light grid',
 sq:`<div class="c">${topRow(pill('<b>24/7</b> real-time tracking'),true)}
 <div style="margin-top:42px">${hl6(110)}</div>
@@ -264,7 +264,7 @@ const bars8=(f=1)=>`<div><div class="row" style="gap:12px;margin-bottom:${14*f}p
  ${[['Olga Gutmann',22,90],['Kris Streich',18,72],['Laurence Smith',14,56],['Albert Kessler',11,44],['Hipolito Prosacco',9,36],['Other 143 clients',26,100,1]].map(r=>`<div class="row" style="height:${41*f}px;gap:16px"><span style="width:${175*f}px;font-size:${17*f}px;font-weight:600;color:${r[3]?'var(--ink3)':'var(--ink)'}">${r[0]}</span><span style="flex:1;height:${26*f}px;border-radius:8px;background:#eef1f6;overflow:hidden"><i style="display:block;height:100%;width:${r[2]}%;border-radius:8px;background:${r[3]?'#d3d9e4':'linear-gradient(90deg,#00c98a,#2a95f0)'}"></i></span><b style="width:${46*f}px;text-align:right;font-size:${17*f}px;color:${r[3]?'var(--ink3)':'var(--ink)'}">${r[1]}%</b></div>`).join('')}</div>`;
 const big8=(f=1)=>`<div><div class="gt g-teal" style="font-size:${104*f}px;font-weight:800;letter-spacing:-.05em;line-height:1">74%</div><div style="font-size:${19*f}px;color:var(--ink2);margin-top:8px;line-height:1.35">of rebates from <b style="color:var(--ink)">just 5 clients.</b></div>
  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:${18*f}px">${['This month','All time','Active now','Low balance'].map((t,i)=>`<span class="mono" style="font-size:${12*f}px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:6px;${i?'border:1px solid #d9dfe9;color:var(--ink2)':'background:#0b1020;color:#fff'}">${t}</span>`).join('')}</div></div>`;
-const hl8=(a,b)=>`<div class="h" style="letter-spacing:-.05em"><div style="font-size:${a}px;color:#3f4a63">A few clients drive most of your rebates.</div><div class="gt g-teal" style="font-size:${b}px;margin-top:6px">Do you know which ones?</div></div>`;
+const hl8=(a,b)=>`<div class="h" style="letter-spacing:-.05em"><div style="font-size:30px;line-height:1.2;letter-spacing:-.02em;font-weight:700;color:#00a88f;margin-bottom:16px">For IBs &amp; affiliates with a trading community</div><div style="font-size:${a}px;color:#3f4a63">A few clients drive most of your rebates.</div><div class="gt g-teal" style="font-size:${b}px;margin-top:6px">Do you know which ones?</div></div>`;
 const cta8=cta('Find your top earners','background:linear-gradient(92deg,#00c98a,#2a95f0);box-shadow:0 22px 50px -14px rgba(0,180,140,.55)');
 const sub8=`<div class="sub" style="font-size:24px">Rank every client by rebate, volume and activity, so you <b>know exactly who your income depends on.</b></div>`;
 const bg8='background:radial-gradient(800px 600px at 100% 0%,rgba(0,209,144,.16),transparent 60%),#eef8f4';
@@ -287,12 +287,12 @@ const table9=(f=1)=>`<div class="card" style="padding:${20*f}px ${22*f}px;border
  <div class="row" style="gap:12px">${mark(26*f)}<b style="font-size:${20*f}px">Volume · this week vs last</b><span class="sp"></span><span class="lab" style="font-size:${11.5*f}px">Sample data</span><span class="mono" style="margin-left:12px;font-size:${12*f}px;letter-spacing:.12em;border:1px solid rgba(167,139,250,.35);border-radius:8px;padding:6px 10px;color:var(--fg2)">SORT: BIGGEST SLOWDOWN ▾</span></div>
  <div class="row lab" style="font-size:${11.5*f}px;padding:${14*f}px ${16*f}px ${8*f}px"><span style="width:${330*f}px">Client</span><span style="width:${230*f}px">Volume (lots)</span><span style="flex:1">7-day trend</span><span>Change</span></div>
  ${[['Olga Gutmann','93.4','161.0','−42%',[9,9,8.6,8.3,7.4,6.8,6.2]],['Delilah Davis','33.6','51.7','−35%',[9,9.1,8.8,8.9,8,7.6,7.2]],['Kris Streich','36.4','50.6','−28%',[9,8.9,9.1,8.5,8.3,7.8,7.6]],['Mr. Lulu Gerlach','48.4','60.5','−20%',[9,9.1,8.8,8.9,8.4,8.2,7.9]],['Albert Kessler','58.7','52.4','+12%',[6,6.2,6.4,6.6,7.2,7.8,8.4],1]].map(r=>`<div class="row" style="height:${58*f}px;padding:0 ${16*f}px;border:1px solid rgba(167,139,250,.14);border-radius:12px;margin-top:${8*f}px;background:rgba(255,255,255,.02);${r[5]?'opacity:.6':''}"><b style="width:${330*f}px;font-size:${18*f}px">${r[0]}</b><span style="width:${230*f}px;font-size:${16*f}px;color:var(--fg2)"><b style="color:var(--fg)">${r[1]}</b> / ${r[2]}</span><span style="flex:1">${spark(r[4],170*f,30*f,r[5]?'#00d190':'#f472b6',{sw:2.2})}</span><b style="font-size:${20*f}px;color:${r[5]?'#00d190':'#f472b6'}">${r[3]}</b></div>`).join('')}</div>`;
-const hl9=(fs,br='<br>')=>`<div class="h" style="font-size:${fs}px;letter-spacing:-.055em">Who's trading less${br}<span class="gt g-plum">than last week?</span></div>`;
+const hl9=(fs,br='<br>')=>`<div class="h" style="font-size:${fs}px;letter-spacing:-.055em">Who in your IB${br}network is trading<br><span class="gt g-plum">less than last week?</span></div>`;
 const cta9=cta('Spot the slowdown','background:linear-gradient(92deg,#a78bfa,#f472b6);box-shadow:0 22px 50px -14px rgba(244,114,182,.6)');
 const bg9='background:radial-gradient(800px 600px at 90% 0%,rgba(167,139,250,.18),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(244,114,182,.12),transparent 60%),#0d0a18';
 A[9]={cls:'dark grid',style:bg9,
 sq:`<div class="c">${topRow(pill('<b>4 clients</b> slowing down','#f472b6'))}
-<div style="margin-top:44px">${hl9(118)}</div>
+<div style="margin-top:44px">${hl9(94)}</div>
 <div class="sub" style="margin-top:20px;font-size:25px">You shouldn't have to dig through a back-office to find out.</div>
 <div style="margin-top:34px;zoom:.92">${table9()}</div>
 <div class="sp"></div>
@@ -313,13 +313,13 @@ const pod10=(ini,n,st,vol,reb,rank,main,f=1)=>`<div style="${main?'background:#0
  <div style="font-size:${14.5*f}px;color:#00b07a;margin-top:4px;font-weight:600">● ${st}</div>
  <div class="row" style="margin-top:${14*f}px"><div style="flex:1"><div class="lab" style="font-size:${11*f}px">Volume</div><b style="font-size:${(main?30:24)*f}px">${vol}</b></div><div style="flex:1"><div class="lab" style="font-size:${11*f}px">Rebate</div><b style="font-size:${(main?30:24)*f}px">${reb}</b></div></div>
  <div class="row" style="justify-content:center;gap:8px;margin-top:${14*f}px;height:${40*f}px;border-radius:10px;font-weight:700;font-size:${15*f}px;${main?'background:#00c98a;color:#04150f':'background:#eaf7f1;color:#047857'}">${ic('chat',16*f,main?'#04150f':'#047857')}Say thanks</div></div>`;
-const hl10=(fs,br='<br>')=>`<div class="h" style="text-align:center;font-size:${fs}px;color:var(--ink);letter-spacing:-.055em">Know who's keeping${br}<span class="gt g-gold">your income alive.</span></div>`;
+const hl10=(fs,br='<br>')=>`<div class="h" style="text-align:center;font-size:${fs}px;color:var(--ink);letter-spacing:-.055em">IBs: which${br}traders keep<br><span class="gt g-gold">your income alive?</span></div>`;
 const cta10=cta('Find your top traders','background:#0b1020;box-shadow:0 22px 50px -16px rgba(11,16,32,.55)').replace('<i>','<i style="color:#f0b43a">');
 const rank10=(f=1)=>`<div class="row" style="justify-content:center;gap:10px"><span class="lab" style="margin-right:8px;font-size:${13*f}px">Rank by</span>${['Rebate','Volume','Active now','This month','All time'].map((t,i)=>`<span style="font-size:${16*f}px;font-weight:600;padding:${9*f}px ${16*f}px;border-radius:999px;${i?'background:#fff;border:1px solid #e6dfcf;color:var(--ink)':'background:#0b1020;color:#fff'}">${t}</span>`).join('')}</div>`;
 const bg10='background:radial-gradient(700px 500px at 50% 75%,rgba(240,180,58,.16),transparent 65%),#fbf8f1';
 A[10]={cls:'light grid',style:bg10,
 sq:`<div class="c">${topRow(pill('<b>3 hot</b> clients active now'),true)}
-<div style="margin-top:40px">${hl10(112)}</div>
+<div style="margin-top:40px">${hl10(104)}</div>
 <div class="sub" style="text-align:center;margin-top:20px;font-size:25px">Your busiest traders carry your network. <b>Make sure they feel it.</b></div>
 <div style="display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:16px;align-items:center;margin-top:38px">${pod10('HP','Hipolito P.','Active today','52.4k','$1,790',2,0,.9)}${pod10('OG','Olga Gutmann','Trading now','161.0k','$5,385',1,1,.9)}${pod10('KS','Kris Streich','Active yesterday','50.6k','$1,696',3,0,.9)}</div>
 <div style="margin-top:28px">${rank10(.95)}</div>
